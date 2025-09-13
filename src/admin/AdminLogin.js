@@ -16,8 +16,8 @@ export default function AdminLogin() {
       });
 
       console.log("✅ Admin Login Success:", res.data);
-      loginAdmin(res.data.token); // ✅ Save token in context + localStorage
-      window.location.href = "/admin/dashboard"; // ✅ Redirect
+      loginAdmin(res.data.token); //  Save token in context + localStorage
+      window.location.href = "/admin/dashboard"; //  Redirect
     } catch (err) {
       console.error("❌ Admin Login Error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed");

@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AdminProvider } from "./context/AdminContext"; // ✅ Admin Context
-import RideBooking from "./components/RideBooking";
+
 import Login from "./pages/Login";
 import ConfirmRide from "./pages/ConfirmRide";
+
+import HomePage from "./pages/HomePage";
 
 // ✅ Admin Components
 import AdminLogin from "./admin/AdminLogin";
@@ -18,7 +20,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* ✅ User Routes */}
-            <Route path="/" element={<RideBooking />} />
+           <Route path="/" element={<HomePage />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-ride" element={<ConfirmRide />} />
 
