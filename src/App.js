@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import { AdminProvider } from "./context/AdminContext"; // ✅ Admin Context
+import { AdminProvider } from "./context/AdminContext"; 
 
 import Login from "./pages/Login";
 import ConfirmRide from "./pages/ConfirmRide";

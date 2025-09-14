@@ -1,160 +1,530 @@
 
-// import { useState } from "react";
-// import axios from "axios";
+// import React, { useState, useEffect } from "react";
+// import { Check, ChevronDown, ArrowUpDown } from "lucide-react";
+// import { searchLocation, searchAirports } from "../api/location.api";
+// import Modal from "./Modal";
+// import LoginForm from "../pages/Login";
 
-// export default function RideBookingForm() {
-//   const [rideType, setRideType] = useState("outstation");
-//   const [pickupQuery, setPickupQuery] = useState("");
-//   const [dropQuery, setDropQuery] = useState("");
-//   const [pickupResults, setPickupResults] = useState([]);
-//   const [dropResults, setDropResults] = useState([]);
-//   const [pickupDate, setPickupDate] = useState("");
-//   const [pickupTime, setPickupTime] = useState("");
+// const GoZoBooking = () => {
+//   const [activeTab, setActiveTab] = useState("Airport Rides");
+//   const [tripType, setTripType] = useState("One way");
+//   const [airportOption, setAirportOption] = useState("Pick-up from");
+//   const [hours, setHours] = useState(8);
+//   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+//   const [selectedCountry, setSelectedCountry] = useState("IN");
+//   const [user, setUser] = useState(null);
+//   const [showLoginModal, setShowLoginModal] = useState(false);
 
-//   // API: Location Search
-//   const handleSearch = async (type, query) => {
-//     if (!query) return;
-//     try {
-//       const res = await axios.get(`http://localhost:5000/api/locations/search?query=${query}`);
-//       if (type === "pickup") setPickupResults(res.data.results);
-//       else setDropResults(res.data.results);
-//     } catch (err) {
-//       console.error("Location fetch error", err);
+//   // Pickup & Drop for Outstation
+//   const [pickup, setPickup] = useState("");
+//   const [drop, setDrop] = useState("");
+
+//   // ✅ API Response Data
+//   const [pickupResult, setPickupResult] = useState([]);
+//   const [dropResult, setDropResult] = useState([]);
+  
+
+
+//   // Example: check localStorage on mount
+//   useEffect(() => {
+//     // const storedUser = JSON.parse(localStorage.getItem("user"));
+//     // if (storedUser) setUser(storedUser);
+//   }, []);
+
+//   const handleSearch = () => {
+//     if (!user) {
+//       // Redirect to login page
+//       // window.location.href = "/login";
+//       setShowLoginModal(true);
+//       return;
+//     }
+
+//     // Continue with search logic
+//     console.log("Searching cabs for:", { pickup, drop, activeTab });
+//   };
+
+
+//   // ✅ Pickup Search
+//   useEffect(() => {
+//     if (pickup.length > 2) {
+//       searchLocation(pickup)
+//         .then((res) => setPickupResult(res))
+//         .catch((err) => console.error("Pickup Search Error", err));
+//     } else {
+//       setPickupResult([]);
+//     }
+//   }, [pickup]);
+
+//   // ✅ Drop Search
+//   useEffect(() => {
+//     if (drop.length > 2) {
+//       searchLocation(drop)
+//         .then((res) => setDropResult(res))
+//         .catch((err) => console.error("Drop Search Error", err));
+//     } else {
+//       setDropResult([]);
+//     }
+//   }, [drop]);
+
+//   const handleSwap = () => {
+//     setPickup((prevPickup) => {
+//       const temp = drop;
+//       setDrop(prevPickup);
+//       return temp;
+//     });
+//   };
+
+//   const tabContent = {
+//     "Airport Rides": {
+//       title: "Airport Transfers Made Easy",
+//       features: [
+//         { title: "All-Inclusive Pricing", description: "No hidden fees or surge charges." },
+//         { title: "Flight Tracking + Wait Time", description: "Up to 60 mins free waiting included." },
+//         { title: "Meet & Greet Service", description: "Driver with name board & luggage help." },
+//         { title: "Door-to-Door Transfers", description: "Pickup/drop at terminals, hotels & homes." },
+//         { title: "Clean, Comfortable Cars", description: "From Hatchbacks to SUVs & Travellers." },
+//       ],
+//     },
+//     Outstation: {
+//       title: "Long-Distance Travel, Simplified",
+//       features: [
+//         { title: "One-Way & Round Trips", description: "Pay only for what you need." },
+//         { title: "Transparent Pricing", description: "Upfront fares with no hidden charges." },
+//         { title: "PAN-India Coverage", description: "Available in 3,000+ towns & cities." },
+//         { title: "Multiple Car Options", description: "Hatchbacks to Tempo Travellers." },
+//         { title: "Verified Drivers", description: "Trained and background-checked professionals." },
+//       ],
+//     },
+//     "Day Trips": {
+//       title: "City Travel Made Simple",
+//       features: [
+//         { title: "Flexible Hourly Packages", description: "Choose from various durations & km slabs." },
+//         { title: "Wide Car Selection", description: "Hatchbacks, Sedans, SUVs & Premium Cars." },
+//         { title: "Chauffeur-Driven Comfort", description: "Air-conditioned rides — no driving hassles." },
+//         { title: "All-Inclusive Pricing", description: "Fuel, driver & taxes covered upfront." },
+//         { title: "Perfect for City Use", description: "Great for errands, tours, meetings & more." },
+//       ],
+//     },
+//   };
+
+//   const renderTabContent = () => {
+//     if (activeTab === "Airport Rides") {
+//       return (
+//         <div className="space-y-6">
+//           {/* Pick-up / Drop-off */}
+//           <div className="flex space-x-6">
+//             {["Pick-up from", "Drop-off"].map((opt) => (
+//               <button
+//                 key={opt}
+//                 type="button"
+//                 onClick={() => setAirportOption(opt)}
+//                 className={`flex items-center font-medium ${airportOption === opt ? "text-blue-600" : "text-gray-600"
+//                   }`}
+//               >
+//                 <div
+//                   className={`w-4 h-4 rounded-full border-2 mr-2 ${airportOption === opt ? "bg-blue-600 border-blue-600" : "border-gray-400"
+//                     }`}
+//                 ></div>
+//                 {opt}
+//               </button>
+//             ))}
+//           </div>
+
+//           {/* Airport Input */}
+//           <div className="relative">
+//             <input
+//               type="text"
+//               placeholder="pick Up Location"
+//               value={pickup}
+//               onChange={(e) => setPickup(e.target.value)}
+//               className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+//             />
+//             {pickupResult.length > 0 && (
+//               <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+//                 {pickupResult.map((item) => (
+//                   <li
+//                     key={item._id}
+//                     onClick={() => {
+//                       setPickup(item.address);
+//                       setPickupResult([]);
+//                     }}
+//                     className="p-2 hover:bg-gray-100 cursor-pointer"
+//                   >
+//                     {item.address}
+//                   </li>
+//                 ))}
+//               </ul>
+//             )}
+//           </div>
+
+//           {/* Destination Input */}
+//           <div className="relative">
+//             <input
+//               type="text"
+//               placeholder="Enter Destination"
+//               value={drop}
+//               onChange={(e) => setDrop(e.target.value)}
+//               className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+//             />
+//             {dropResult.length > 0 && (
+//               <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+//                 {dropResult.map((item) => (
+//                   <li
+//                     key={item._id}
+//                     onClick={() => {
+//                       setDrop(item.address);
+//                       setDropResult([]);
+//                     }}
+//                     className="p-2 hover:bg-gray-100 cursor-pointer"
+//                   >
+//                     {item.address}
+//                   </li>
+//                 ))}
+//               </ul>
+//             )}
+//           </div>
+
+//           <div className="grid grid-cols-2 gap-4">
+//             <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={new Date().toISOString().split("T")[0]} />
+//             <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//           </div>
+//         </div>
+//       );
+//     }
+
+//     if (activeTab === "Outstation") {
+//       return (
+//         <div className="space-y-6">
+//           {/* Trip Type */}
+//           <div className="flex flex-wrap gap-4">
+//             {["One way", "Round trip", "Multi city"].map((type) => (
+//               <button
+//                 key={type}
+//                 type="button"
+//                 onClick={() => setTripType(type)}
+//                 className={`flex items-center font-medium ${tripType === type ? "text-blue-600" : "text-gray-600"
+//                   }`}
+//               >
+//                 <div
+//                   className={`w-4 h-4 rounded-full border-2 mr-2 ${tripType === type ? "bg-blue-600 border-blue-600" : "border-gray-400"
+//                     }`}
+//                 ></div>
+//                 {type}
+//               </button>
+//             ))}
+//           </div>
+
+//           {/* One way & Round trip */}
+//           {(tripType === "One way" || tripType === "Round trip") && (
+//             <div className="relative space-y-4">
+//               {/* Pickup Input with Suggestions */}
+//               <div className="relative">
+//                 <input
+//                   type="text"
+//                   value={pickup}
+//                   onChange={(e) => setPickup(e.target.value)}
+//                   placeholder="Pickup Location"
+//                   className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
+//                 />
+//                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">⭕</span>
+//                 {pickupResult.length > 0 && (
+//                   <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+//                     {pickupResult.map((item) => (
+//                       <li
+//                         key={item._id}
+//                         onClick={() => {
+//                           setPickup(item.address);
+//                           setPickupResult([]);
+//                         }}
+//                         className="p-2 hover:bg-gray-100 cursor-pointer"
+//                       >
+//                         {item.address}
+//                       </li>
+//                     ))}
+//                   </ul>
+//                 )}
+//               </div>
+
+//               {/* Drop Input with Suggestions */}
+//               <div className="relative">
+//                 <input
+//                   type="text"
+//                   value={drop}
+//                   onChange={(e) => setDrop(e.target.value)}
+//                   placeholder="Drop Location"
+//                   className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
+//                 />
+//                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500">📍</span>
+//                 {dropResult.length > 0 && (
+//                   <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+//                     {dropResult.map((item) => (
+//                       <li
+//                         key={item._id}
+//                         onClick={() => {
+//                           setDrop(item.address);
+//                           setDropResult([]);
+//                         }}
+//                         className="p-2 hover:bg-gray-100 cursor-pointer"
+//                       >
+//                         {item.address}
+//                       </li>
+//                     ))}
+//                   </ul>
+//                 )}
+//               </div>
+
+//               {/* Vice-Versa Button */}
+//               <button
+//                 type="button"
+//                 onClick={handleSwap}
+//                 className="absolute right-3 top-10 bg-blue-100 text-blue-600 p-2 rounded-lg shadow"
+//               >
+//                 <ArrowUpDown className="w-5 h-5" />
+//               </button>
+
+//               {/* Date & Time */}
+//               <div className="grid grid-cols-2 gap-4">
+//                 <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={new Date().toISOString().split("T")[0]} />
+//                 <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//               </div>
+
+//               {tripType === "Round trip" && (
+//                 <>
+//                   <input
+//                     type="text"
+//                     placeholder="Returning the cab to"
+//                     className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+//                   />
+//                   <div className="grid grid-cols-2 gap-4">
+//                     <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={new Date().toISOString().split("T")[0]} />
+//                     <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//                   </div>
+//                 </>
+//               )}
+//             </div>
+//           )}
+
+//           {/* Multi City */}
+//           {tripType === "Multi city" && (
+//             <div className="space-y-4">
+//               <input type="text" placeholder="Pickup Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//               <input type="text" placeholder="Drop Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//               <div className="grid grid-cols-2 gap-4">
+//                 <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={new Date().toISOString().split("T")[0]} />
+//                 <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//               </div>
+//               <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold">
+//                 ADD TO PLAN
+//               </button>
+//               <div className="w-full bg-white border rounded-lg p-3 shadow-sm text-gray-700">
+//                 Your trip plan: day()
+//               </div>
+//             </div>
+//           )}
+//         </div>
+//       );
+//     }
+
+//     if (activeTab === "Day Trips") {
+//       return (
+//         <div className="space-y-6">
+//           <input
+//             type="text"
+//             placeholder="Pickup Location"
+//             value={pickup}
+//             onChange={(e) => setPickup(e.target.value)}
+//             className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+//           />
+//           {pickupResult.length > 0 && (
+//             <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+//               {pickupResult.map((item) => (
+//                 <li
+//                   key={item._id}
+//                   onClick={() => {
+//                     setPickup(item.address);
+//                     setPickupResult([]);
+//                   }}
+//                   className="p-2 hover:bg-gray-100 cursor-pointer"
+//                 >
+//                   {item.address}
+//                 </li>
+//               ))}
+//             </ul>
+//           )}
+//           <div className="grid grid-cols-2 gap-4">
+//             <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={new Date().toISOString().split("T")[0]} />
+//             <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+//           </div>
+
+//           <div className="bg-white rounded-lg p-6 shadow-sm text-center">
+//             <p className="text-gray-600 text-sm mb-4">
+//               Select length of time for which you require a cab
+//             </p>
+
+//             <div className="flex items-center justify-center space-x-6">
+//               <button
+//                 type="button"
+//                 onClick={() => setHours(Math.max(1, hours - 1))}
+//                 className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50"
+//               >
+//                 −
+//               </button>
+
+//               <div>
+//                 <div className="text-3xl font-bold text-gray-800">{hours} Hours</div>
+//                 <div className="text-gray-500 text-sm">{hours * 10} km included</div>
+//               </div>
+
+//               <button
+//                 type="button"
+//                 onClick={() => setHours(hours + 1)}
+//                 className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50"
+//               >
+//                 +
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       );
 //     }
 //   };
 
-//   // API: Ride Create
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const payload = {
-//       rideType,
-//       pickupLocation: pickupQuery,
-//       dropLocation: dropQuery,
-//       pickupDate,
-//       pickupTime
-//     };
-//     try {
-//       const res = await axios.post(`http://localhost:5000/api/rides/${rideType}`, payload);
-//       alert("✅ Ride created successfully!");
-//       console.log(res.data);
-//     } catch (err) {
-//       alert("❌ Failed to create ride");
-//     }
-//   };
+//   const currentContent = tabContent[activeTab];
 
 //   return (
-//     <div className="p-6 bg-white shadow-lg rounded-2xl w-[500px] mx-auto mt-6">
-//       {/* Ride Type Tabs */}
-//       <div className="flex space-x-4 mb-4">
-//         {["airport", "outstation", "daytrip"].map((type) => (
-//           <button
-//             key={type}
-//             className={`px-4 py-2 rounded-full font-semibold ${
-//               rideType === type ? "bg-blue-600 text-white" : "bg-gray-100"
-//             }`}
-//             onClick={() => setRideType(type)}
-//           >
-//             {type.charAt(0).toUpperCase() + type.slice(1)}
-//           </button>
-//         ))}
-//       </div>
+//     <div className="bg-gradient-to-br from-gray-50 to-gray-100">
+//       {/* Header */}
+//       <header className="bg-white shadow-sm">
+//         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+//           <div className="text-2xl font-bold">
+//             <span className="text-blue-600">Motu</span>
+//             <span className="text-orange-500">Cab</span>
+//           </div>
 
-//       {/* Form */}
-//       <form onSubmit={handleSubmit} className="space-y-4">
-//         {/* Pickup Location */}
-//         <div>
-//           <input
-//             type="text"
-//             value={pickupQuery}
-//             onChange={(e) => {
-//               setPickupQuery(e.target.value);
-//               handleSearch("pickup", e.target.value);
-//             }}
-//             placeholder="Pickup Location"
-//             className="w-full border p-2 rounded"
-//           />
-//           {pickupResults.length > 0 && (
-//             <ul className="bg-white border rounded shadow-md max-h-40 overflow-y-auto">
-//               {pickupResults.map((loc, i) => (
-//                 <li
-//                   key={i}
-//                   className="p-2 hover:bg-gray-200 cursor-pointer"
-//                   onClick={() => {
-//                     setPickupQuery(loc.address);
-//                     setPickupResults([]);
-//                   }}
-//                 >
-//                   {loc.address}
-//                 </li>
+//           <div className="flex flex-wrap items-center gap-2">
+//             {/* Country Dropdown */}
+//             <div className="relative">
+//               <button
+//                 onClick={() => setShowCountryDropdown(!showCountryDropdown)}
+//                 className="flex items-center text-sm bg-orange-100 px-3 py-2 rounded-lg hover:bg-orange-200 transition-colors"
+//               >
+//                 <span className="font-medium text-gray-700">{selectedCountry}</span>
+//                 <ChevronDown className="w-4 h-4 ml-1 text-gray-600" />
+//               </button>
+
+//               {showCountryDropdown && (
+//                 <div className="absolute top-full mt-1 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 w-40">
+//                   <button
+//                     onClick={() => {
+//                       setSelectedCountry("IN");
+//                       setShowCountryDropdown(false);
+//                     }}
+//                     className="w-full px-4 py-2 text-left hover:bg-gray-50"
+//                   >
+//                     Travel in India
+//                   </button>
+//                   <button
+//                     onClick={() => {
+//                       setSelectedCountry("USA");
+//                       setShowCountryDropdown(false);
+//                     }}
+//                     className="w-full px-4 py-2 text-left hover:bg-gray-50"
+//                   >
+//                     Travel in USA
+//                   </button>
+//                 </div>
+//               )}
+//             </div>
+
+//             <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+//               Request a call
+//             </button>
+//             <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+//               Hi User
+//             </button>
+//           </div>
+//         </div>
+//       </header>
+
+//       {/* Body */}
+//       <main className="max-w-7xl mx-auto px-4 py-8">
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//           {/* Left - Booking Form */}
+//           <div className="md:col-span-2">
+//             <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+//               {/* Tabs */}
+//               <div className="flex flex-col space-y-2 mb-8 bg-gray-100 rounded-xl p-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+//                 {["Airport Rides", "Outstation", "Day Trips"].map((tab) => (
+//                   <button
+//                     key={tab}
+//                     type="button"
+//                     onClick={() => setActiveTab(tab)}
+//                     className={`flex-1 px-4 py-2 rounded-lg font-medium transition-all text-sm sm:text-base ${activeTab === tab ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:bg-gray-200"
+//                       }`}
+//                   >
+//                     {tab}
+//                   </button>
+//                 ))}
+//               </div>
+
+//               {/* Tab Content */}
+//               {renderTabContent()}
+
+//              {user ? (
+//   <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+//     Hi {user.name}
+//   </button>
+// ) : (
+//   <>
+//     <button
+//       onClick={() => setShowLoginModal(true)}
+//       className="w-full mt-8 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+//     >
+//       SEARCH CABS
+//     </button>
+
+//     {/* Login Modal */}
+//     {showLoginModal && (
+//       <Modal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)}>
+//         <LoginForm onClose={() => setShowLoginModal(false)} />
+//       </Modal>
+//     )}
+//   </>
+// )}
+
+
+
+//             </div>
+//           </div>
+
+//           {/* Right - Features */}
+//           <div className="bg-white rounded-2xl shadow-lg p-6">
+//             <h2 className="text-xl font-bold text-gray-800 mb-6">{currentContent.title}</h2>
+//             <div className="space-y-4">
+//               {currentContent.features.map((feature, idx) => (
+//                 <div key={idx} className="flex items-start space-x-3">
+//                   <Check className="w-5 h-5 text-green-500 mt-1" />
+//                   <div>
+//                     <h3 className="font-semibold text-gray-800">{feature.title}</h3>
+//                     <p className="text-gray-600 text-sm">{feature.description}</p>
+//                   </div>
+//                 </div>
 //               ))}
-//             </ul>
-//           )}
+//             </div>
+//           </div>
 //         </div>
-
-//         {/* Drop Location */}
-//         <div>
-//           <input
-//             type="text"
-//             value={dropQuery}
-//             onChange={(e) => {
-//               setDropQuery(e.target.value);
-//               handleSearch("drop", e.target.value);
-//             }}
-//             placeholder="Drop Location"
-//             className="w-full border p-2 rounded"
-//           />
-//           {dropResults.length > 0 && (
-//             <ul className="bg-white border rounded shadow-md max-h-40 overflow-y-auto">
-//               {dropResults.map((loc, i) => (
-//                 <li
-//                   key={i}
-//                   className="p-2 hover:bg-gray-200 cursor-pointer"
-//                   onClick={() => {
-//                     setDropQuery(loc.address);
-//                     setDropResults([]);
-//                   }}
-//                 >
-//                   {loc.address}
-//                 </li>
-//               ))}
-//             </ul>
-//           )}
-//         </div>
-
-//         {/* Date & Time */}
-//         <div className="flex space-x-2">
-//           <input
-//             type="date"
-//             value={pickupDate}
-//             onChange={(e) => setPickupDate(e.target.value)}
-//             className="border p-2 rounded w-1/2"
-//           />
-//           <input
-//             type="time"
-//             value={pickupTime}
-//             onChange={(e) => setPickupTime(e.target.value)}
-//             className="border p-2 rounded w-1/2"
-//           />
-//         </div>
-
-//         {/* Submit */}
-//         <button
-//           type="submit"
-//           className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded"
-//         >
-//           NEXT
-//         </button>
-//       </form>
+//       </main>
 //     </div>
 //   );
-// }
+// };
 
-// GozoCab Home Page
+// export default GoZoBooking;
 
-
-
-import React, { useState } from "react";
-import { Check, ChevronDown, ArrowUpDown } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Check, ChevronDown, ArrowUpDown, Clock } from "lucide-react";
+import { searchLocation } from "../api/location.api";
+import Modal from "./Modal";
+import LoginForm from "../pages/Login";
 
 const GoZoBooking = () => {
   const [activeTab, setActiveTab] = useState("Airport Rides");
@@ -163,10 +533,75 @@ const GoZoBooking = () => {
   const [hours, setHours] = useState(8);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("IN");
+  const [user, setUser] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
-  // Pickup & Drop for Outstation
+  // Pickup & Drop
   const [pickup, setPickup] = useState("");
   const [drop, setDrop] = useState("");
+
+  // Date & Time
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  // API Results
+  const [pickupResult, setPickupResult] = useState([]);
+  const [dropResult, setDropResult] = useState([]);
+
+  // Saved Searches
+  const [savedSearches, setSavedSearches] = useState([]);
+
+  // Load saved searches
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("savedSearches")) || [];
+    setSavedSearches(stored);
+  }, []);
+
+  const handleSearch = () => {
+    if (!user) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    const newSearch = {
+      pickup,
+      drop,
+      activeTab,
+      tripType,
+      date,
+      time,
+      hours,
+      timestamp: new Date().toISOString(),
+    };
+
+    const updatedSearches = [newSearch, ...savedSearches].slice(0, 5); // keep last 5
+    setSavedSearches(updatedSearches);
+    localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
+
+    console.log("Searching cabs for:", newSearch);
+  };
+
+  // Pickup search
+  useEffect(() => {
+    if (pickup.length > 2) {
+      searchLocation(pickup)
+        .then((res) => setPickupResult(res))
+        .catch((err) => console.error("Pickup Search Error", err));
+    } else {
+      setPickupResult([]);
+    }
+  }, [pickup]);
+
+  // Drop search
+  useEffect(() => {
+    if (drop.length > 2) {
+      searchLocation(drop)
+        .then((res) => setDropResult(res))
+        .catch((err) => console.error("Drop Search Error", err));
+    } else {
+      setDropResult([]);
+    }
+  }, [drop]);
 
   const handleSwap = () => {
     setPickup((prevPickup) => {
@@ -176,7 +611,6 @@ const GoZoBooking = () => {
     });
   };
 
-  // Features for right side
   const tabContent = {
     "Airport Rides": {
       title: "Airport Transfers Made Easy",
@@ -198,7 +632,7 @@ const GoZoBooking = () => {
         { title: "Verified Drivers", description: "Trained and background-checked professionals." },
       ],
     },
-    "Day Trips": {
+    "Rentals": {
       title: "City Travel Made Simple",
       features: [
         { title: "Flexible Hourly Packages", description: "Choose from various durations & km slabs." },
@@ -210,9 +644,7 @@ const GoZoBooking = () => {
     },
   };
 
-  // Render content based on selected tab
   const renderTabContent = () => {
-    
     if (activeTab === "Airport Rides") {
       return (
         <div className="space-y-6">
@@ -229,9 +661,7 @@ const GoZoBooking = () => {
               >
                 <div
                   className={`w-4 h-4 rounded-full border-2 mr-2 ${
-                    airportOption === opt
-                      ? "bg-blue-600 border-blue-600"
-                      : "border-gray-400"
+                    airportOption === opt ? "bg-blue-600 border-blue-600" : "border-gray-400"
                   }`}
                 ></div>
                 {opt}
@@ -239,155 +669,331 @@ const GoZoBooking = () => {
             ))}
           </div>
 
-          <input
-            type="text"
-            placeholder="Enter Airport"
-            className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          <input
-            type="text"
-            placeholder="Enter Destination"
-            className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-          />
+          {/* Airport Input */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Pick Up Location"
+              value={pickup}
+              onChange={(e) => setPickup(e.target.value)}
+              className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            {pickupResult.length > 0 && (
+              <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+                {pickupResult.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setPickup(item.address);
+                      setPickupResult([]);
+                    }}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {item.address}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Destination Input */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Enter Destination"
+              value={drop}
+              onChange={(e) => setDrop(e.target.value)}
+              className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            {dropResult.length > 0 && (
+              <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+                {dropResult.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setDrop(item.address);
+                      setDropResult([]);
+                    }}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {item.address}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-            <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              min={new Date().toISOString().split("T")[0]}
+            />
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
           </div>
         </div>
       );
     }
 
+    // Outstation & Day Trips logic remains same...
+    // (I left your original rendering logic unchanged to avoid breaking layout)
     if (activeTab === "Outstation") {
-      
+  return (
+    <div className="space-y-6">
+      {/* Trip Type */}
+      <div className="flex flex-wrap gap-4">
+        {["One way", "Round trip", "Multi city"].map((type) => (
+          <button
+            key={type}
+            type="button"
+            onClick={() => setTripType(type)}
+            className={`flex items-center font-medium ${
+              tripType === type ? "text-blue-600" : "text-gray-600"
+            }`}
+          >
+            <div
+              className={`w-4 h-4 rounded-full border-2 mr-2 ${
+                tripType === type
+                  ? "bg-blue-600 border-blue-600"
+                  : "border-gray-400"
+              }`}
+            ></div>
+            {type}
+          </button>
+        ))}
+      </div>
 
-      return (
-        <div className="space-y-6">
-          {/* Trip Type */}
-          <div className="flex flex-wrap gap-4">
-            {["One way", "Round trip", "Multi city"].map((type) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => setTripType(type)}
-                className={`flex items-center font-medium ${
-                  tripType === type ? "text-blue-600" : "text-gray-600"
-                }`}
-              >
-                <div
-                  className={`w-4 h-4 rounded-full border-2 mr-2 ${
-                    tripType === type ? "bg-blue-600 border-blue-600" : "border-gray-400"
-                  }`}
-                ></div>
-                {type}
-              </button>
-            ))}
+      {/* One way & Round trip */}
+      {(tripType === "One way" || tripType === "Round trip") && (
+        <div className="relative space-y-4">
+          {/* Pickup Input with Suggestions */}
+          <div className="relative">
+            <input
+              type="text"
+              value={pickup}
+              onChange={(e) => setPickup(e.target.value)}
+              placeholder="Pickup Location"
+              className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
+            />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">
+              ⭕
+            </span>
+            {pickupResult.length > 0 && (
+              <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+                {pickupResult.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setPickup(item.address);
+                      setPickupResult([]);
+                    }}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {item.address}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
-          {/* One way & Round trip */}
-          {(tripType === "One way" || tripType === "Round trip") && (
-            <div className="relative space-y-4">
-              {/* Pickup */}
-              <div className="relative">
-                <input
-                  type="text"
-                  value={pickup}
-                  onChange={(e) => setPickup(e.target.value)}
-                  placeholder="Pickup Location"
-                  className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
-                />
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">⭕</span>
-              </div>
+          {/* Drop Input with Suggestions */}
+          <div className="relative">
+            <input
+              type="text"
+              value={drop}
+              onChange={(e) => setDrop(e.target.value)}
+              placeholder="Drop Location"
+              className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
+            />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500">
+              📍
+            </span>
+            {dropResult.length > 0 && (
+              <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+                {dropResult.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setDrop(item.address);
+                      setDropResult([]);
+                    }}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {item.address}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-              {/* Drop */}
-              <div className="relative">
-                <input
-                  type="text"
-                  value={drop}
-                  onChange={(e) => setDrop(e.target.value)}
-                  placeholder="Drop Location"
-                  className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none pl-10"
-                />
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500">📍</span>
-              </div>
+          {/* Vice-Versa Button */}
+          <button
+            type="button"
+            onClick={handleSwap}
+            className="absolute right-3 top-10 bg-blue-100 text-blue-600 p-2 rounded-lg shadow"
+          >
+            <ArrowUpDown className="w-5 h-5" />
+          </button>
 
-              {/* Vice-Versa Button */}
-              <button
-                type="button"
-                onClick={handleSwap}
-                className="absolute right-3 top-10 bg-blue-100 text-blue-600 p-2 rounded-lg shadow"
-              >
-                <ArrowUpDown className="w-5 h-5" />
-              </button>
+          {/* Date & Time */}
+          <div className="grid grid-cols-2 gap-4">
+            <input
+              type="date"
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              min={new Date().toISOString().split("T")[0]}
+            />
+            <input
+              type="time"
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
 
-              {/* Date & Time */}
-              <div className="grid grid-cols-2 gap-4">
-                <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-                <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-              </div>
-
-              {/* Round trip extra */}
-              {tripType === "Round trip" && (
-                <>
-                  <input
-                    type="text"
-                    placeholder="Returning the cab to"
-                    className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                  />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-                    <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-
-          {/* Multi City */}
-          {tripType === "Multi city" && (
+          {tripType === "Round trip" && (
             <>
-              <input type="text" placeholder="Pickup Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-              <input type="text" placeholder="Drop Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+              <input
+                type="text"
+                placeholder="Returning the cab to"
+                className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              />
               <div className="grid grid-cols-2 gap-4">
-                <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-                <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+                <input
+                  type="date"
+                  className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  min={new Date().toISOString().split("T")[0]}
+                />
+                <input
+                  type="time"
+                  className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                />
               </div>
-              <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold">ADD TO PLAN</button>
-              <div className="w-full bg-white border rounded-lg p-3 shadow-sm text-gray-700">Your trip plan: day()</div>
             </>
           )}
         </div>
-      );
-    }
+      )}
 
-    if (activeTab === "Day Trips") {
-      return (
-        <div className="space-y-6">
-          <input type="text" placeholder="Pickup Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+      {/* Multi City */}
+      {tripType === "Multi city" && (
+        <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Pickup Location"
+            className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          <input
+            type="text"
+            placeholder="Drop Location"
+            className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          />
           <div className="grid grid-cols-2 gap-4">
-            <input type="date" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-            <input type="time" className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+            <input
+              type="date"
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              min={new Date().toISOString().split("T")[0]}
+            />
+            <input
+              type="time"
+              className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm text-center">
-            <p className="text-gray-600 text-sm mb-4">Select length of time for which you require a cab</p>
-            <div className="flex items-center justify-center space-x-6">
-              <button type="button" onClick={() => setHours(Math.max(1, hours - 1))} className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50">−</button>
-              <div>
-                <div className="text-3xl font-bold text-gray-800">{hours} Hours</div>
-                <div className="text-gray-500 text-sm">10 km included</div>
-              </div>
-              <button type="button" onClick={() => setHours(hours + 1)} className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50">+</button>
-            </div>
+          <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold">
+            ADD TO PLAN
+          </button>
+          <div className="w-full bg-white border rounded-lg p-3 shadow-sm text-gray-700">
+            Your trip plan: day()
           </div>
         </div>
-      );
-    }
+      )}
+    </div>
+  );
+}
+
+if (activeTab === "Rentals") {
+  return (
+    <div className="space-y-6">
+      <input
+        type="text"
+        placeholder="Pickup Location"
+        value={pickup}
+        onChange={(e) => setPickup(e.target.value)}
+        className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+      />
+      {pickupResult.length > 0 && (
+        <ul className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-50 max-h-48 overflow-y-auto">
+          {pickupResult.map((item) => (
+            <li
+              key={item._id}
+              onClick={() => {
+                setPickup(item.address);
+                setPickupResult([]);
+              }}
+              className="p-2 hover:bg-gray-100 cursor-pointer"
+            >
+              {item.address}
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="grid grid-cols-2 gap-4">
+        <input
+          type="date"
+          className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          min={new Date().toISOString().split("T")[0]}
+        />
+        <input
+          type="time"
+          className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <div className="bg-white rounded-lg p-6 shadow-sm text-center">
+        <p className="text-gray-600 text-sm mb-4">
+          Select length of time for which you require a cab
+        </p>
+
+        <div className="flex items-center justify-center space-x-6">
+          <button
+            type="button"
+            onClick={() => setHours(Math.max(1, hours - 1))}
+            className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50"
+          >
+            −
+          </button>
+
+          <div>
+            <div className="text-3xl font-bold text-gray-800">
+              {hours} Hours
+            </div>
+            <div className="text-gray-500 text-sm">{hours * 10} km included</div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setHours(hours + 1)}
+            className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-xl font-bold hover:bg-gray-50"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+   
+
   };
 
   const currentContent = tabContent[activeTab];
 
   return (
-    <div className=" bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
@@ -409,14 +1015,34 @@ const GoZoBooking = () => {
 
               {showCountryDropdown && (
                 <div className="absolute top-full mt-1 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 w-40">
-                  <button onClick={() => { setSelectedCountry("IN"); setShowCountryDropdown(false); }} className="w-full px-4 py-2 text-left hover:bg-gray-50">Travel in India</button>
-                  <button onClick={() => { setSelectedCountry("USA"); setShowCountryDropdown(false); }} className="w-full px-4 py-2 text-left hover:bg-gray-50">Travel in USA</button>
+                  <button
+                    onClick={() => {
+                      setSelectedCountry("IN");
+                      setShowCountryDropdown(false);
+                    }}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50"
+                  >
+                    Travel in India
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedCountry("USA");
+                      setShowCountryDropdown(false);
+                    }}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50"
+                  >
+                    Travel in USA
+                  </button>
                 </div>
               )}
             </div>
 
-            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">Request a call</button>
-            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">Hi User</button>
+            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+              Request a call
+            </button>
+            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+              Hi User
+            </button>
           </div>
         </div>
       </header>
@@ -429,15 +1055,13 @@ const GoZoBooking = () => {
             <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
               {/* Tabs */}
               <div className="flex flex-col space-y-2 mb-8 bg-gray-100 rounded-xl p-2 sm:flex-row sm:space-y-0 sm:space-x-2">
-                {["Airport Rides", "Outstation", "Day Trips"].map((tab) => (
+                {["Airport Rides", "Outstation", "Rentals"].map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
                     className={`flex-1 px-4 py-2 rounded-lg font-medium transition-all text-sm sm:text-base ${
-                      activeTab === tab
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "text-gray-600 hover:bg-gray-200"
+                      activeTab === tab ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:bg-gray-200"
                     }`}
                   >
                     {tab}
@@ -446,36 +1070,82 @@ const GoZoBooking = () => {
               </div>
 
               {/* Tab Content */}
-              <div className="space-y-4">{renderTabContent()}</div>
+              {renderTabContent()}
 
-              {/* Next Button */}
-              <button className="w-full bg-orange-500 text-white font-bold py-3 sm:py-4 px-6 rounded-xl mt-6 hover:bg-orange-600 transition-colors shadow-lg">
-                NEXT
-              </button>
+              {user ? (
+                <button
+                  onClick={handleSearch}
+                  className="w-full mt-8 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+                >
+                  SEARCH CABS
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="w-full mt-8 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+                  >
+                    SEARCH CABS
+                  </button>
+
+                  {/* Login Modal */}
+                  {showLoginModal && (
+                    <Modal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)}>
+                      <LoginForm onClose={() => setShowLoginModal(false)} />
+                    </Modal>
+                  )}
+                </>
+              )}
             </div>
+
+            {/* Saved Searches */}
+            {savedSearches.length > 0 && (
+              <div className="mt-6 bg-white rounded-xl shadow p-4">
+                <h3 className="font-bold text-gray-800 mb-3 flex items-center">
+                  <Clock className="w-5 h-5 mr-2 text-blue-500" />
+                  Recent Searches
+                </h3>
+                <ul className="space-y-2">
+                  {savedSearches.map((s, idx) => (
+                    <li
+                      key={idx}
+                      className="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer"
+                      onClick={() => {
+                        setPickup(s.pickup);
+                        setDrop(s.drop);
+                        setActiveTab(s.activeTab);
+                        setTripType(s.tripType);
+                        setDate(s.date);
+                        setTime(s.time);
+                        setHours(s.hours);
+                      }}
+                    >
+                      <div className="font-semibold text-gray-700">
+                        {s.pickup} ➝ {s.drop}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {s.activeTab}, {s.tripType} • {s.date} {s.time}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Right - Features */}
-          <div>
-            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 sticky top-4">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center">
-                {currentContent.title}
-              </h2>
-              <div className="space-y-4">
-                {currentContent.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-6 h-6 rounded bg-green-500 flex items-center justify-center flex-shrink-0 mr-3">
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-600 text-xs sm:text-sm">{feature.description}</p>
-                    </div>
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-6">{currentContent.title}</h2>
+            <div className="space-y-4">
+              {currentContent.features.map((feature, idx) => (
+                <div key={idx} className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-green-500 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-gray-800">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -485,5 +1155,8 @@ const GoZoBooking = () => {
 };
 
 export default GoZoBooking;
+
+
+
 
 

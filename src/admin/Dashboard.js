@@ -1,21 +1,20 @@
-// src/admin/Dashboard.js
 import { useContext } from "react";
 import { AdminContext } from "../context/AdminContext";
 import UsersTable from "./UsersTable";
 import ReviewsTable from "./ReviewsTable";
 import { useNavigate } from "react-router-dom";
+import SearchHistoryTable from "./SearchHistoryTable";
 import axios from "axios";
 
 export default function Dashboard() {
   const { logoutAdmin } = useContext(AdminContext);
-   const { logout } = useContext(AdminContext);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await axios.post("http://localhost:5000/api/admin/logout"); 
-      logout(); 
-      navigate("/admin/login"); 
+      logoutAdmin();  // 👈 yeh call karo
+      navigate("/adminLogin"); // 👈 aapke context me bhi redirect ho raha hai, so optional
     } catch (err) {
       alert("Logout failed");
     }
@@ -35,6 +34,7 @@ export default function Dashboard() {
 
       <UsersTable />
       <ReviewsTable />
+      <SearchHistoryTable />
     </div>
   );
 }

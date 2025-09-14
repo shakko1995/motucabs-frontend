@@ -346,7 +346,7 @@ export default function FeaturesSection() {
   return (
     <div className="w-full bg-[#f8fafc] py-10">
       {/* 🔹 Top Info Bar */}
-      <div className="w-full bg-[#f1f5f9] py-2 mb-8">
+      <div className="w-full  py-2 mb-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm md:text-base gap-2">
           {/* Left */}
           <div className="flex items-center gap-2 text-blue-600 font-medium">
