@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import ConfirmRide from "./pages/ConfirmRide";
 
 import HomePage from "./pages/HomePage";
+import RentalCabs from "./pages/RentalCabs";
 
 // ✅ Admin Components
 import AdminLogin from "./admin/AdminLogin";
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             {/* ✅ User Routes */}
            <Route path="/" element={<HomePage />} />
+           <Route path="/rental-cabs" element={<RentalCabs />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-ride" element={<ConfirmRide />} />
