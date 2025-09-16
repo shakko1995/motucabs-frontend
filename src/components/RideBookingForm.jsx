@@ -641,6 +641,8 @@
 
 // export default GoZoBooking;
 
+
+
 import React, { useState, useEffect, useContext } from "react";
 import { Check, ChevronDown, ArrowUpDown, Clock, User, LogOut } from "lucide-react";
 import { searchLocation } from "../api/location.api";
@@ -648,6 +650,7 @@ import Modal from "./Modal";
 import LoginForm from "../pages/Login";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const GoZoBooking = () => {
   // Form States
@@ -661,7 +664,7 @@ const GoZoBooking = () => {
   const [airportOption, setAirportOption] = useState("Pick-up from");
   const navigate = useNavigate();
 
-  
+
   const [returnDate, setReturnDate] = useState("");
   const [returnTime, setReturnTime] = useState("");
 
@@ -675,6 +678,8 @@ const GoZoBooking = () => {
   const [selectedCountry, setSelectedCountry] = useState("IN");
 
   const { user, logout } = useContext(AuthContext);
+  const [pickupCityRates, setPickupCityRates] = useState([]);
+  const [ratesLoading, setRatesLoading] = useState(false);
 
   useEffect(() => {
     const storedItem = localStorage.getItem("savedSearches");
@@ -688,28 +693,49 @@ const GoZoBooking = () => {
     }
   }, []);
 
+
+
   const handleSearch = () => {
     if (!user) {
       setShowLoginModal(true);
       return;
     }
-     if (activeTab === "Rentals") {
-      
+    if (activeTab === "Rentals") {
       if (!pickup || !date || !time) {
         alert("Please enter city, date, and time for rental booking.");
         return;
       }
       navigate(`/rental-cabs?city=${pickup}&hours=${hours}&date=${date}&time=${time}`);
     
-    } else {
-      
-      if (!pickup || !drop || !date || !time) { // || !hours
+    } else if (activeTab === "Outstation") {
+      if (!pickup || !drop || !date || !time) {
         alert("Please enter pickup, drop, date, and time for booking.");
         return;
       }
-    }
       
-    
+      
+      if (tripType === 'Round trip') {
+        
+        if (!returnDate || !returnTime) {
+          navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
+            alert("Please select a return date and time for a round trip.");
+            return; 
+        }
+        // navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&pickupDate=${date}&time=${time}&dropDate=${returnDate}&returnTime=${returnTime}`);
+         navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
+      } else { 
+        
+        navigate(`/outstation-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}`);
+      }
+
+    } else if (activeTab === "Airport Rides") {
+        if (!pickup || !drop || !date || !time) {
+            alert("Please fill all details for Airport Rides.");
+            return;
+        }
+        navigate(`/airport-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&tripType=${airportOption}`);
+    }
+
     const searchDetails = { pickup, drop, activeTab, tripType, date, time, hours, timestamp: new Date().toISOString() };
     if (tripType === 'Round trip') {
       searchDetails.returnDate = returnDate;
@@ -835,26 +861,61 @@ const GoZoBooking = () => {
 
 
               {tripType === "Round trip" && (
-                <div className="space-y-4 border-t pt-4 mt-4">
-                  <p className="font-medium text-gray-700 text-sm">Return Details</p>
+                <>
+                  <input
+                    type="text"
+                    
+                    placeholder="Returning the cab to"
+                    className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
                   <div className="grid grid-cols-2 gap-4">
-                    <input type="date" value={returnDate} onChange={(e) => setReturnDate(e.target.value)} className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" min={date || new Date().toISOString().split("T")[0]} />
-                    <input type="time" value={returnTime} onChange={(e) => setReturnTime(e.target.value)} className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
+                    <input
+                      type="date"
+                      className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                      min={new Date().toISOString().split("T")[0]}
+                    />
+                    <input
+                      type="time"
+                      className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
                   </div>
-                </div>
+                </>
               )}
+
             </div>
           )}
           {tripType === "Multi city" && (
             <div className="space-y-4">
-              <input type="text" placeholder="Pickup Location" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-              <input type="text" placeholder="Add City" className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" />
-              <button className="w-full bg-orange-500 text-white font-semibold py-2 rounded-lg hover:bg-orange-600 transition-colors">
+              <input
+                type="text"
+                placeholder="Pickup Location"
+                className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+              <input
+                type="text"
+                placeholder="Drop Location"
+                className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="date"
+                  className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  min={new Date().toISOString().split("T")[0]}
+                />
+                <input
+                  type="time"
+                  className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                />
+              </div>
+              <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold">
                 ADD TO PLAN
               </button>
-
+              <div className="w-full bg-white border rounded-lg p-3 shadow-sm text-gray-700">
+                Your trip plan: day()
+              </div>
             </div>
           )}
+
         </div>
       );
     }

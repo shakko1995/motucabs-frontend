@@ -193,7 +193,7 @@ const ManageRentals = () => {
                                     <th className="p-2">AC</th>
                                     <th className="p-2">Actions</th>
                                     <th className="p-3">Extra Rates</th>
-                                    <th className="p-3">Actions</th>
+                                    {/* <th className="p-3">Actions</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -204,14 +204,15 @@ const ManageRentals = () => {
                                         <td className="p-2">{pkg.uptoHour}hr / {pkg.uptoKm}km</td>
                                         <td className="p-2">₹{pkg.packageRate}</td>
                                         <td className="p-2">{pkg.ac ? 'Yes' : 'No'}</td>
+                                        
+                                        <td className="p-2 flex gap-2">
+                                            <button onClick={() => handleEdit(pkg)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
+                                            <button onClick={() => handleDelete(pkg._id)} className="text-red-600 hover:text-red-800"><Trash2 size={18}/></button>
+                                        </td>
                                          <td className="p-3 text-xs">
                                             <div>Km: ₹{pkg.rates.extraKmRate}</div>
                                             <div>Hr: ₹{pkg.rates.extraHourRate}</div>
                                             <div>Night: ₹{pkg.rates.nightDrivingAllowance}</div>
-                                        </td>
-                                        <td className="p-2 flex gap-2">
-                                            <button onClick={() => handleEdit(pkg)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
-                                            <button onClick={() => handleDelete(pkg._id)} className="text-red-600 hover:text-red-800"><Trash2 size={18}/></button>
                                         </td>
                                     </tr>
                                 ))}
