@@ -10,6 +10,7 @@ import RentalCabs from "./pages/RentalCabs";
 import OutstationCabs from "./pages/OutstationCabs";
 import AirportCabs from "./pages/AirportCabs";
 import OutstationRoundTripCabs from "./pages/OutstationRoundTripCabs";
+import ReviewBooking from "./pages/ReviewBooking";
 
 // ✅ Admin Components
 import AdminLogin from "./admin/AdminLogin";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/outstation-cabs" element={<OutstationCabs />} />
             <Route path="/airport-cabs" element={<AirportCabs />} />
             <Route path="/outstation-roundtrip-cabs" element={<OutstationRoundTripCabs />} />
+            <Route path="/review-booking" element={<ReviewBooking />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-ride" element={<ConfirmRide />} />

@@ -650,7 +650,7 @@ import Modal from "./Modal";
 import LoginForm from "../pages/Login";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 
 const GoZoBooking = () => {
   // Form States
@@ -680,6 +680,7 @@ const GoZoBooking = () => {
   const { user, logout } = useContext(AuthContext);
   const [pickupCityRates, setPickupCityRates] = useState([]);
   const [ratesLoading, setRatesLoading] = useState(false);
+  const [returnLocation, setReturnLocation] = useState("");
 
   useEffect(() => {
     const storedItem = localStorage.getItem("savedSearches");
@@ -714,17 +715,28 @@ const GoZoBooking = () => {
       }
       
       
+      // if (tripType === 'Round trip') {
+        
+      //   if (!returnDate || !returnTime) {
+      //     navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
+      //       alert("Please select a return date and time for a round trip.");
+      //       return; 
+      //   }
+      //   navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&pickupDate=${date}&time=${time}&dropDate=${returnDate}&returnTime=${returnTime}`);
+      //   // navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&pickupDate=${date}&time=${time}&dropDate=${returnDate}&returnTime=${returnTime}`);
+      //   //  navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
+      // } else { 
+        
+      //   navigate(`/outstation-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}`);
+      // }
       if (tripType === 'Round trip') {
-        
         if (!returnDate || !returnTime) {
-          navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
-            alert("Please select a return date and time for a round trip.");
-            return; 
+            return alert("Please select a return date and time for a round trip.");
         }
-        // navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&pickupDate=${date}&time=${time}&dropDate=${returnDate}&returnTime=${returnTime}`);
-         navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}&returnDate=${returnDate}&returnTime=${returnTime}`);
+        // Use the correct parameters: pickupDate & dropDate
+        navigate(`/outstation-roundtrip-cabs?from=${pickup}&to=${drop}&pickupDate=${date}&time=${time}&dropDate=${returnDate}&returnTime=${returnTime}`);
       } else { 
-        
+        // Logic for One-Way or Multi-City
         navigate(`/outstation-cabs?from=${pickup}&to=${drop}&date=${date}&time=${time}`);
       }
 
@@ -860,17 +872,18 @@ const GoZoBooking = () => {
               </div>
 
 
-              {tripType === "Round trip" && (
+              {/* {tripType === "Round trip" && (
                 <>
                   <input
                     type="text"
                     
-                    placeholder="Returning the cab to"
+                    placeholder="Returning the cab "
                     className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <div className="grid grid-cols-2 gap-4">
                     <input
                       type="date"
+                       value={returnDate}
                       className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
                       min={new Date().toISOString().split("T")[0]}
                     />
@@ -880,6 +893,34 @@ const GoZoBooking = () => {
                     />
                   </div>
                 </>
+              )} */}
+                {tripType === "Round trip" && (
+                <div className="space-y-4 border-t pt-4 mt-4">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={returnLocation}
+                      onChange={(e) => setReturnLocation(e.target.value)}
+                      placeholder="Returning the cab to"
+                      className="w-full border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <input 
+                      type="date" 
+                      value={returnDate} 
+                      onChange={(e) => setReturnDate(e.target.value)} 
+                      className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                      min={date || new Date().toISOString().split("T")[0]} 
+                    />
+                    <input 
+                      type="time" 
+                      value={returnTime} 
+                      onChange={(e) => setReturnTime(e.target.value)} 
+                      className="border rounded-lg p-4 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                    />
+                  </div>
+                </div>
               )}
 
             </div>
@@ -975,7 +1016,7 @@ const GoZoBooking = () => {
               <div className="relative">
                 <button onClick={() => setDropdownOpen(!isDropdownOpen)} className="flex items-center px-4 py-2 border border-transparent text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
                   <User className="w-5 h-5 mr-2 text-blue-600" />
-                  Hi, {user.name.split(' ')[0]}
+                  Hi, {user?.name?.split(' ')[0] || 'User'}
                   <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isDropdownOpen && (
