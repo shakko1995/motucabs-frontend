@@ -19,6 +19,16 @@ import StudentsProgramPage from "./pages/StudentsProgramPage";
 import SeniorCitizensProgramPage from "./pages/SeniorCitizensProgramPage";
 import WhiteLabelPage from "./pages/WhiteLabelPage";
 import SaaSPage from "./pages/SaaSPage";
+import FleetOverviewPage from "./pages/FleetOverviewPage";
+import FleetDetailPage from "./pages/FleetDetailPage";
+import ServicesPage from "./pages/ServicesPage";
+import AirportTransfersPage from "./pages/AirportTransfersPage";
+import PointToPointPage from "./pages/PointToPointPage";
+import PlannedItinerariesPage from "./pages/PlannedItinerariesPage";
+import HourlyServicePage from "./pages/HourlyServicePage";
+import ConciergePage from "./pages/ConciergePage";
+import MeetAndAssistPage from "./pages/MeetAndAssistPage";
+import EventSolutionsPage from "./pages/EventSolutionsPage";
 
 // ✅ Admin Components
 import AdminLogin from "./admin/AdminLogin";
@@ -47,7 +57,17 @@ function App() {
             <Route path="/senior-citizens-program" element={<SeniorCitizensProgramPage />} />
             <Route path="/white-label" element={<WhiteLabelPage />} />
             <Route path="/saas" element={<SaaSPage />} />
-            
+            <Route path="/fleet" element={<FleetOverviewPage />} />
+            <Route path="/fleet/:carType" element={<FleetDetailPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/airport-transfers" element={<AirportTransfersPage />} />
+            <Route path="/point-to-point" element={<PointToPointPage />} />
+            <Route path="/itineraries" element={<PlannedItinerariesPage />} />
+            <Route path="/hourly-service" element={<HourlyServicePage />} />
+            <Route path="/concierge" element={<ConciergePage />} />
+            <Route path="/meet-and-assist" element={<MeetAndAssistPage />} />
+            <Route path="/event-solutions" element={<EventSolutionsPage />} />
+
 
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-ride" element={<ConfirmRide />} />
