@@ -650,6 +650,8 @@ import Modal from "./Modal";
 import LoginForm from "../pages/Login";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Header from './Header'; 
+
 
 
 const GoZoBooking = () => {
@@ -990,9 +992,10 @@ const GoZoBooking = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+      <Header />
       <header className="bg-white shadow-sm sticky top-0 z-40">
         {/* ... Header is correct and remains unchanged ... */}
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+        {/* <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="text-2xl font-bold cursor-pointer" onClick={() => window.location.href = '/'}>
             <span className="text-blue-600">Motu</span><span className="text-orange-500">Cab</span>
           </div>
@@ -1034,7 +1037,7 @@ const GoZoBooking = () => {
               </button>
             )}
           </div>
-        </div>
+        </div> */}
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">

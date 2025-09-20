@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { getReviews } from "../api/reviewApi"; // api file import
+import { useNavigate } from "react-router-dom";
 
 export default function ReviewsSection() {
   const scrollRef = useRef(null);
   const [reviews, setReviews] = useState([]);
-  const [expanded, setExpanded] = useState({}); // track which review expanded
+  const [expanded, setExpanded] = useState({});
+  const navigate = useNavigate(); 
 
   // Fetch reviews from backend via API file
   useEffect(() => {
@@ -102,9 +104,8 @@ export default function ReviewsSection() {
 
                 {/* Review text */}
                 <p
-                  className={`text-sm leading-relaxed ${
-                    !expanded[i] ? "line-clamp-5" : ""
-                  }`}
+                  className={`text-sm leading-relaxed ${!expanded[i] ? "line-clamp-5" : ""
+                    }`}
                 >
                   "{review.comment}"
                 </p>
@@ -149,19 +150,22 @@ export default function ReviewsSection() {
           {reviews.slice(0, 6).map((_, idx) => (
             <span
               key={idx}
-              className={`h-2 w-2 rounded-full ${
-                idx === 2 ? "bg-blue-600" : "bg-gray-400"
-              }`}
+              className={`h-2 w-2 rounded-full ${idx === 2 ? "bg-blue-600" : "bg-gray-400"
+                }`}
             ></span>
           ))}
         </div>
 
         {/* All reviews button */}
         <div className="mt-6">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700">
-            All reviews
-          </button>
-        </div>
+      <button
+        onClick={() => navigate("/reviews")}
+        className="bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700"
+      >
+        All Reviews
+      </button>
+    </div>
+
       </div>
     </div>
   );

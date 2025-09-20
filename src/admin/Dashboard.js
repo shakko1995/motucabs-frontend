@@ -10,9 +10,13 @@ import ManageRentals from "./ManageRentals";
 import ManageOutstation from "./ManageOutstation";
 import ManageAirports from "./ManageAirports";
 import ManageOutstationRoundTrip from "./ManageOutstationRoundTrip";
+import BusinessSubmissions from './BusinessSubmissions';
+import PartnerSubmissions from './PartnerSubmissions';
+import DriverApplications from './DriverApplications';
+import TravelAgentSubmissions from './TravelAgentSubmissions';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Users, Star, History, LogOut, LayoutDashboard, Package, Route, Plane,Repeat } from 'lucide-react';
+import { Users, Star, History, LogOut, LayoutDashboard, Package, Route, Plane,Repeat,UserPlus,Briefcase } from 'lucide-react';
 
 export default function Dashboard() {
   const { logoutAdmin } = useContext(AdminContext);
@@ -39,6 +43,10 @@ export default function Dashboard() {
       case 'outstation': return <ManageOutstation />;
       case 'airports': return <ManageAirports />;
       case 'roundtrips': return <ManageOutstationRoundTrip />;
+      case 'businessInquiries': return <BusinessSubmissions />;
+      case 'partnerApplications': return <PartnerSubmissions />;
+      case 'driverApplications': return <DriverApplications />;
+      case 'travelAgentApplications': return <TravelAgentSubmissions />;
       default: return <UsersTable />;
     }
   };
@@ -52,6 +60,10 @@ export default function Dashboard() {
       case 'outstation': return "Outstation Packages Management";
       case 'airports': return "Airport Packages Management";
       case 'roundtrips': return "Outstation Round Trips";
+      case 'businessInquiries': return "Business Inquiries";
+      case 'partnerApplications': return "Partner & Reseller Applications";
+      case 'driverApplications': return "Driver Applications";
+      case 'travelAgentApplications': return "Travel Agent / Partner Applications";
       default: return "Dashboard";
     }
   }
@@ -137,6 +149,30 @@ export default function Dashboard() {
               >
                 <Repeat className="mr-3" size={20} strokeWidth={2} />
                 <span>Manage Round Trips</span>
+              </button>
+            </li>
+            <li className="mt-2">
+              <button onClick={() => setActiveView('businessInquiries')} className={`flex items-center w-full px-4 py-3 rounded-lg ${activeView === 'businessInquiries' ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'}`}>
+                <Briefcase className="mr-3" size={20} />
+                <span>Business Inquiries</span>
+              </button>
+            </li>
+            <li className="mt-2">
+              <button onClick={() => setActiveView('partnerApplications')} className={`flex items-center w-full px-4 py-3 rounded-lg ${activeView === 'partnerApplications' ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'}`}>
+                <Users className="mr-3" size={20} />
+                <span>Partner Applications</span>
+              </button>
+            </li>
+            <li className="mt-2">
+              <button onClick={() => setActiveView('driverApplications')} className={`flex items-center w-full px-4 py-3 rounded-lg ${activeView === 'driverApplications' ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'}`}>
+                <UserPlus className="mr-3" size={20} />
+                <span>Driver Applications</span>
+              </button>
+            </li>
+            <li className="mt-2">
+              <button onClick={() => setActiveView('travelAgentApplications')} className={`flex items-center w-full px-4 py-3 rounded-lg ${activeView === 'travelAgentApplications' ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'}`}>
+                <Users className="mr-3" size={20} />
+                <span>Travel Agent Apps</span>
               </button>
             </li>
           </ul>
