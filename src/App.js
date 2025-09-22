@@ -126,6 +126,8 @@ import DriverPage from "./pages/DriverPage";
 import PartnersPage from "./pages/PartnersPage";
 import TravellerPartner from "./pages/TravellerPartner";
 import CrossPerformNetwork from "./pages/CrossPerformNetwork";
+import ManagePages from "./admin/ManagePages";
+import DynamicPage from "./pages/DynamicPage";
 
 // Admin
 import AdminLogin from "./admin/AdminLogin";
@@ -172,6 +174,10 @@ function App() {
               <Route path="/partners" element={<PartnersPage />} />
               <Route path="/travel-agents" element={<TravellerPartner />} />
               <Route path="/cross-promotion" element={<CrossPerformNetwork />} />
+              <Route path="/manage-pages" element={<ManagePages />} />
+              <Route path="/page/:slug" element={<DynamicPage />} />
+
+
               {/* Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<Dashboard />} />
