@@ -175,6 +175,23 @@ const ManagePages = () => {
             <input name="metaKeywords" placeholder="Meta Keywords (comma separated)" value={formData.metaKeywords.join(', ')} onChange={handleInputChange} className="p-3 border rounded-md" />
           </div>
         </fieldset>
+         {/* 👇 New Category Dropdown */}
+                            <div>
+                                <label className="text-sm font-medium">Page Category</label>
+                                <select 
+                                    name="category" 
+                                    value={formData.category} 
+                                    onChange={handleInputChange} 
+                                    className="mt-1 w-full p-3 border rounded-md bg-white"
+                                >
+                                    <option value="Outstation">Outstation</option>
+                                    <option value="Rental">Rental</option>
+                                    <option value="Airport">Airport</option>
+                                    <option value="Drivers">Drivers</option>
+                                    <option value="Locals">Locals</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
 
         {/* Banner Image */}
         <fieldset className="border p-4 rounded-md">

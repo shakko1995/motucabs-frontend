@@ -1,4 +1,4 @@
-"use client";
+import { Link } from "react-router-dom";
 
 import { Facebook, Instagram, Linkedin, CheckCircle } from "lucide-react";
 
@@ -75,6 +75,14 @@ export default function Footer() {
         <p className="text-center text-gray-500 text-sm mt-3">
           © 2025 Motu Technologies Pvt. Ltd. All Rights Reserved.
         </p>
+         <div className="mt-4 md:mt-0">
+          <Link
+            to="/sitemap"
+            className="hover:underline hover:text-yellow-400 transition"
+          >
+            Sitemap
+          </Link>
+        </div>
       </div>
     </footer>
   );
