@@ -224,9 +224,11 @@ import BusinessSubmissions from './BusinessSubmissions';
 import PartnerSubmissions from './PartnerSubmissions';
 import DriverApplications from './DriverApplications';
 import TravelAgentSubmissions from './TravelAgentSubmissions';
+import ManageAirportsSiteMap from './ManageAirportsSiteMap';
+import ManageCarRentals from './ManageCarRentals';
 
 // Import icons
-import { Users, Star, History, LogOut, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
+import { Users, Star, History, LogOut,Map,Car, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
 
 // Reusable NavButton component for clean code
 const NavButton = ({ viewName, activeView, setActiveView, icon: Icon, children }) => (
@@ -282,6 +284,11 @@ export default function Dashboard() {
       case 'driverApplications': return <DriverApplications />;
       case 'travelAgentApplications': return <TravelAgentSubmissions />;
 
+
+       // SiteMap Section
+      case 'manageAirportSitemap': return <ManageAirportsSiteMap />;
+      case 'carRentals': return <ManageCarRentals />;
+
       default: return <UsersTable />;
     }
   };
@@ -300,6 +307,9 @@ export default function Dashboard() {
       partnerApplications: "Partner & Reseller Applications",
       driverApplications: "Driver Applications",
       travelAgentApplications: "Travel Agent Applications",
+
+      manageAirports: "Manage Airports Sitemap",
+      carRentals: "Manage Car Rentals",
     };
     return titles[activeView] || "Dashboard";
   };
@@ -338,6 +348,17 @@ export default function Dashboard() {
                 <NavButton viewName="driverApplications" icon={UserPlus} activeView={activeView} setActiveView={setActiveView}>Driver Apps</NavButton>
                 <NavButton viewName="travelAgentApplications" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Travel Agent Apps</NavButton>
             </ul>
+            <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Sitemap Management</h3>
+            <ul className="space-y-1">
+                
+                <NavButton viewName="manageAirportSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Airport Sitemap</NavButton>
+            </ul>
+
+            
+            <ul className="space-y-1">
+                <NavButton viewName="carRentals" icon={Car} activeView={activeView} setActiveView={setActiveView}>Car Rentals</NavButton>
+            </ul>
+
         </nav>
         <div className="px-4 py-4 border-t border-gray-700">
           <button onClick={handleLogout} className="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">

@@ -130,6 +130,8 @@ import ManagePages from "./admin/ManagePages";
 import DynamicPage from "./pages/DynamicPage";
 import Sitemap from "./pages/Sitemap";
 import AirportDetail from "./pages/AirportDetail";
+import ManageAirportsSiteMap from "./admin/ManageAirportsSiteMap";
+import CarRentalDetail from "./pages/CarRentalDetail";
 
 
 // Admin
@@ -181,6 +183,8 @@ function App() {
               <Route path="/page/:slug" element={<DynamicPage />} />
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/airport/:slug" element={<AirportDetail />} />
+              <Route path="/manage-airports" element={<ManageAirportsSiteMap />} />
+              <Route path="/car-rentals/:slug" element={<CarRentalDetail />} />
 
 
               {/* Admin Routes */}
