@@ -226,6 +226,7 @@ import DriverApplications from './DriverApplications';
 import TravelAgentSubmissions from './TravelAgentSubmissions';
 import ManageAirportsSiteMap from './ManageAirportsSiteMap';
 import ManageCarRentals from './ManageCarRentals';
+import ManageOutstationsSiteMap from './ManageOutstationsSiteMap';
 
 // Import icons
 import { Users, Star, History, LogOut,Map,Car, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
@@ -288,6 +289,7 @@ export default function Dashboard() {
        // SiteMap Section
       case 'manageAirportSitemap': return <ManageAirportsSiteMap />;
       case 'carRentals': return <ManageCarRentals />;
+      case 'outstationSitemap': return <ManageOutstationsSiteMap />;
 
       default: return <UsersTable />;
     }
@@ -310,6 +312,7 @@ export default function Dashboard() {
 
       manageAirports: "Manage Airports Sitemap",
       carRentals: "Manage Car Rentals",
+      outstationSitemap: "Manage Outstation Sitemap",
     };
     return titles[activeView] || "Dashboard";
   };
@@ -357,6 +360,9 @@ export default function Dashboard() {
             
             <ul className="space-y-1">
                 <NavButton viewName="carRentals" icon={Car} activeView={activeView} setActiveView={setActiveView}>Car Rentals</NavButton>
+            </ul>
+            <ul className="space-y-1">
+                <NavButton viewName="outstationSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Outstation Sitemap</NavButton>
             </ul>
 
         </nav>

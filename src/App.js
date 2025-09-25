@@ -132,6 +132,7 @@ import Sitemap from "./pages/Sitemap";
 import AirportDetail from "./pages/AirportDetail";
 import ManageAirportsSiteMap from "./admin/ManageAirportsSiteMap";
 import CarRentalDetail from "./pages/CarRentalDetail";
+import OutstationDetailPage from "./pages/OutstationDetailPage";
 
 
 // Admin
@@ -185,6 +186,7 @@ function App() {
               <Route path="/airport/:slug" element={<AirportDetail />} />
               <Route path="/manage-airports" element={<ManageAirportsSiteMap />} />
               <Route path="/car-rentals/:slug" element={<CarRentalDetail />} />
+              <Route path="/outstation-cabs/:slug" element={<OutstationDetailPage />} /> 
 
 
               {/* Admin Routes */}
