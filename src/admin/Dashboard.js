@@ -227,25 +227,25 @@ import TravelAgentSubmissions from './TravelAgentSubmissions';
 import ManageAirportsSiteMap from './ManageAirportsSiteMap';
 import ManageCarRentals from './ManageCarRentals';
 import ManageOutstationsSiteMap from './ManageOutstationsSiteMap';
+import ManagePopularRoutes from './ManagePopularRoutes';
 
 // Import icons
-import { Users, Star, History, LogOut,Map,Car, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
+import { Users, Star, History, LogOut, Map, Car, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
 
 // Reusable NavButton component for clean code
 const NavButton = ({ viewName, activeView, setActiveView, icon: Icon, children }) => (
-    <li className="mt-2">
-        <button
-            onClick={() => setActiveView(viewName)}
-            className={`flex items-center w-full px-4 py-3 rounded-lg transition-colors duration-200 ${
-                activeView === viewName
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-            }`}
-        >
-            <Icon className="mr-3" size={20} strokeWidth={2} />
-            <span>{children}</span>
-        </button>
-    </li>
+  <li className="mt-2">
+    <button
+      onClick={() => setActiveView(viewName)}
+      className={`flex items-center w-full px-4 py-3 rounded-lg transition-colors duration-200 ${activeView === viewName
+          ? 'bg-blue-600 text-white shadow-lg'
+          : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+        }`}
+    >
+      <Icon className="mr-3" size={20} strokeWidth={2} />
+      <span>{children}</span>
+    </button>
+  </li>
 );
 
 export default function Dashboard() {
@@ -269,7 +269,7 @@ export default function Dashboard() {
       case 'users': return <UsersTable />;
       case 'reviews': return <ReviewsTable />;
       case 'searchHistory': return <SearchHistoryTable />;
-      
+
       // CMS
       case 'managePages': return <ManagePages />;
 
@@ -278,7 +278,7 @@ export default function Dashboard() {
       case 'outstation': return <ManageOutstation />;
       case 'airports': return <ManageAirports />;
       case 'roundtrips': return <ManageOutstationRoundTrip />;
-      
+
       // Form Submissions
       case 'businessInquiries': return <BusinessSubmissions />;
       case 'partnerApplications': return <PartnerSubmissions />;
@@ -286,10 +286,11 @@ export default function Dashboard() {
       case 'travelAgentApplications': return <TravelAgentSubmissions />;
 
 
-       // SiteMap Section
+      // SiteMap Section
       case 'manageAirportSitemap': return <ManageAirportsSiteMap />;
       case 'carRentals': return <ManageCarRentals />;
       case 'outstationSitemap': return <ManageOutstationsSiteMap />;
+      case 'popularRoutes': return <ManagePopularRoutes />;
 
       default: return <UsersTable />;
     }
@@ -313,10 +314,12 @@ export default function Dashboard() {
       manageAirports: "Manage Airports Sitemap",
       carRentals: "Manage Car Rentals",
       outstationSitemap: "Manage Outstation Sitemap",
+      popularRoutes: "Manage Popular Routes"
+
     };
     return titles[activeView] || "Dashboard";
   };
-  
+
   return (
     <div className="flex h-screen bg-gray-100 font-sans">
       <aside className="w-64 bg-gray-900 text-gray-200 flex flex-col">
@@ -325,46 +328,46 @@ export default function Dashboard() {
           <h1 className="ml-3 text-2xl font-bold">Admin Panel</h1>
         </div>
         <nav className="flex-1 px-4 py-6 overflow-y-auto">
-            {/* Management Section */}
-            <h3 className="px-4 mb-2 text-xs font-semibold uppercase text-gray-500">Content & Users</h3>
-            <ul className="space-y-1">
-                <NavButton viewName="users" icon={Users} activeView={activeView} setActiveView={setActiveView}>All Users</NavButton>
-                <NavButton viewName="reviews" icon={Star} activeView={activeView} setActiveView={setActiveView}>Reviews</NavButton>
-                <NavButton viewName="searchHistory" icon={History} activeView={activeView} setActiveView={setActiveView}>Search History</NavButton>
-                <NavButton viewName="managePages" icon={FilePlus} activeView={activeView} setActiveView={setActiveView}>Manage Pages</NavButton>
-            </ul>
-            
-            {/* Package Management Section */}
-            <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Package Management</h3>
-            <ul className="space-y-1">
-                <NavButton viewName="rentals" icon={Package} activeView={activeView} setActiveView={setActiveView}>Manage Rentals</NavButton>
-                <NavButton viewName="outstation" icon={Route} activeView={activeView} setActiveView={setActiveView}>Manage Outstation</NavButton>
-                <NavButton viewName="airports" icon={Plane} activeView={activeView} setActiveView={setActiveView}>Manage Airports</NavButton>
-                <NavButton viewName="roundtrips" icon={Repeat} activeView={activeView} setActiveView={setActiveView}>Manage Round Trips</NavButton>
-            </ul>
-            
-            {/* Form Submissions Section */}
-            <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Form Submissions</h3>
-            <ul className="space-y-1">
-                <NavButton viewName="businessInquiries" icon={Briefcase} activeView={activeView} setActiveView={setActiveView}>Business Inquiries</NavButton>
-                <NavButton viewName="partnerApplications" icon={Users} activeView={activeView} setActiveView={setActiveView}>Partner Apps</NavButton>
-                <NavButton viewName="driverApplications" icon={UserPlus} activeView={activeView} setActiveView={setActiveView}>Driver Apps</NavButton>
-                <NavButton viewName="travelAgentApplications" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Travel Agent Apps</NavButton>
-            </ul>
-            <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Sitemap Management</h3>
-            <ul className="space-y-1">
-                
-                <NavButton viewName="manageAirportSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Airport Sitemap</NavButton>
-            </ul>
+          {/* Management Section */}
+          <h3 className="px-4 mb-2 text-xs font-semibold uppercase text-gray-500">Content & Users</h3>
+          <ul className="space-y-1">
+            <NavButton viewName="users" icon={Users} activeView={activeView} setActiveView={setActiveView}>All Users</NavButton>
+            <NavButton viewName="reviews" icon={Star} activeView={activeView} setActiveView={setActiveView}>Reviews</NavButton>
+            <NavButton viewName="searchHistory" icon={History} activeView={activeView} setActiveView={setActiveView}>Search History</NavButton>
+            <NavButton viewName="managePages" icon={FilePlus} activeView={activeView} setActiveView={setActiveView}>Manage Pages</NavButton>
+          </ul>
 
-            
-            <ul className="space-y-1">
-                <NavButton viewName="carRentals" icon={Car} activeView={activeView} setActiveView={setActiveView}>Car Rentals</NavButton>
-            </ul>
-            <ul className="space-y-1">
-                <NavButton viewName="outstationSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Outstation Sitemap</NavButton>
-            </ul>
+          {/* Package Management Section */}
+          <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Package Management</h3>
+          <ul className="space-y-1">
+            <NavButton viewName="rentals" icon={Package} activeView={activeView} setActiveView={setActiveView}>Manage Rentals</NavButton>
+            <NavButton viewName="outstation" icon={Route} activeView={activeView} setActiveView={setActiveView}>Manage Outstation</NavButton>
+            <NavButton viewName="airports" icon={Plane} activeView={activeView} setActiveView={setActiveView}>Manage Airports</NavButton>
+            <NavButton viewName="roundtrips" icon={Repeat} activeView={activeView} setActiveView={setActiveView}>Manage Round Trips</NavButton>
+          </ul>
 
+          {/* Form Submissions Section */}
+          <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Form Submissions</h3>
+          <ul className="space-y-1">
+            <NavButton viewName="businessInquiries" icon={Briefcase} activeView={activeView} setActiveView={setActiveView}>Business Inquiries</NavButton>
+            <NavButton viewName="partnerApplications" icon={Users} activeView={activeView} setActiveView={setActiveView}>Partner Apps</NavButton>
+            <NavButton viewName="driverApplications" icon={UserPlus} activeView={activeView} setActiveView={setActiveView}>Driver Apps</NavButton>
+            <NavButton viewName="travelAgentApplications" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Travel Agent Apps</NavButton>
+          </ul>
+          <h3 className="px-4 mt-6 mb-2 text-xs font-semibold uppercase text-gray-500">Sitemap Management</h3>
+          <ul className="space-y-1">
+
+            <NavButton viewName="manageAirportSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Airport Sitemap</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="carRentals" icon={Car} activeView={activeView} setActiveView={setActiveView}>Car Rentals</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="outstationSitemap" icon={Map} activeView={activeView} setActiveView={setActiveView}>Outstation Sitemap</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="popularRoutes" icon={Map} activeView={activeView} setActiveView={setActiveView}>Popular Routes</NavButton>
+          </ul>
         </nav>
         <div className="px-4 py-4 border-t border-gray-700">
           <button onClick={handleLogout} className="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
