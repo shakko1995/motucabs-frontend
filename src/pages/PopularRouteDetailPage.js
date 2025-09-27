@@ -5,10 +5,56 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import { CheckCircle, ChevronRight, Star, Route } from 'lucide-react';
+import GoZoBooking from "../components/RideBookingForm";
 
 // Reusable Header & Footer Components
 const Header = () => { /* ... */ };
-const Footer = () => { /* ... */ };
+// Professional Footer Component
+const Footer = () => (
+    <footer className="bg-gray-900 text-gray-300">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div className="text-2xl font-bold mb-4 flex items-center gap-2">
+                       
+                        <span className="text-blue-600">Motu<span className="text-orange-500">Cab</span></span>
+                    </div>
+                    <p className="text-sm text-gray-400 leading-relaxed">Your trusted partner for reliable, safe, and affordable transportation solutions across India.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-white mb-4">Services</h4>
+                    <ul className="text-sm space-y-2">
+                        <li><a href="#" className="hover:text-blue-400 transition-colors">City Rides</a></li>
+                        <li><a href="#" className="hover:text-blue-400 transition-colors">Outstation</a></li>
+                        <li><a href="#" className="hover:text-blue-400 transition-colors">Airport Transfer</a></li>
+                        <li><a href="#" className="hover:text-blue-400 transition-colors">Corporate</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-white mb-4">Company</h4>
+                    <ul className="text-sm space-y-2">
+                        <li><a href="/" className="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
+                        <li><a href="" className="hover:text-blue-400 transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-white mb-4">Legal</h4>
+                    <ul className="text-sm space-y-2">
+                        <li><a href="" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
+                        <li><a href="" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div className="border-t border-gray-800 pt-8 text-center">
+                <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+);
 
 const PopularRouteDetailPage = () => {
     const { slug } = useParams();
@@ -40,6 +86,9 @@ const PopularRouteDetailPage = () => {
     return (
         <div className="bg-white">
             <Header />
+            <div >
+        <GoZoBooking />
+      </div>
             <div className="max-w-6xl mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Left Column: Main Content */}

@@ -47,9 +47,11 @@ import OutstationDetailPage from "./pages/OutstationDetailPage";
 import PopularRouteDetailPage from "./pages/PopularRouteDetailPage";
 
 
+
 // Admin
 import AdminLogin from "./admin/AdminLogin";
 import Dashboard from "./admin/Dashboard";
+
 
 import "./index.css";
 
@@ -62,6 +64,9 @@ function App() {
             <Routes>
               {/* User Routes */}
               <Route path="/" element={<HomePage />} />
+              
+
+              
               <Route path="/rental-cabs" element={<RentalCabs />} />
               <Route path="/outstation-cabs" element={<OutstationCabs />} />
               <Route path="/airport-cabs" element={<AirportCabs />} />

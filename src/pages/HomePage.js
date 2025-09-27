@@ -8,41 +8,57 @@ import OutstationServiceSection from "../components/OutstationServiceSection"
 import Footer from "../components/Footer";
 
 // Home Page Component
+// export default function HomePage() {
+//   return (
+//     <div className="bg-blue-50">
+//       {/* Booking Form */}
+//       <div className="">
+//         <RideBookingForm />
+//       </div>
+
+
+//       <div >
+//         <FeaturesSection />
+//       </div>
+//       <div>
+//         <ReviewsSection />
+
+//       </div>
+//       <div>
+//         <VideoSection />
+
+//       </div>
+//       <div>
+//         <BusinessSection />
+
+//       </div>
+//       <div>
+//         <AttachTaxiSection />
+
+//       </div>
+//       <div>
+//         <OutstationServiceSection/>
+
+//       </div>
+//       <div>
+//         <Footer/>
+//       </div>
+//     </div>
+//   );
+// }
+
 export default function HomePage() {
   return (
     <div className="bg-blue-50">
-      {/* Booking Form */}
-      <div className="flex justify-center">
-        <RideBookingForm />
-      </div>
-
-
-      <div >
-        <FeaturesSection />
-      </div>
-      <div>
-        <ReviewsSection />
-
-      </div>
-      <div>
-        <VideoSection />
-
-      </div>
-      <div>
-        <BusinessSection />
-
-      </div>
-      <div>
-        <AttachTaxiSection />
-
-      </div>
-      <div>
-        <OutstationServiceSection/>
-
-      </div>
-      <div>
-        <Footer/>
-      </div>
+      <RideBookingForm />
+      <FeaturesSection />
+      <ReviewsSection />
+      <VideoSection />
+      <BusinessSection />
+      <AttachTaxiSection />
+      <OutstationServiceSection />
+      <Footer />
     </div>
   );
 }
+
