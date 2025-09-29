@@ -1617,6 +1617,8 @@
 
 // export default GoZoBooking;
 
+
+
 import React, { useState, useEffect, useContext } from "react";
 import { Check, ArrowUpDown } from "lucide-react";
 import { searchLocation } from "../api/location.api";
@@ -1626,7 +1628,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Header from './Header';
 
-const GoZoBooking = () => {
+const GoZoBooking = ({ prefillData }) => {
   // Form States
   const [activeTab, setActiveTab] = useState("Outstation");
   const [tripType, setTripType] = useState("One way");
@@ -1801,6 +1803,16 @@ const GoZoBooking = () => {
     const uniqueDrops = [...new Set(savedSearches.map(s => s.drop).filter(Boolean))];
     return uniqueDrops.slice(0, 3);
   };
+  // Auto-fill form from prefillData (from sitemap navigation)
+useEffect(() => {
+  if (prefillData) {
+    if (prefillData.pickup) setPickup(prefillData.pickup);
+    if (prefillData.drop) setDrop(prefillData.drop);
+    if (prefillData.date) setDate(prefillData.date);
+    if (prefillData.time) setTime(prefillData.time);
+    if (prefillData.activeTab) setActiveTab(prefillData.activeTab);
+  }
+}, [prefillData]);
 
   const tabContentData = {
     "Airport Rides": { title: "Airport Transfers Made Easy", features: [{ title: "All-Inclusive Pricing", description: "No hidden fees or surge charges." }, { title: "Flight Tracking + Wait Time", description: "Up to 60 mins free waiting included." }, { title: "Meet & Greet Service", description: "Driver with name board & luggage help." }, { title: "Door-to-Door Transfers", description: "Pickup/drop at terminals, hotels & homes." }, { title: "Clean, Comfortable Cars", description: "From Hatchbacks to SUVs & Travellers." },] },

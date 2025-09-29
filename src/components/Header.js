@@ -165,6 +165,7 @@ import { AuthContext } from '../context/AuthContext';
 import { navigationLinks } from '../data/navigationData'; // Make sure this file exists
 import { User, LogOut, ChevronDown, Menu, X, UserCircle, BookMarked } from 'lucide-react';
 
+
 const Header = () => {
     const navigate = useNavigate();
     const { user, logout } = useContext(AuthContext);
@@ -173,6 +174,10 @@ const Header = () => {
     const [openAccordion, setOpenAccordion] = useState(null);
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState("IN");
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
+
+  
 
     const toggleAccordion = (title) => {
         setOpenAccordion(openAccordion === title ? null : title);
@@ -275,7 +280,7 @@ const Header = () => {
                         </div>
                     ) : (
                         <button 
-                            onClick={() => navigate('/login')} 
+                             onClick={() => navigate('/login')} 
                             className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold shadow-sm"
                         >
                             Login
