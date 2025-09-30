@@ -11,7 +11,7 @@ const ManageAirports = () => {
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(null);
     
-    // 👇 Form State को Airport Schema के अनुसार बनाया गया है
+   
     const initialFormData = {
         packageKm: '',
         state: '',
@@ -112,7 +112,7 @@ const ManageAirports = () => {
                     {editMode ? <Edit className="mr-2"/> : <PlusCircle className="mr-2"/>}
                     {editMode ? 'Edit Airport Package' : 'Add New Airport Package'}
                 </h2>
-                {/* 👇 Form को Airport Schema के अनुसार बदला गया है */}
+                
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <input type="text" name="state" value={formData.state} onChange={handleInputChange} placeholder="State" className="p-2 border rounded" required />
                     <select name="vehicleType" value={formData.vehicleType} onChange={handleInputChange} className="p-2 border rounded bg-white">
