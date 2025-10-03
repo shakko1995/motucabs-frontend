@@ -45,6 +45,11 @@ import ManageAirportsSiteMap from "./admin/ManageAirportsSiteMap";
 import CarRentalDetail from "./pages/CarRentalDetail";
 import OutstationDetailPage from "./pages/OutstationDetailPage";
 import PopularRouteDetailPage from "./pages/PopularRouteDetailPage";
+import ThankYouPage from "./pages/ThankYou";
+import MyBookingsPage from "./pages/MyBookings";
+import BookingDetails from "./pages/BookingDetails";
+import AllBookingsTable from "./admin/AllBookingsTable";
+
 
 
 
@@ -57,16 +62,16 @@ import "./index.css";
 
 function App() {
   return (
-    <HelmetProvider> 
+    <HelmetProvider>
       <AuthProvider>
         <AdminProvider>
           <BrowserRouter>
             <Routes>
               {/* User Routes */}
               <Route path="/" element={<HomePage />} />
-              
 
-              
+
+
               <Route path="/rental-cabs" element={<RentalCabs />} />
               <Route path="/outstation-cabs" element={<OutstationCabs />} />
               <Route path="/airport-cabs" element={<AirportCabs />} />
@@ -105,6 +110,10 @@ function App() {
               <Route path="/car-rentals/:slug" element={<CarRentalDetail />} />
               <Route path="/outstation-cabs/:slug" element={<OutstationDetailPage />} />
               <Route path="/book-taxi/:slug" element={<PopularRouteDetailPage />} />
+              <Route path="/thank-you" element={<ThankYouPage />} />
+              <Route path="/my-bookings" element={<MyBookingsPage />} />
+              <Route path="/booking-details/:id" element={<BookingDetails />} />
+              <Route path="/all-bookings" element={<AllBookingsTable />} />
 
 
               {/* Admin Routes */}
@@ -122,4 +131,3 @@ export default App;
 
 
 
-// ,,,,,,,,,,,
