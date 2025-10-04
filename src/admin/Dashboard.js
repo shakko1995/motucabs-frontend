@@ -23,9 +23,12 @@ import ManageCarRentals from './ManageCarRentals';
 import ManageOutstationsSiteMap from './ManageOutstationsSiteMap';
 import ManagePopularRoutes from './ManagePopularRoutes';
 import AllBookingsTable from "./AllBookingsTable";
+import ManageJobs from './ManageJobs';
+import JobApplications from './JobApplications';
+import ManageNews from "./ManageNews";
 
 // Import icons
-import { Users, Star, History, LogOut, Map, Car, BookMarked, LayoutDashboard, Package, Route, Plane, Repeat, Briefcase, UserPlus, FileText, FilePlus } from 'lucide-react';
+import { Users, Star, History, Newspaper, LogOut, Briefcase, Map, Car, BookMarked, LayoutDashboard, Package, Route, Plane, Repeat, UserPlus, FileText, FilePlus } from 'lucide-react';
 
 // Reusable NavButton component for clean code
 const NavButton = ({ viewName, activeView, setActiveView, icon: Icon, children }) => (
@@ -33,8 +36,8 @@ const NavButton = ({ viewName, activeView, setActiveView, icon: Icon, children }
     <button
       onClick={() => setActiveView(viewName)}
       className={`flex items-center w-full px-4 py-3 rounded-lg transition-colors duration-200 ${activeView === viewName
-          ? 'bg-blue-600 text-white shadow-lg'
-          : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+        ? 'bg-blue-600 text-white shadow-lg'
+        : 'text-gray-400 hover:bg-gray-700 hover:text-white'
         }`}
     >
       <Icon className="mr-3" size={20} strokeWidth={2} />
@@ -79,6 +82,7 @@ export default function Dashboard() {
       case 'partnerApplications': return <PartnerSubmissions />;
       case 'driverApplications': return <DriverApplications />;
       case 'travelAgentApplications': return <TravelAgentSubmissions />;
+      case 'jobApplications': return <JobApplications />;
 
 
       // SiteMap Section
@@ -89,6 +93,11 @@ export default function Dashboard() {
 
       // All Bookings
       case 'allBookings': return <AllBookingsTable />;
+
+      // job
+      case 'manageJobs': return <ManageJobs />;
+      case 'manageNews': return <ManageNews />;
+
 
       default: return <UsersTable />;
     }
@@ -113,7 +122,10 @@ export default function Dashboard() {
       carRentals: "Manage Car Rentals",
       outstationSitemap: "Manage Outstation Sitemap",
       popularRoutes: "Manage Popular Routes",
-      allBookings: "All Bookings"
+      allBookings: "All Bookings",
+      manageJobs: "Manage Job Postings",
+      jobApplications: "Job Applications",
+      manageNews: "Manage News"
 
     };
     return titles[activeView] || "Dashboard";
@@ -168,9 +180,18 @@ export default function Dashboard() {
             <NavButton viewName="popularRoutes" icon={Map} activeView={activeView} setActiveView={setActiveView}>Popular Routes</NavButton>
           </ul>
           <ul className="space-y-1">
-                <NavButton viewName="allBookings" icon={BookMarked} activeView={activeView} setActiveView={setActiveView}>All Bookings</NavButton>
+            <NavButton viewName="allBookings" icon={BookMarked} activeView={activeView} setActiveView={setActiveView}>All Bookings</NavButton>
           </ul>
-          
+          <ul className="space-y-1">
+            <NavButton viewName="manageJobs" icon={Briefcase} activeView={activeView} setActiveView={setActiveView}>Manage Jobs  </NavButton>
+
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="jobApplications" icon={Briefcase} activeView={activeView} setActiveView={setActiveView}>Job Applications</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="manageNews" icon={Newspaper} activeView={activeView} setActiveView={setActiveView}>Manage News</NavButton>
+          </ul>
         </nav>
         <div className="px-4 py-4 border-t border-gray-700">
           <button onClick={handleLogout} className="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">

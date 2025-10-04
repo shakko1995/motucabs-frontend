@@ -117,6 +117,9 @@ export const navigationLinks = [
     mainLink: "#",
     dropdown: [
       { name: "Airport Transfers", link: "/airport-transfers" },
+      {name:"Rental Cabs",link:"/rental-page"},
+      {name:"OneWay Cabs",link:"/one-way-cabs"},
+      {name:"RoundTrip Cabs",link:"/round-trip-cabs"},
       { name: "Point to Point", link: "/point-to-point" },
       { name: "Planned Itineraries", link: "/itineraries" },
       { name: "Hourly Service", link: "/hourly-service" },

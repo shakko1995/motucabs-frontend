@@ -35,7 +35,7 @@ export default function UsersTable() {
         setUsers(res.data.users);
       } catch (err) {
         console.error("Failed to fetch users:", err);
-        setError("यूज़र्स को लोड करने में विफल। कृपया पुनः प्रयास करें।");
+        setError("Failed to fetch users. Please try again later.");
       } finally {
         setLoading(false);
       }

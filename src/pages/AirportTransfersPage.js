@@ -1,42 +1,9 @@
+
+
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CheckCircle, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-// Reusable Header Component
-const Header = () => {
-    const navigate = useNavigate();
-    return (
-        <header className="bg-white shadow-sm sticky top-0 z-40">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                <div className="text-2xl font-bold cursor-pointer" onClick={() => navigate('/')}>
-                    <span className="text-blue-600">Motu</span><span className="text-orange-500">Cab</span>
-                </div>
-                <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-                    <a href="/about" className="hover:text-blue-600">About Us</a>
-                    <a href="/contact" className="hover:text-blue-600">Contact Us</a>
-                </nav>
-            </div>
-        </header>
-    );
-};
-
-// Reusable Footer Component
-const Footer = () => (
-    <footer className="bg-gray-100 border-t">
-        <div className="max-w-7xl mx-auto px-8 py-12 text-center text-gray-500">
-            <div className="text-xl font-bold mb-4">
-                <span className="text-blue-600">Motu</span><span className="text-orange-500">Cab</span>
-            </div>
-            <div className="text-sm flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6">
-                <a href="/" className="hover:text-blue-600">Home</a>
-                <a href="/about" className="hover:text-blue-600">About Us</a>
-                <a href="/contact" className="hover:text-blue-600">Contact</a>
-            </div>
-            <p className="text-xs">© {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>
-        </div>
-    </footer>
-);
+import Footer from '../components/Footer';
+import RideBookingForm from '../components/RideBookingForm';
 
 const Section = ({ title, children }) => (
     <motion.div 
@@ -56,33 +23,32 @@ const Section = ({ title, children }) => (
 const AirportTransfersPage = () => {
     return (
         <div className="bg-white">
-            <Header />
-            
-            <div className="bg-gray-50 border-b">
-                <div className="max-w-5xl mx-auto px-6 py-20 text-center">
-                    <motion.h1 
-                        className="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
+
+            {/* Full-width Ride Booking Form at the top */}
+            <RideBookingForm />
+
+            {/* Banner with text below the form */}
+            <div className="relative bg-gray-50 py-20">
+                <img 
+                    src="https://images.unsplash.com/photo-1579046929826-58b7de0f3585?w=1600"
+                    alt="Airport Transfer Banner"
+                    className="absolute inset-0 w-full h-full object-cover opacity-30"
+                />
+                <div className="relative max-w-5xl mx-auto px-6 text-center">
+                    <h2 className="text-4xl font-bold text-gray-800 mb-4">
                         Gozo Airport Transfers – Dependable, Comfortable, and Affordable
-                    </motion.h1>
-                    <motion.p 
-                        className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                    >
+                    </h2>
+                    <p className="text-lg text-gray-600">
                         The Smart Way to Get To & From the Airport all over India
-                    </motion.p>
+                    </p>
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 py-16">
+            {/* Content Sections */}
+            <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
                 <Section title="Why Choose Gozo for Airport Transfers?">
                     <p>
-                        We extend our heartfelt thanks to each of you for your service and the sacrifices you've made. To show our appreciation, Gozo is proud to offer special privileges to members of the Armed Forces, Veterans, and their families, making it easier for you to enjoy reliable, safe, and comfortable travel. These benefits are designed to make your Gozo experience even better, and we hope they add a touch of comfort to your life.
+                        We extend our heartfelt thanks to each of you for your service and the sacrifices you've made. To show our appreciation, Gozo is proud to offer special privileges to members of the Armed Forces, Veterans, and their families, making it easier for you to enjoy reliable, safe, and comfortable travel.
                     </p>
                     <ul className="list-disc list-inside space-y-2 pl-4 mt-4">
                         <li><strong>Pre-Scheduled Rides:</strong> Book in advance and travel with peace of mind.</li>
@@ -114,8 +80,8 @@ const AirportTransfersPage = () => {
                 </Section>
 
                 <Section title="Of course, you get complimentary Trip Alerts">
-                     <p>Receive real-time updates at every stage of your journey:</p>
-                     <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
+                    <p>Receive real-time updates at every stage of your journey:</p>
+                    <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
                         <li><strong>Car Allocated</strong> – Get vehicle details & pictures</li>
                         <li><strong>Driver En Route</strong> – Live tracking available</li>
                         <li><strong>ETA Updates</strong> – Know exactly when to expect pickup</li>
@@ -142,3 +108,4 @@ const AirportTransfersPage = () => {
 };
 
 export default AirportTransfersPage;
+

@@ -49,6 +49,17 @@ import ThankYouPage from "./pages/ThankYou";
 import MyBookingsPage from "./pages/MyBookings";
 import BookingDetails from "./pages/BookingDetails";
 import AllBookingsTable from "./admin/AllBookingsTable";
+import CareersPage from "./pages/CareersPage";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Disclaimer from "./pages/Disclaimer";
+import WhyMotuCab from "./pages/WhyMotuCab";
+import NewsRoomPage from "./pages/NewsRoomPage";
+import OneWayCabsPage from "./pages/OneWayCabsPage";
+import DayRentalPage from "./pages/DayRentalPage";
+import RoundTripPage from "./pages/RoundTripPage";
+
+
 
 
 
@@ -114,6 +125,17 @@ function App() {
               <Route path="/my-bookings" element={<MyBookingsPage />} />
               <Route path="/booking-details/:id" element={<BookingDetails />} />
               <Route path="/all-bookings" element={<AllBookingsTable />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/why-motu-cab" element={<WhyMotuCab />} />
+              <Route path="/news" element={<NewsRoomPage />} />
+              <Route path="/one-way-cabs" element={<OneWayCabsPage />} />
+              <Route path="/rental-page" element={<DayRentalPage />} />
+              <Route path="/round-trip-cabs" element={<RoundTripPage />} />
+            
+                
 
 
               {/* Admin Routes */}

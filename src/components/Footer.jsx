@@ -10,15 +10,16 @@ export default function Footer() {
     { name: "Faq's", href: "/faqs" },
     { name: "Contact us", href: "/contact" },
     { name: "Careers", href: "/careers" },
-    { name: "Terms and conditions", href: "/terms" },
+    { name: "Terms and conditions", href: "/terms-and-conditions" },
     { name: "Disclaimer", href: "/disclaimer" },
-    { name: "Privacy policy", href: "/privacy" },
+    { name: "Privacy policy", href: "/privacy-policy" },
     { name: "Sitemap", href: "/sitemap" },
-    { name: "One way cabs", href: "/one-way" },
-    { name: "Day-rental", href: "/day-rental" },
-    { name: "Airport-transfers", href: "/airport" },
+    { name: "One way cabs", href: "/one-way-cabs" },
+    { name: "Day-rental", href: "/rental-page" },
+    {name: "Round-Trip", href: "/round-trip-cabs" },
+    { name: "Airport-transfers", href: "/airport-transfers" },
     { name: "Packages", href: "/packages" },
-    { name: "Why Motu Cabs", href: "/why-motu" },
+    { name: "Why Motu Cabs", href: "/why-motu-cab" },
     { name: "News room", href: "/news" },
   ];
 
@@ -75,14 +76,14 @@ export default function Footer() {
         <p className="text-center text-gray-500 text-sm mt-3">
           © 2025 Motu Technologies Pvt. Ltd. All Rights Reserved.
         </p>
-         <div className="mt-4 md:mt-0">
+         {/* <div className="mt-4 md:mt-0">
           <Link
             to="/sitemap"
             className="hover:underline hover:text-yellow-400 transition"
           >
             Sitemap
           </Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
