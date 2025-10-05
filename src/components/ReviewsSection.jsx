@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getReviews } from "../api/reviewApi"; // api file import
+import { getReviews } from "../api/reviewApi"; 
 import { useNavigate } from "react-router-dom";
 
 export default function ReviewsSection() {

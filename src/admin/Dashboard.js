@@ -26,9 +26,17 @@ import AllBookingsTable from "./AllBookingsTable";
 import ManageJobs from './ManageJobs';
 import JobApplications from './JobApplications';
 import ManageNews from "./ManageNews";
+import ManageBlog from './ManageBlog';
+import ManageFAQ from "./ManageFAQ";
+import ManagePackages from './ManagePackages';
+
+
+
+
+
 
 // Import icons
-import { Users, Star, History, Newspaper, LogOut, Briefcase, Map, Car, BookMarked, LayoutDashboard, Package, Route, Plane, Repeat, UserPlus, FileText, FilePlus } from 'lucide-react';
+import { Users, PackagePlus, Star, UserCheck, History, Newspaper, LogOut, Briefcase, Map, Car, BookMarked, LayoutDashboard, Package, Route, Plane, Repeat, UserPlus, FileText, FilePlus } from 'lucide-react';
 
 // Reusable NavButton component for clean code
 const NavButton = ({ viewName, activeView, setActiveView, icon: Icon, children }) => (
@@ -97,6 +105,11 @@ export default function Dashboard() {
       // job
       case 'manageJobs': return <ManageJobs />;
       case 'manageNews': return <ManageNews />;
+      case 'manageBlog': return <ManageBlog />;
+      case 'manageFAQ': return <ManageFAQ />;
+      case 'manageTourPackages': return <ManagePackages />;
+
+
 
 
       default: return <UsersTable />;
@@ -125,7 +138,10 @@ export default function Dashboard() {
       allBookings: "All Bookings",
       manageJobs: "Manage Job Postings",
       jobApplications: "Job Applications",
-      manageNews: "Manage News"
+      manageNews: "Manage News",
+      manageBlog: "Manage Blog",
+      manageFAQ: "Manage FAQ",
+      manageTourPackages: "Manage Tour Packages",
 
     };
     return titles[activeView] || "Dashboard";
@@ -192,6 +208,16 @@ export default function Dashboard() {
           <ul className="space-y-1">
             <NavButton viewName="manageNews" icon={Newspaper} activeView={activeView} setActiveView={setActiveView}>Manage News</NavButton>
           </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="manageBlog" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Manage Blog</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="manageFAQ" icon={UserCheck} activeView={activeView} setActiveView={setActiveView}>Manage FAQ</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="manageTourPackages" icon={PackagePlus} activeView={activeView} setActiveView={setActiveView}>Tour Packages</NavButton>
+          </ul>
+
         </nav>
         <div className="px-4 py-4 border-t border-gray-700">
           <button onClick={handleLogout} className="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">

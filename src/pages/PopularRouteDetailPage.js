@@ -177,10 +177,10 @@ const Footer = () => (
                 <div>
                     <h4 className="font-semibold text-white mb-4">Services</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">City Rides</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Outstation</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Airport Transfer</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Corporate</a></li>
+                        <li><a href="/city-rides" className="hover:text-blue-400 transition-colors">City Rides</a></li>
+                        <li><a href="/outstation" className="hover:text-blue-400 transition-colors">Outstation</a></li>
+                        <li><a href="/airport-transfer" className="hover:text-blue-400 transition-colors">Airport Transfer</a></li>
+                        <li><a href="/cookie-policy" className="hover:text-blue-400 transition-colors">Corporate</a></li>
                     </ul>
                 </div>
                 <div>
@@ -189,16 +189,16 @@ const Footer = () => (
                         <li><a href="/" className="hover:text-blue-400 transition-colors">Home</a></li>
                         <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
                         <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
-                        <li><a href="" className="hover:text-blue-400 transition-colors">Careers</a></li>
+                        <li><a href="/careers" className="hover:text-blue-400 transition-colors">Careers</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-semibold text-white mb-4">Legal</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                        <li><a href="" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
-                        <li><a href="" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                        <li><a href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="/refund-policy" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
+                        <li><a href="/cookie-policy" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>

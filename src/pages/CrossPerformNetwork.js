@@ -277,40 +277,40 @@ const CrossPerformNetwork = () => {
       <footer className="bg-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-sm text-gray-600">
-            <a href="#" className="hover:text-blue-600">Ask us to be official partner</a>
-            <a href="#" className="hover:text-blue-600">Business travel</a>
-            <a href="#" className="hover:text-blue-600">For startups</a>
-            <a href="#" className="hover:text-blue-600">Your travel desk</a>
-            <a href="#" className="hover:text-blue-600">Join our agent network</a>
-            <a href="#" className="hover:text-blue-600">Brand Partners</a>
-            <a href="#" className="hover:text-blue-600">Price guarantee</a>
-            <a href="#" className="hover:text-blue-600">Double back</a>
-            <a href="#" className="hover:text-blue-600">Home</a>
-            <a href="#" className="hover:text-blue-600">Blog</a>
-            <a href="#" className="hover:text-blue-600">About us</a>
-            <a href="#" className="hover:text-blue-600">Faqs</a>
-            <a href="#" className="hover:text-blue-600">Contact us</a>
-            <a href="#" className="hover:text-blue-600">Careers</a>
-            <a href="#" className="hover:text-blue-600">Terms and conditions</a>
-            <a href="#" className="hover:text-blue-600">Disclaimer</a>
-            <a href="#" className="hover:text-blue-600">Privacy policy</a>
-            <a href="#" className="hover:text-blue-600">Sitemap</a>
-            <a href="#" className="hover:text-blue-600">One way cabs</a>
-            <a href="#" className="hover:text-blue-600">Packages</a>
-            <a href="#" className="hover:text-blue-600">Day rental</a>
-            <a href="#" className="hover:text-blue-600">Airport transfers</a>
-            <a href="#" className="hover:text-blue-600">Why GozoCabs</a>
-            <a href="#" className="hover:text-blue-600">News room</a>
-            <a href="#" className="hover:text-blue-600">International Partnerships</a>
-            <a href="#" className="hover:text-blue-600">Grow with Gozo</a>
-            <a href="#" className="hover:text-blue-600">Gozo's Best Price</a>
-            <a href="#" className="hover:text-blue-600">Services</a>
-            <a href="#" className="hover:text-blue-600">Gozo for our Seniors</a>
-            <a href="#" className="hover:text-blue-600">Gozo for Students</a>
-            <a href="#" className="hover:text-blue-600">Armed Forces</a>
-            <a href="#" className="hover:text-blue-600">Gozo Airport Transfers</a>
-            <a href="#" className="hover:text-blue-600">Gozo Friends & Family</a>
-            <a href="#" className="hover:text-blue-600">Gozo Spots</a>
+            <a href="/" className="hover:text-blue-600">Ask us to be official partner</a>
+            <a href="/" className="hover:text-blue-600">Business travel</a>
+            <a href="/" className="hover:text-blue-600">For startups</a>
+            <a href="/" className="hover:text-blue-600">Your travel desk</a>
+            <a href="/" className="hover:text-blue-600">Join our agent network</a>
+            <a href="/" className="hover:text-blue-600">Brand Partners</a>
+            <a href="/" className="hover:text-blue-600">Price guarantee</a>
+            <a href="/" className="hover:text-blue-600">Double back</a>
+            <a href="/" className="hover:text-blue-600">Home</a>
+            <a href="/blog" className="hover:text-blue-600">Blog</a>
+            <a href="/about" className="hover:text-blue-600">About us</a>
+            <a href="/faq" className="hover:text-blue-600">Faqs</a>
+            <a href="/contact" className="hover:text-blue-600">Contact us</a>
+            <a href="/careers" className="hover:text-blue-600">Careers</a>
+            <a href="/careers" className="hover:text-blue-600">Terms and conditions</a>
+            <a href="/disclamier" className="hover:text-blue-600">Disclaimer</a>
+            <a href="/privacy-policy" className="hover:text-blue-600">Privacy policy</a>
+            <a href="/sitemap" className="hover:text-blue-600">Sitemap</a>
+            <a href="/one-way-cabs" className="hover:text-blue-600">One way cabs</a>
+            <a href="/packages" className="hover:text-blue-600">Packages</a>
+            <a href="/day-rental" className="hover:text-blue-600">Day rental</a>
+            <a href="/airport-transfers" className="hover:text-blue-600">Airport transfers</a>
+            <a href="/why-motu-cab" className="hover:text-blue-600">Why MotuCabs</a>
+            <a href="/news" className="hover:text-blue-600">News room</a>
+            <a href="/international-partners" className="hover:text-blue-600">International Partnerships</a>
+            <a href="/grow-with-gozo" className="hover:text-blue-600">Grow with Gozo</a>
+            <a href="/best-prices" className="hover:text-blue-600">Gozo's Best Price</a>
+            <a href="/seniors" className="hover:text-blue-600">Services</a>
+            <a href="/seniors" className="hover:text-blue-600">Gozo for our Seniors</a>
+            <a href="/students" className="hover:text-blue-600">Gozo for Students</a>
+            <a href="/armed-forces" className="hover:text-blue-600">Armed Forces</a>
+            <a href="/airport-transfers" className="hover:text-blue-600">Gozo Airport Transfers</a>
+            <a href="/friends-family" className="hover:text-blue-600">Gozo Friends & Family</a>
+            <a href="/gozo-spots" className="hover:text-blue-600">Gozo Spots</a>
           </div>
           <div className="mt-8 text-center text-gray-500 text-sm">
             © 2025 Gozo Technologies Pvt. Ltd. All Rights Reserved

@@ -127,7 +127,7 @@ const PartnersPage = () => {
                             <div className="flex items-start mt-4">
                                 <input id="terms" type="checkbox" className="h-4 w-4 mt-1 text-blue-600 border-gray-300 rounded" required />
                                 <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-                                    I Agree to the <a href="#" className="text-orange-500 hover:underline">Terms and Conditions</a> Channel Partner
+                                    I Agree to the <a href="/terms-and-conditions" className="text-orange-500 hover:underline">Terms and Conditions</a> Channel Partner
                                 </label>
                             </div>
                             <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700">

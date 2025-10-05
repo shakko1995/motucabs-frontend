@@ -40,10 +40,10 @@ const FleetDetailPage = () => {
                 </div>
                 <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-sm">
                     <a href="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
-                    <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</a>
-                    <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
-                    <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Privacy Policy</a>
-                    <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Terms & Conditions</a>
+                    <a href="/about" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</a>
+                    <a href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+                    <a href="/privacy-policy" className="text-gray-300 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                    <a href="/terms-and-conditions" className="text-gray-300 hover:text-blue-400 transition-colors">Terms & Conditions</a>
                 </div>
                 <div className="border-t border-gray-700 pt-8 text-center">
                     <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>

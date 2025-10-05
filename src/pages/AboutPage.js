@@ -38,8 +38,8 @@ const Header = () => {
                     <span className="text-blue-600">Motu</span><span className="text-orange-500">Cab</span>
                 </div>
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">For Business</a>
-                    <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Help & Support</a>
+                    <a href="/business" className="text-gray-700 hover:text-blue-600 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">For Business</a>
+                    <a href="/help-support" className="text-gray-700 hover:text-blue-600 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Help & Support</a>
                 </nav>
             </div>
         </header>
@@ -59,10 +59,10 @@ const Footer = () => (
             </div>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-sm">
                 <a href="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Privacy Policy</a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Terms & Conditions</a>
+                <a href="/about" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</a>
+                <a href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+                <a href="/privacy-policy" className="text-gray-300 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                <a href="/terms-and-conditions" className="text-gray-300 hover:text-blue-400 transition-colors">Terms & Conditions</a>
             </div>
             <div className="border-t border-gray-700 pt-8 text-center">
                 <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>

@@ -5,6 +5,7 @@ import VideoSection from "../components/VideoSection";
 import BusinessSection from "../components/BusinessSection";
 import AttachTaxiSection from "../components/AttachTaxiSection";
 import OutstationServiceSection from "../components/OutstationServiceSection"
+import CabRoutesPage from "../components/CabRoutesPage";
 import Footer from "../components/Footer";
 
 // Home Page Component
@@ -57,6 +58,7 @@ export default function HomePage() {
       <BusinessSection />
       <AttachTaxiSection />
       <OutstationServiceSection />
+      <CabRoutesPage/>
       <Footer />
     </div>
   );

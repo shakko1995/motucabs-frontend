@@ -27,10 +27,10 @@ const Footer = () => (
             <div className="text-sm flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6">
                 <a href="/" className="hover:text-blue-600">Home</a> • 
                 <a href="/about" className="hover:text-blue-600">About us</a> • 
-                <a href="#" className="hover:text-blue-600">Faq's</a> • 
+                <a href="/faq" className="hover:text-blue-600">Faq's</a> • 
                 <a href="/contact" className="hover:text-blue-600">Contact us</a> • 
-                <a href="#" className="hover:text-blue-600">Careers</a> • 
-                <a href="#" className="hover:text-blue-600">Terms and conditions</a>
+                <a href="/contact" className="hover:text-blue-600">Careers</a> • 
+                <a href="/terms-and-conditions" className="hover:text-blue-600">Terms and conditions</a>
             </div>
             <p className="text-xs">© {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>
         </div>

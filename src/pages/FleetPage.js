@@ -211,7 +211,7 @@ const Footer = () => (
                 <span>•</span>
                 <a href="/about" className="hover:text-blue-400 transition-colors duration-300">About us</a>
                 <span>•</span>
-                <a href="#" className="hover:text-blue-400 transition-colors duration-300">Contact us</a>
+                <a href="/contact" className="hover:text-blue-400 transition-colors duration-300">Contact us</a>
             </div>
             <p className="text-xs text-gray-400">© {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>
         </div>

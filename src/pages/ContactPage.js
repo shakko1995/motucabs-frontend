@@ -6,12 +6,12 @@ const Header = () => {
     const handleLogoClick = () => {
         window.location.href = '/';
     };
-    
+
     return (
         <header className="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
                 <div className="text-3xl font-bold cursor-pointer flex items-center gap-2" onClick={handleLogoClick}>
-                   
+
                     <span className="text-blue-600">Motu<span className="text-orange-500">Cab</span></span>
                 </div>
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -30,7 +30,7 @@ const Footer = () => (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div className="text-2xl font-bold mb-4 flex items-center gap-2">
-                       
+
                         <span className="text-blue-600">Motu<span className="text-orange-500">Cab</span></span>
                     </div>
                     <p className="text-sm text-gray-400 leading-relaxed">Your trusted partner for reliable, safe, and affordable transportation solutions across India.</p>
@@ -38,10 +38,10 @@ const Footer = () => (
                 <div>
                     <h4 className="font-semibold text-white mb-4">Services</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">City Rides</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Outstation</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Airport Transfer</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Corporate</a></li>
+                        <li><a href="/city-rides" className="hover:text-blue-400 transition-colors">City Rides</a></li>
+                        <li><a href="/one-way-cabs" className="hover:text-blue-400 transition-colors">Outstation</a></li>
+                        <li><a href="/airport-transfers" className="hover:text-blue-400 transition-colors">Airport Transfer</a></li>
+                        <li><a href="/corporate" className="hover:text-blue-400 transition-colors">Corporate</a></li>
                     </ul>
                 </div>
                 <div>
@@ -50,16 +50,16 @@ const Footer = () => (
                         <li><a href="/" className="hover:text-blue-400 transition-colors">Home</a></li>
                         <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
                         <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Careers</a></li>
+                        <li><a href="/careers" className="hover:text-blue-400 transition-colors">Careers</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-semibold text-white mb-4">Legal</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
-                        <li><a href="#" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                        <li><a href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="/refund-policy" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
+                        <li><a href="/cookie-policy" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -93,26 +93,26 @@ const ContactPage = () => {
             alert('Please fill in all required fields.');
             return;
         }
-        
+
         setIsSubmitting(true);
-        
+
         // Simulate API call
         setTimeout(() => {
             setIsSubmitting(false);
             setSubmitted(true);
             setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
-            
+
             // Reset success message after 5 seconds
             setTimeout(() => setSubmitted(false), 5000);
         }, 1500);
     };
 
     const features = [
-        { icon: <ThumbsUp size={28} className="text-blue-600"/>, title: "EASY", description: "Simple, convenient, and frictionless booking experience for all customers." },
-        { icon: <HeartHandshake size={28} className="text-blue-600"/>, title: "RELIABLE", description: "Pre-book weeks ahead with confidence. Our tech ensures over 98% on-time service." },
-        { icon: <DollarSign size={28} className="text-blue-600"/>, title: "AFFORDABLE", description: "Competitive market rates with transparent pricing. No hidden charges ever." },
-        { icon: <ShieldCheck size={28} className="text-blue-600"/>, title: "SAFE", description: "Pre-vetted drivers with continuous monitoring and real-time tracking for your safety." },
-        { icon: <Globe size={28} className="text-blue-600"/>, title: "EVERYWHERE", description: "Serving thousands of towns and cities across India. Just pin your location." }
+        { icon: <ThumbsUp size={28} className="text-blue-600" />, title: "EASY", description: "Simple, convenient, and frictionless booking experience for all customers." },
+        { icon: <HeartHandshake size={28} className="text-blue-600" />, title: "RELIABLE", description: "Pre-book weeks ahead with confidence. Our tech ensures over 98% on-time service." },
+        { icon: <DollarSign size={28} className="text-blue-600" />, title: "AFFORDABLE", description: "Competitive market rates with transparent pricing. No hidden charges ever." },
+        { icon: <ShieldCheck size={28} className="text-blue-600" />, title: "SAFE", description: "Pre-vetted drivers with continuous monitoring and real-time tracking for your safety." },
+        { icon: <Globe size={28} className="text-blue-600" />, title: "EVERYWHERE", description: "Serving thousands of towns and cities across India. Just pin your location." }
     ];
 
     const contactMethods = [
@@ -125,7 +125,7 @@ const ContactPage = () => {
         },
         {
             icon: <Mail size={24} className="text-blue-600" />,
-            title: "Email Us", 
+            title: "Email Us",
             description: "Send us your queries anytime",
             contact: "support@motucab.com",
             availability: "Response within 2 hours"
@@ -142,7 +142,7 @@ const ContactPage = () => {
     return (
         <div className="bg-white min-h-screen">
             <Header />
-            
+
             {/* Hero Section with Gradient */}
             <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
                 <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -195,7 +195,7 @@ const ContactPage = () => {
                             </div>
                             <h3 className="text-2xl font-bold text-gray-800">Send us a Message</h3>
                         </div>
-                        
+
                         {submitted && (
                             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
                                 <CheckCircle2 className="text-green-600" size={20} />
@@ -210,43 +210,43 @@ const ContactPage = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                                    <input 
-                                        type="text" 
-                                        name="fullName" 
-                                        id="fullName" 
-                                        value={formData.fullName} 
-                                        onChange={handleInputChange} 
-                                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" 
+                                    <input
+                                        type="text"
+                                        name="fullName"
+                                        id="fullName"
+                                        value={formData.fullName}
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                         placeholder="Enter your full name"
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                                    <input 
-                                        type="tel" 
-                                        name="phone" 
-                                        id="phone" 
-                                        value={formData.phone} 
-                                        onChange={handleInputChange} 
-                                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" 
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        id="phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                         placeholder="+91 98765 43210"
                                     />
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                                <input 
-                                    type="email" 
-                                    name="email" 
-                                    id="email" 
-                                    value={formData.email} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" 
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                     placeholder="your.email@example.com"
                                 />
                             </div>
-                            
+
                             <div>
                                 <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
                                 <select
@@ -264,21 +264,21 @@ const ContactPage = () => {
                                     <option value="other">Other</option>
                                 </select>
                             </div>
-                            
+
                             <div>
                                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
-                                <textarea 
-                                    name="message" 
-                                    id="message" 
+                                <textarea
+                                    name="message"
+                                    id="message"
                                     rows={5}
-                                    value={formData.message} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none" 
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
                                     placeholder="Tell us how we can help you..."
                                 ></textarea>
                             </div>
-                            
-                            <button 
+
+                            <button
                                 type="button"
                                 onClick={handleSubmit}
                                 disabled={isSubmitting}
@@ -324,15 +324,16 @@ const ContactPage = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.8228189893!2d85.0603223592189!3d25.60815783457523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f29937c52d4f05%3A0x831a0e05f607b270!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1694851254321!5m2!1sen!2sin" 
-                                width="100%" 
-                                height="300" 
-                                style={{ border: 0 }} 
-                                allowFullScreen 
-                                loading="lazy" 
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.8228189893!2d85.0603223592189!3d25.60815783457523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f29937c52d4f05%3A0x831a0e05f607b270!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1694851254321!5m2!1sen!2sin"
+                                width="100%"
+                                height="300"
+                                
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className="w-full"
                             ></iframe>
@@ -340,7 +341,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Enhanced "Why Choose Us" section */}
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 border-t border-gray-200">
                 <div className="max-w-6xl mx-auto px-6 py-20">

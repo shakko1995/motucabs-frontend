@@ -58,7 +58,9 @@ import NewsRoomPage from "./pages/NewsRoomPage";
 import OneWayCabsPage from "./pages/OneWayCabsPage";
 import DayRentalPage from "./pages/DayRentalPage";
 import RoundTripPage from "./pages/RoundTripPage";
-
+import FAQPage from "./pages/FAQPage";
+import BlogPage from "./pages/BlogPage";
+import PackagesPage from "./pages/PackagesPage";
 
 
 
@@ -134,6 +136,11 @@ function App() {
               <Route path="/one-way-cabs" element={<OneWayCabsPage />} />
               <Route path="/rental-page" element={<DayRentalPage />} />
               <Route path="/round-trip-cabs" element={<RoundTripPage />} />
+              <Route path="/faqs" element={<FAQPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path ="/packages" element={<PackagesPage/>}/>
+
+
             
                 
 
