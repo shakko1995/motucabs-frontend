@@ -61,6 +61,7 @@ import RoundTripPage from "./pages/RoundTripPage";
 import FAQPage from "./pages/FAQPage";
 import BlogPage from "./pages/BlogPage";
 import PackagesPage from "./pages/PackagesPage";
+import PackageDetailsPage from "./pages/PackageDetailsPage";
 
 
 
@@ -139,6 +140,7 @@ function App() {
               <Route path="/faqs" element={<FAQPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path ="/packages" element={<PackagesPage/>}/>
+              <Route path ="/packages/:slug" element={<PackageDetailsPage/>}/>
 
 
             
