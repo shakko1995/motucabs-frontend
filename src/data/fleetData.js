@@ -3,6 +3,8 @@ export const fleetCategories = [
     { name: 'Sedan', slug: 'sedan', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', features: ['Upto 4 passengers', '2 mid-sized bags'] },
     { name: 'Small SUV', slug: 'small-suv', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/SUV_2x.png', features: ['Upto 5-6 passengers', '3 mid-sized bags'] },
     // Add other categories here...
+    { name: 'Large SUV', slug: 'large-suv', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/SUV_2x.png', features: ['Upto 5-6 passengers', '3 mid-sized bags'] },
+    { name: 'Premium', slug: 'premium', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/SUV_2x.png', features: ['Upto 5-6 passengers', '3 mid-sized bags'] },
 ];
 
 // Detailed fleet data with metaKeywords added
@@ -75,6 +77,52 @@ export const fleetDetailsData = {
             paragraphs: [
                 "Our small SUVs are designed for group travel and road trips, offering more space and comfort than sedans.",
                 "With seating for up to 6 passengers and extra luggage capacity, they are the perfect choice for families and friends traveling together."
+            ]
+        }
+    },
+    largeSuv: {
+        name: 'LargeSuv',
+        image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Hatchback_2x.png',
+        description: 'Most economical cab class, perfect for short trips and budget-conscious travelers.',
+        features: [
+            'Upto 4 passengers can travel.',
+            'Accommodates upto 2 small sized bags.',
+            'Available in Diesel and Petrol combustion.'
+        ],
+        preferences: { comfort: true, premium: true, elite: false },
+
+        content: {
+            metaTitle: "Compact Cabs | MotuCab",
+            metaDescription: "Book affordable and reliable compact cabs like Indica and Swift for your city travel.",
+            metaKeywords: "compact cab, city cab, economical taxi, Indica, Swift, MotuCab",
+            h1: "Compact Cars for City Travel",
+            h2: "Why Choose a Compact Cab?",
+            paragraphs: [
+                "Our compact cars are the most economical choice for solo travelers and small families. They are perfect for navigating city traffic and short-distance trips.",
+                "With comfortable seating for up to 4 passengers and space for luggage, our compact fleet offers a great balance of affordability and convenience."
+            ]
+        }
+    },
+    premium: {
+        name: 'Premium',
+        image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Hatchback_2x.png',
+        description: 'Most economical cab class, perfect for short trips and budget-conscious travelers.',
+        features: [
+            'Upto 4 passengers can travel.',
+            'Accommodates upto 2 small sized bags.',
+            'Available in Diesel and Petrol combustion.'
+        ],
+        preferences: { comfort: true, premium: true, elite: false },
+
+        content: {
+            metaTitle: "Compact Cabs | MotuCab",
+            metaDescription: "Book affordable and reliable compact cabs like Indica and Swift for your city travel.",
+            metaKeywords: "compact cab, city cab, economical taxi, Indica, Swift, MotuCab",
+            h1: "Compact Cars for City Travel",
+            h2: "Why Choose a Compact Cab?",
+            paragraphs: [
+                "Our compact cars are the most economical choice for solo travelers and small families. They are perfect for navigating city traffic and short-distance trips.",
+                "With comfortable seating for up to 4 passengers and space for luggage, our compact fleet offers a great balance of affordability and convenience."
             ]
         }
     },

@@ -66,7 +66,7 @@ const StudentsProgramPage = () => {
   };
 
   const handleJoinClick = () => {
-    navigate("/login");
+    navigate("/");
   };
 
   return (

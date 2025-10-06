@@ -4,20 +4,24 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import { fleetDetailsData, servicesTableData } from '../data/fleetData';
-import { Helmet } from 'react-helmet-async'; 
+import { Helmet } from 'react-helmet-async';
 const TableRow = ({ item }) => (
     <tr className="border-b bg-white">
         <td className="p-4 pl-8">{item.name}</td>
-        <td className="p-4 text-center">{item.comfort === true ? <Check className="mx-auto text-green-500"/> : item.comfort || ''}</td>
-        <td className="p-4 text-center">{item.premium === true ? <Check className="mx-auto text-green-500"/> : item.premium || ''}</td>
-        <td className="p-4 text-center">{item.elite === true ? <Check className="mx-auto text-green-500"/> : item.elite || ''}</td>
+        <td className="p-4 text-center">{item.comfort === true ? <Check className="mx-auto text-green-500" /> : item.comfort || ''}</td>
+        <td className="p-4 text-center">{item.premium === true ? <Check className="mx-auto text-green-500" /> : item.premium || ''}</td>
+        <td className="p-4 text-center">{item.elite === true ? <Check className="mx-auto text-green-500" /> : item.elite || ''}</td>
     </tr>
 );
 
 const FleetDetailPage = () => {
     const { carType } = useParams();
     const navigate = useNavigate();
-    const carData = fleetDetailsData[carType];
+    // ✅ Fix for inconsistent slug/key formats (like 'large-suv' vs 'largeSuv')
+    const carData =
+        fleetDetailsData[carType] ||
+        fleetDetailsData[carType.replace(/-([a-z])/g, (_, c) => c.toUpperCase())];
+
 
     if (!carData) {
         return (
@@ -63,11 +67,11 @@ const FleetDetailPage = () => {
 
             <div className="max-w-5xl mx-auto px-6 py-12">
                 <button onClick={() => navigate('/fleet')} className="flex items-center text-sm text-blue-600 font-semibold mb-6">
-                    <ArrowLeft size={16} className="mr-2"/> Back to All Fleets
+                    <ArrowLeft size={16} className="mr-2" /> Back to All Fleets
                 </button>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <img src={carData.image} alt={carData.name} className="rounded-lg shadow-xl w-full"/>
+                        <img src={carData.image} alt={carData.name} className="rounded-lg shadow-xl w-full" />
                     </div>
                     <div>
                         <h1 className="text-4xl font-extrabold text-gray-800">{carData.content.h1}</h1>
@@ -75,13 +79,13 @@ const FleetDetailPage = () => {
                         <ul className="mt-6 space-y-3">
                             {carData.features.map((feature, index) => (
                                 <li key={index} className="flex items-center text-gray-700">
-                                    <Check size={20} className="text-green-500 mr-3"/>
+                                    <Check size={20} className="text-green-500 mr-3" />
                                     <span>{feature}</span>
                                 </li>
                             ))}
                         </ul>
-                        <button 
-                            onClick={() => navigate('/')} 
+                        <button
+                            onClick={() => navigate('/')}
                             className="mt-8 bg-orange-500 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-orange-600 transition-all transform hover:scale-105"
                         >
                             Book Now
@@ -111,14 +115,14 @@ const FleetDetailPage = () => {
                             <tbody className="bg-white">
                                 <tr className="border-b">
                                     <td className="p-4 font-semibold">{carData.name}</td>
-                                    <td className="p-4 text-center">{carData.preferences.comfort && <Check className="mx-auto text-green-500"/>}</td>
-                                    <td className="p-4 text-center">{carData.preferences.premium && <Check className="mx-auto text-green-500"/>}</td>
-                                    <td className="p-4 text-center">{carData.preferences.elite && <Check className="mx-auto text-green-500"/>}</td>
+                                    <td className="p-4 text-center">{carData.preferences.comfort && <Check className="mx-auto text-green-500" />}</td>
+                                    <td className="p-4 text-center">{carData.preferences.premium && <Check className="mx-auto text-green-500" />}</td>
+                                    <td className="p-4 text-center">{carData.preferences.elite && <Check className="mx-auto text-green-500" />}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div className="overflow-x-auto shadow-lg rounded-lg border mt-8">
                         <table className="w-full text-sm text-left">
                             <thead className="bg-gray-700 text-white">

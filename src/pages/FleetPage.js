@@ -344,6 +344,24 @@ const fleetData = [
         ],
         amenities: ['AC', 'GPS', 'WiFi', 'USB Charging', 'Premium Audio', 'Leather Seats', 'Mini Bar'],
         popular: true
+    },
+    {
+        name: 'Premium',
+        image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png',
+        passengers: '4',
+        luggage: '2 Large',
+        fuelType: 'Petrol',
+        priceRange: '₹25-35/km',
+        rating: 4.8,
+        features: [
+            'Upto 4 passengers can travel comfortably',
+            'Accommodates upto 2 large bags',
+            'Available in Petrol combustion',
+            'Luxury amenities included',
+            'VIP treatment guaranteed'
+        ],
+        amenities: ['AC', 'GPS', 'WiFi', 'USB Charging', 'Premium Audio', 'Leather Seats', 'Mini Bar'],
+        popular: true
     }
 ];
 
@@ -355,6 +373,7 @@ const preferenceData = [
     { name: 'Traveller/ Minivan', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Traveller_2x.png', comfort: true, premium: false, elite: false },
     { name: 'Business Sedan', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', comfort: false, premium: false, elite: true },
     { name: 'Luxury Sedans', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', comfort: false, premium: false, elite: true },
+    { name: 'Premium', image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', comfort: false, premium: false, elite: true },
 ];
 
 const pricingData = [
