@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Check, Rocket } from 'lucide-react';
+import { Check, Phone, Airplay, Repeat, Star, Clock, MessageCircle, User,Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Reusable Header & Footer Components
@@ -29,8 +29,8 @@ const Footer = () => (
                 <a href="/about" className="hover:text-blue-600">About us</a> • 
                 <a href="/faq" className="hover:text-blue-600">Faq's</a> • 
                 <a href="/contact" className="hover:text-blue-600">Contact us</a> • 
-                <a href="/contact" className="hover:text-blue-600">Careers</a> • 
-                <a href="/terms-and-conditions" className="hover:text-blue-600">Terms and conditions</a>
+                <a href="/careers" className="hover:text-blue-600">Careers</a> • 
+                <a href="/terms-and-conditions" className="hover:text-blue-600">Terms & Conditions</a>
             </div>
             <p className="text-xs">© {new Date().getFullYear()} MotuCab Technologies Pvt. Ltd. All Rights Reserved.</p>
         </div>
@@ -45,33 +45,26 @@ const Section = ({ title, children }) => (
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7 }}
     >
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">{title}</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">{title}</h2>
         <div className="space-y-4 text-gray-600 leading-relaxed">
             {children}
         </div>
     </motion.div>
 );
 
-const BulletPoint = ({ children }) => (
+const CheckListItem = ({ icon, children }) => (
     <li className="flex items-start gap-3">
-        <span className="text-blue-500 font-bold mt-1">•</span>
+        {icon}
         <span>{children}</span>
     </li>
 );
-
-const CheckListItem = ({ children }) => (
-     <li className="flex items-start gap-3">
-        <Check size={20} className="text-green-500 mt-1 flex-shrink-0"/>
-        <span>{children}</span>
-    </li>
-);
-
 
 const ConciergePage = () => {
     return (
         <div className="bg-white">
             <Header />
-            
+
+            {/* Hero Section */}
             <div className="bg-gray-50 border-b">
                 <div className="max-w-5xl mx-auto px-6 py-20 text-center">
                     <motion.h1 
@@ -80,104 +73,145 @@ const ConciergePage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        MotuCab Concierge Service
+                        Motu Concierge Service
                     </motion.h1>
                     <motion.p 
-                        className="mt-4 text-xl text-gray-600"
+                        className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                        Your Journey, Made Effortless
+                        Your Journey, Elevated — Personalized, Effortless, and Worry-Free
                     </motion.p>
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 py-16">
-                <Section title="What is Motu Concierge?">
-                    <p>At Motu, travel is more than just getting from point A to B – it's about creating seamless, memorable experiences. With Motu Concierge, you gain a dedicated travel partner to make your journeys across India comfortable, dependable, and stress-free.</p>
-                    <p>Our expert concierges assist you before, during, and after your trip, helping with:</p>
-                     <ul className="list-disc list-inside space-y-2 pl-4">
-                        <li>Booking and adjusting trips</li>
-                        <li>Planning itineraries</li>
-                        <li>Picking great places to eat</li>
-                        <li>Organizing special experiences via trusted partners</li>
+            <div className="max-w-5xl mx-auto px-6 py-16 space-y-12">
+
+                {/* What is Motu Concierge */}
+                <Section title="What Is Motu Concierge?">
+                    <p>
+                        At Motu Cabs, we believe travel is more than just a ride — it’s a curated experience that should be smooth, dependable, and memorable.
+                    </p>
+                    <p>
+                        Motu Concierge is your personal travel assistant, offering end-to-end support before, during, and after your trip. Our concierges handle everything from bookings, restaurant suggestions, exclusive experiences, to last-minute itinerary adjustments, ensuring that you always have expert help — anytime, anywhere.
+                    </p>
+                    <p>
+                        You focus on the experience. We’ll handle the rest.
+                    </p>
+                </Section>
+
+                {/* Travel Across India */}
+                <Section title="Designed for Effortless Travel Across India">
+                    <p>
+                        India’s diversity makes it one of the world’s most rewarding yet complex destinations to explore. From urban metros to hidden heritage towns, our nationwide network and local expertise ensure a smooth, worry-free journey — no matter where the road takes you.
+                    </p>
+                </Section>
+
+                {/* Why Choose Motu Concierge */}
+                <Section title="Why Choose Motu Concierge">
+                    <ul className="space-y-4">
+                        <CheckListItem icon={<Check size={20} className="text-green-500 mt-1 flex-shrink-0"/>}>
+                            Nationwide Coverage, Single Trusted Platform — Book confidently anywhere in India through one verified network of vehicles and professional chauffeurs.
+                        </CheckListItem>
+                        <CheckListItem icon={<User size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            Dedicated Concierge Support — Your personal concierge helps with itineraries, dining, accommodations, and adjustments tailored to your preferences.
+                        </CheckListItem>
+                        <CheckListItem icon={<Clock size={20} className="text-yellow-500 mt-1 flex-shrink-0"/>}>
+                            Transparent & Reliable — Enjoy fair pricing, flexible bookings, and round-the-clock support with zero hidden charges.
+                        </CheckListItem>
+                        <CheckListItem icon={<Star size={20} className="text-purple-500 mt-1 flex-shrink-0"/>}>
+                            Local Experts, Global Standards — Our chauffeurs double as local guides, helping you uncover authentic experiences safely and respectfully.
+                        </CheckListItem>
+                        <CheckListItem icon={<Rocket size={20} className="text-red-500 mt-1 flex-shrink-0"/>}>
+                            Comfort and Peace of Mind — With GPS tracking, flight monitoring, and real-time ride updates, we keep your travel smooth and secure.
+                        </CheckListItem>
                     </ul>
                 </Section>
 
-                <Section title="We Designed Motu Concierge to Make Your Travels Across India Dependable, Comfortable and Memorable">
-                    <p>Traveling across India offers unparalleled richness – from breathtaking geographic diversity and UNESCO heritage sites to vibrant cities, luxury retreats, Ayurveda wellness experiences, and an extraordinary culinary landscape.</p>
-                    <ul className="space-y-3 mt-4">
-                        <BulletPoint><strong>Nationwide Reach, Single Point of Service:</strong> Book confidently across India through a single trusted provider.</BulletPoint>
-                        <BulletPoint><strong>Dedicated Concierge Support:</strong> A personal concierge assists you with itinerary adjustments and on-the-go travel changes.</BulletPoint>
-                        <BulletPoint><strong>Transparency and Service Quality:</strong> Transparent pricing and 24x7x365 human support ensure there are no hidden surprises.</BulletPoint>
+                {/* Concierge Benefits */}
+                <Section title="Concierge Benefits You’ll Love">
+                    <ul className="space-y-3">
+                        <CheckListItem icon={<Phone size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            On-Call Assistance — Connect via WhatsApp, call, or in-app chat anytime.
+                        </CheckListItem>
+                        <CheckListItem icon={<Airplay size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            Pre-Scheduled Rides — Drivers arrive early to ensure on-time departures.
+                        </CheckListItem>
+                        <CheckListItem icon={<Airplay size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            Flight Tracking — Automatic sync with your flight schedule.
+                        </CheckListItem>
+                        <CheckListItem icon={<MessageCircle size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            Real-Time Notifications — Instant updates on trip and driver status.
+                        </CheckListItem>
+                        <CheckListItem icon={<Repeat size={20} className="text-blue-500 mt-1 flex-shrink-0"/>}>
+                            Flexible Cancellations — Cancel anytime before dispatch with no penalty.
+                        </CheckListItem>
+                        <CheckListItem icon={<Star size={20} className="text-yellow-500 mt-1 flex-shrink-0"/>}>
+                            Double Loyalty Points — Earn 2x Motu Points on every concierge trip.
+                        </CheckListItem>
+                        <CheckListItem icon={<Clock size={20} className="text-purple-500 mt-1 flex-shrink-0"/>}>
+                            Priority Customer Support — Your requests always go to the front of the line.
+                        </CheckListItem>
+                        <CheckListItem icon={<User size={20} className="text-pink-500 mt-1 flex-shrink-0"/>}>
+                            Multi-Language Assistance — Concierge support in your preferred language.
+                        </CheckListItem>
+                        <CheckListItem icon={<Repeat size={20} className="text-green-500 mt-1 flex-shrink-0"/>}>
+                            Unlimited Requests — Get help anytime during your journey, without limits.
+                        </CheckListItem>
                     </ul>
                 </Section>
-                
-                <Section title="Concierge Benefits You'll Love">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                        <div>
-                             <ul className="space-y-4">
-                                <CheckListItem><strong>Available on-call:</strong> Message us via the app, tap a button for call back or simply whatsapp your concierge.</CheckListItem>
-                                <CheckListItem><strong>We'll ping you before upcoming trips:</strong> Your concierge will ping you about your upcoming trips and check in.</CheckListItem>
-                                <CheckListItem><strong>Pre-Scheduled Rides:</strong> Secure your rides in advance with precision timing – drivers typically arrive 10 minutes early.</CheckListItem>
-                                <CheckListItem><strong>Flight Tracking:</strong> We monitor your flight for delays or early arrivals, ensuring your ride syncs perfectly.</CheckListItem>
-                                <CheckListItem><strong>Flexible Cancellations:</strong> Cancel free up until your driver departs.</CheckListItem>
-                            </ul>
-                        </div>
-                         <div className="flex justify-center">
-                            <img src="https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/concierge_new.png" alt="Concierge Benefits" className="max-w-xs w-full" />
-                        </div>
-                    </div>
-                </Section>
 
+                {/* How it works */}
                 <Section title="How It Works">
                     <ol className="list-decimal list-inside space-y-2 pl-4">
-                        <li>Subscribe or Pay Per Trip</li>
-                        <li>Access via WhatsApp, Call, or App Chat</li>
-                        <li>Receive Instant, Personalized Support</li>
-                        <li>Travel with Confidence!</li>
+                        <li>Choose Your Plan — Subscribe monthly or pay per trip.</li>
+                        <li>Access Instantly — Connect via WhatsApp, call, or chat in-app.</li>
+                        <li>Get Personalized Support — Your concierge manages all travel details.</li>
+                        <li>Travel Confidently — Enjoy seamless experiences, every time.</li>
                     </ol>
                 </Section>
 
-                <Section title="Pricing">
-                    <div className="overflow-x-auto border rounded-lg">
-                        <table className="w-full">
-                            <thead className="bg-gray-100">
-                                <tr>
-                                    <th className="p-4 text-left font-semibold">Plan</th>
-                                    <th className="p-4 text-left font-semibold">Details</th>
-                                    <th className="p-4 text-left font-semibold">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="border-t">
-                                    <td className="p-4 font-medium">Per Trip</td>
-                                    <td className="p-4">Concierge service for one booking</td>
-                                    <td className="p-4 font-bold">₹249</td>
-                                </tr>
-                                <tr className="border-t">
-                                    <td className="p-4 font-medium">Monthly Subscription</td>
-                                    <td className="p-4">Unlimited concierge service for all trips that month</td>
-                                    <td className="p-4 font-bold">₹1000/month</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ul className="list-disc list-inside text-sm text-gray-500 mt-4 pl-4 space-y-1">
-                        <li>Subscription activates immediately and is valid for 30 days.</li>
-                        <li>Auto-renews monthly but **cancel anytime** for a **prorated refund**.</li>
-                        <li>Try it for free! Your first month is on us.</li>
+                {/* Subscription Details */}
+                <Section title="Subscription Details">
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>Activated immediately and valid for 30 days.</li>
+                        <li>Auto-renews monthly (cancel anytime).</li>
+                        <li>If canceled after using the service, receive equivalent value as a Motu Wallet Coupon for future bookings.</li>
+                        <li>If canceled without usage, a pro-rated wallet coupon based on remaining days is issued.</li>
+                        <li>Wallet coupons never expire and can be applied toward any future Motu Cabs trip.</li>
+                        <li>Try it risk-free — your first month is free!</li>
                     </ul>
                 </Section>
 
-                 <Section title="Important Notes">
+                {/* Who Can Access */}
+                <Section title="Who Can Access Motu Concierge?">
                     <ul className="list-disc list-inside space-y-2 pl-4">
-                        <li>Concierge support currently applies **only to Motu-booked trips.**</li>
-                        <li>Expansion to other services via partners is coming soon.</li>
-                        <li>Cancelled subscriptions cannot be restarted for **3 months** if used for less than one month initially.</li>
+                        <li>Available for all registered Motu travelers.</li>
+                        <li>Operates daily from 8:00 AM to 10:00 PM IST.</li>
+                        <li>The first available concierge responds immediately.</li>
+                        <li>Wherever possible, the same concierge is assigned for ongoing trips to maintain continuity.</li>
                     </ul>
                 </Section>
+
+                {/* How to Get Started */}
+                <Section title="How to Get Started">
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>Already booked a trip? Add Concierge Service at checkout.</li>
+                        <li>Want full-time access? Subscribe directly via your Motu account or app.</li>
+                        <li>Friends and family of Motu partners enjoy complimentary concierge access.</li>
+                    </ul>
+                </Section>
+
+                {/* Important Notes */}
+                <Section title="Important Notes">
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>Concierge applies exclusively to Motu-booked trips.</li>
+                        <li>Expansion to additional services and partner experiences coming soon.</li>
+                        <li>Canceled subscriptions used for less than one month can be restarted after 3 months.</li>
+                    </ul>
+                </Section>
+
             </div>
 
             <Footer />

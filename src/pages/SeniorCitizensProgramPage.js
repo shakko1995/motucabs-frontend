@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Award, Percent, Gift, Zap, UserCheck, UploadCloud, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Reusable Header Component
+// Header
 const Header = () => {
     const navigate = useNavigate();
     return (
@@ -21,7 +21,7 @@ const Header = () => {
     );
 };
 
-// Reusable Footer Component
+// Footer
 const Footer = () => (
     <footer className="bg-gray-100 border-t">
         <div className="max-w-7xl mx-auto px-8 py-12 text-center text-gray-500">
@@ -46,16 +46,17 @@ const SeniorCitizensProgramPage = () => {
     };
 
     const benefits = [
-        { icon: Percent, title: "10% Discount on All Services", text: "Automatically applied on every ride. No promo codes needed." },
-        { icon: Gift, title: "50% Off Concierge Program", text: "Enjoy premium travel assistance at half the price." },
-        { icon: Zap, title: "Double MotuCab Points", text: "Earn rewards twice as fast on all your rides." },
-        { icon: Award, title: "Upgraded Cancellation Policies", text: "Get extra flexibility with our special cancellation benefits." }
+        { icon: Percent, title: "10% Discount on All Motu Rides", text: "Automatically applied to every ride—no promo code needed." },
+        { icon: Gift, title: "50% Off Motu Concierge Service", text: "Normally ₹1500/month, now just ₹750. Personalized assistance & priority support included." },
+        { icon: Award, title: "Complimentary Cancellation Upgrade", text: "Flexible cancellation benefits at no extra cost—plans can change anytime." },
+        { icon: Zap, title: "Double Motu Points", text: "Earn 2x rewards on all rides and redeem them for discounts or future benefits." }
     ];
 
     return (
         <div className="bg-white text-slate-800">
             <Header />
             
+            {/* Hero */}
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-b">
                 <div className="max-w-5xl mx-auto px-6 py-24 text-center">
                     <motion.h1 
@@ -64,7 +65,7 @@ const SeniorCitizensProgramPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        MotuCab for Our Seniors
+                        MotuCab for Seniors
                     </motion.h1>
                     <motion.p 
                         className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto"
@@ -72,12 +73,13 @@ const SeniorCitizensProgramPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        Comfort, Care & Exclusive Benefits, specially crafted for your golden years.
+                        Comfort, Care & Exclusive Rewards — specially crafted for your golden years.
                     </motion.p>
                 </div>
             </div>
 
             <div className="max-w-5xl mx-auto px-6 py-20">
+                {/* Intro Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -87,7 +89,7 @@ const SeniorCitizensProgramPage = () => {
                     >
                         <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-4">A Hassle-Free Travel Experience</h2>
                         <p className="text-slate-600 leading-relaxed">
-                            At MotuCab, we believe travel should be comfortable and stress-free. We are delighted to offer exclusive benefits to make every trip smooth, comfortable, and worry-free for our respected senior citizens.
+                            At Motu Cabs, we believe every journey should be safe, comfortable, and stress-free. The Motu Senior Citizens Program ensures extra care, flexibility, and rewards for your trips.
                         </p>
                     </motion.div>
                     <motion.div 
@@ -104,11 +106,12 @@ const SeniorCitizensProgramPage = () => {
                         />
                     </motion.div>
                 </div>
-                
+
+                {/* Benefits */}
                 <div className="mb-24">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Enjoy these Special Perks</h2>
-                        <p className="mt-2 text-slate-600">As a member of the MotuCab Seniors Program, you receive:</p>
+                        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Exclusive Benefits</h2>
+                        <p className="mt-2 text-slate-600">As a valued member, you enjoy:</p>
                     </div>
                     <motion.div 
                         className="grid grid-cols-1 md:grid-cols-2 gap-8"
@@ -135,6 +138,7 @@ const SeniorCitizensProgramPage = () => {
                     </motion.div>
                 </div>
 
+                {/* How to Join */}
                 <motion.div 
                     className="text-center bg-gradient-to-r from-orange-500 to-red-500 text-white p-12 rounded-2xl shadow-lg"
                     initial={{ opacity: 0, y: 50 }}
@@ -142,28 +146,30 @@ const SeniorCitizensProgramPage = () => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-4xl font-extrabold mb-4">Ready to Join?</h2>
-                    <p className="mb-8 max-w-2xl mx-auto opacity-90">If you are 60 years or older, you qualify for the program. It's simple to get started.</p>
+                    <h2 className="text-4xl font-extrabold mb-4">How to Enroll</h2>
+                    <p className="mb-8 max-w-2xl mx-auto opacity-90">
+                        If you are 60 years or older, you qualify for the Motu Senior Citizens Program.
+                    </p>
                     <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                         <div className="flex items-center gap-4">
                             <UserCheck size={32} className="flex-shrink-0"/>
                             <div>
                                 <h3 className="font-semibold text-lg">1. Create Profile</h3>
-                                <p className="opacity-80 text-sm">Sign up or log in to your account.</p>
+                                <p className="opacity-80 text-sm">Sign up or log in to your Motu account.</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
                             <UploadCloud size={32} className="flex-shrink-0"/>
                             <div>
                                 <h3 className="font-semibold text-lg">2. Verify Your Age</h3>
-                                <p className="opacity-80 text-sm">Upload a valid government-issued ID.</p>
+                                <p className="opacity-80 text-sm">Upload a valid government-issued ID (Aadhaar, PAN, Passport, etc.).</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
                             <Globe size={32} className="flex-shrink-0"/>
                             <div>
-                                <h3 className="font-semibold text-lg">3. Enjoy Benefits</h3>
-                                <p className="opacity-80 text-sm">Once approved, benefits are auto-applied.</p>
+                                <h3 className="font-semibold text-lg">3. Activate Benefits</h3>
+                                <p className="opacity-80 text-sm">Once approved, all senior benefits are auto-applied.</p>
                             </div>
                         </div>
                     </div>

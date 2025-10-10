@@ -6,29 +6,53 @@ import { CheckCircle, Languages } from 'lucide-react';
 // Language content object
 const content = {
     en: {
-        title: "White Label Solution",
-        aboutTitle: "About White Label Solution",
-        aboutText: "Motu Cabs White Label Solution provides everything you need to start or scale your taxi business effortlessly, with a comprehensive taxi service software solution for your website, tailored for the pan-India market. White Label Solution provides an opportunity for you to offer the entire range of Gozo Cabs services under your own brand.",
-        whatYouGetTitle: "What you get?",
+        title: "Motu Cabs: India’s Trusted Intercity Travel Partner",
+        subtitle: "Smart Service. Transparent Pricing. Trusted by Thousands.",
+        aboutTitle: "About the Motu Cabs White Label Solution",
+        aboutText: `The Motu Cabs White Label Solution is a complete, ready-to-use technology platform that empowers entrepreneurs and transport operators to launch or expand their own online taxi business anywhere in India — quickly and efficiently.
+        
+With Motu’s proven system, you can offer the entire suite of Motu Cabs services under your own brand name, backed by our reliability, nationwide coverage, and technology-driven excellence.
+
+Whether you’re an established travel agency, a fleet owner, or a new startup, our white-label platform makes it simple to build and grow your taxi service with confidence.`,
+
+        whatYouGetTitle: "What You Get with Motu Cabs White Label Solution",
         features: [
-            "Customizable Booking Platform: An intuitive and user-friendly webpage interface for your customers.",
-            "Custom Branding: Personalisation with your logo, color scheme, and unique branding.",
-            "Fare Management: Automatic fare calculation based on distance, time, or custom settings."
+            "Customizable Booking Platform — Get a fully branded, easy-to-use booking interface for your customers — optimized for desktop and mobile.",
+            "Your Own Brand Identity — Add your logo, color palette, and company details to create a unique, recognizable taxi brand powered by Motu’s backend technology.",
+            "Automated Fare Management — Intelligent fare calculation based on distance, duration, or your preferred rate structure.",
+            "Seamless Customer Communication — Keep customers updated throughout their journey with SMS, WhatsApp, and email notifications — from booking confirmation to ride completion.",
+            "Multiple Secure Payment Options — Accept payments via UPI, credit/debit cards, net banking, and digital wallets for smooth and secure transactions.",
+            "24/7 Support — Our dedicated support team ensures your white-label platform operates seamlessly with round-the-clock technical and customer assistance.",
+            "Advanced Analytics & Reports — Access real-time data dashboards to monitor bookings, revenue, performance, and customer behavior — helping you make smarter business decisions."
         ],
-        benefitsTitle: "Benefits",
+
+        benefitsTitle: "Benefits of Partnering with Motu Cabs",
+        benefitsSubtitle: "Transform Your Taxi Business with a Proven, Scalable Solution",
         benefits: [
-            "Fast Deployment: Get your taxi webpage live in a matter of days, not months.",
-            "Cost-Effective: Save on development costs with our ready-made solution.",
-            "Scalable: Start small and scale as your business grows without any limitations.",
-            "User-Friendly: Intuitive interfaces designed to deliver a smooth and efficient user experience."
+            "Quick Setup — Launch your branded taxi platform in just a few days — not months.",
+            "Cost-Effective — Avoid heavy development expenses with our ready-made technology.",
+            "Fully Scalable — Start small and expand effortlessly as your business grows.",
+            "User-Friendly Experience — Built for simplicity and speed, ensuring a seamless journey for your customers."
         ],
-        howItWorksTitle: "How It Works?",
-        stepsTitle: "Get Started in 3 Simple Steps",
+
+        howItWorksTitle: "How It Works",
+        stepsTitle: "Get Your Taxi Business Online in 3 Simple Steps",
         steps: [
-            "Customize Your Page: Provide your branding elements, and we will tailor the platform to fit your business.",
-            "Launch & Operate: Go live and start accepting bookings immediately.",
-            "Manage & Grow: Use the powerful admin panel to monitor performance, adjust pricing, and scale your operations."
+            "Customize Your Platform — Share your brand details — logo, colors, and preferences — and we’ll personalize the platform for you.",
+            "Launch & Start Accepting Bookings — Go live with your new website and start taking customer bookings instantly.",
+            "Manage & Grow Effortlessly — Use the integrated admin dashboard to track rides, manage pricing, view reports, and expand your operations."
         ],
+
+        readyTitle: "Ready to Grow with Motu?",
+        readyText: `Let’s build your branded taxi business together. Contact our B2B Partnership Team. 
+
+If you’re a taxi operator or fleet owner, connect with our Vendor Onboarding Team, or simply fill in your details below — our team will reach out to you right away.`,
+
+        closingTitle: "Launch Your Own Branded Taxi Business with Motu Cabs",
+        closingText: `Fast, flexible, and future-ready — the Motu White Label Solution helps you deliver world-class taxi services under your own brand, powered by technology that India already trusts.
+        
+Partner with Motu Cabs today and redefine what your customers expect from travel.`,
+
         formTitle: "Fill your details here:",
         placeholders: {
             companyName: "Enter Business Entity Name",
@@ -41,6 +65,7 @@ const content = {
         },
         submitButton: "SUBMIT"
     },
+
     hi: {
         title: "व्हाइट लेबल समाधान",
         aboutTitle: "व्हाइट लेबल समाधान के बारे में",
@@ -136,7 +161,7 @@ const WhiteLabelPage = () => {
             alert(error.response?.data?.message || "Submission failed. Please try again.");
         }
     };
-    
+
     const t = content[lang];
 
     return (
@@ -145,7 +170,11 @@ const WhiteLabelPage = () => {
             
             <div className="max-w-7xl mx-auto px-6 py-12">
                 <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-4xl font-extrabold text-slate-800">{t.title}</h1>
+                    <div>
+                        <h1 className="text-4xl font-extrabold text-slate-800">{t.title}</h1>
+                        {t.subtitle && <p className="text-gray-600 mt-2">{t.subtitle}</p>}
+                    </div>
+                    
                     <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-100 border">
                         <Languages size={20} className="text-slate-500"/>
                         <button onClick={() => setLang('en')} className={`font-semibold px-3 py-1 rounded-md text-sm ${lang === 'en' ? 'bg-white text-blue-600 shadow' : 'text-gray-500'}`}>ENG</button>
@@ -158,7 +187,7 @@ const WhiteLabelPage = () => {
                     <div className="lg:col-span-3 space-y-12">
                         <div>
                             <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.aboutTitle}</h2>
-                            <p className="text-gray-600 leading-relaxed">{t.aboutText}</p>
+                            <p className="text-gray-600 leading-relaxed whitespace-pre-line">{t.aboutText}</p>
                         </div>
 
                         {/* Video Placeholder */}
@@ -170,27 +199,60 @@ const WhiteLabelPage = () => {
                             <h3 className="text-2xl font-bold text-gray-800 mb-4">{t.whatYouGetTitle}</h3>
                             <ul className="space-y-3">
                                 {t.features.map((item, index) => (
-                                    <li key={index} className="flex items-start gap-3"><CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0"/> <span className="text-gray-700">{item}</span></li>
+                                    <li key={index} className="flex items-start gap-3">
+                                        <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0"/> 
+                                        <span className="text-gray-700">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="text-2xl font-bold text-gray-800 mb-4">{t.benefitsTitle}</h3>
+                            {t.benefitsSubtitle && <h4 className="font-semibold text-gray-700 mb-3">{t.benefitsSubtitle}</h4>}
+                            <ul className="space-y-3">
+                                {t.benefits.map((item, index) => (
+                                    <li key={index} className="flex items-start gap-3">
+                                        <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0"/> 
+                                        <span className="text-gray-700">{item}</span>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
                         
-                         <div>
+                        <div>
                             <h3 className="text-2xl font-bold text-gray-800 mb-4">{t.howItWorksTitle}</h3>
                             <h4 className="font-bold text-gray-700 mb-3">{t.stepsTitle}</h4>
-                             <ul className="space-y-3">
+                            <ul className="space-y-3">
                                 {t.steps.map((item, index) => (
-                                    <li key={index} className="flex items-start gap-3"><CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0"/> <span className="text-gray-700">{item}</span></li>
+                                    <li key={index} className="flex items-start gap-3">
+                                        <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0"/> 
+                                        <span className="text-gray-700">{item}</span>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
+
+                        {t.readyTitle && (
+                            <div>
+                                <h3 className="text-2xl font-bold text-gray-800 mb-3">{t.readyTitle}</h3>
+                                <p className="text-gray-700 whitespace-pre-line">{t.readyText}</p>
+                            </div>
+                        )}
+
+                        {t.closingTitle && (
+                            <div>
+                                <h3 className="text-2xl font-bold text-gray-800 mb-3">{t.closingTitle}</h3>
+                                <p className="text-gray-700 whitespace-pre-line">{t.closingText}</p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Right Column (Form) */}
                     <div className="lg:col-span-2 bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl shadow-lg border sticky top-28">
                         <h3 className="text-2xl font-bold text-gray-800 mb-6">{t.formTitle}</h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
-                             <div>
+                            <div>
                                 <label className="text-sm font-semibold text-gray-700">Company Name*</label>
                                 <input type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} placeholder={t.placeholders.companyName} className="mt-1 w-full p-3 border rounded-md shadow-sm" required />
                             </div>
@@ -204,15 +266,15 @@ const WhiteLabelPage = () => {
                                     <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} placeholder={t.placeholders.lastName} className="mt-1 w-full p-3 border rounded-md shadow-sm" required />
                                 </div>
                             </div>
-                             <div>
+                            <div>
                                 <label className="text-sm font-semibold text-gray-700">Email*</label>
                                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder={t.placeholders.email} className="mt-1 w-full p-3 border rounded-md shadow-sm" required />
                             </div>
-                             <div>
+                            <div>
                                 <label className="text-sm font-semibold text-gray-700">Phone*</label>
                                 <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder={t.placeholders.phone} className="mt-1 w-full p-3 border rounded-md shadow-sm" required />
                             </div>
-                             <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="text-sm font-semibold text-gray-700">State*</label>
                                     <input type="text" name="state" value={formData.state} onChange={handleInputChange} placeholder={t.placeholders.state} className="mt-1 w-full p-3 border rounded-md shadow-sm" required />

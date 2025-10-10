@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// import { Handshake, Briefcase, Clock, Shield } from 'lucide-react';
+import { Plane, User, Briefcase, Star, Clock } from 'lucide-react'; // Corrected icon imports
 
 // Reusable Header & Footer Components
 const Header = () => {
@@ -43,11 +43,21 @@ const Section = ({ title, children }) => (
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7 }}
     >
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">{title}</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">{title}</h2>
         <div className="space-y-4 text-gray-600 leading-relaxed">
             {children}
         </div>
     </motion.div>
+);
+
+const FeatureItem = ({ icon: Icon, title, children }) => (
+    <div className="flex gap-4 items-start">
+        <Icon className="w-6 h-6 text-blue-500 mt-1" />
+        <div>
+            <h4 className="font-semibold text-gray-800">{title}</h4>
+            <p className="text-gray-600">{children}</p>
+        </div>
+    </div>
 );
 
 const MeetAndAssistPage = () => {
@@ -63,7 +73,7 @@ const MeetAndAssistPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        Meet and Assist
+                        Meet & Assist
                     </motion.h1>
                     <motion.p 
                         className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
@@ -71,36 +81,65 @@ const MeetAndAssistPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                        Concierge service that handles rentals, bookings, and personalized support, saving time and managing daily tasks and travel plans for you.
+                        Personalized Airport Concierge Services for Effortless Travel
                     </motion.p>
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 py-16">
-                <Section title="Key Services">
+            <div className="max-w-5xl mx-auto px-6 py-16 space-y-12">
+                <Section title="Premium Airport Assistance">
                     <p>
-                        With Meet and Assist, we offer a range of premium airport services designed to make air travel smoother and more convenient. We provide personalized assistance for passengers at major airports across India, ensuring a hassle-free journey from arrival to departure.
+                        Traveling through busy airports can be overwhelming. Motu Cabs’ Meet & Assist services ensure a smooth, stress-free, and truly premium experience from arrival to departure.
                     </p>
-                    <ul className="list-disc list-inside space-y-3 pl-4 mt-4">
-                        <li>
-                            <strong>Meet and Greet Assistance:</strong> A guest relations executive will meet passengers at the airport's arrival or departure gate, guiding them through the airport processes. This includes help with check-in, baggage claim, and directing them to the appropriate gates or vehicle parking.
-                        </li>
-                        <li>
-                            <strong>Porter Services:</strong> Professional porters assist with luggage handling, from vehicle drop-off to check-in counters or vice versa, making the airport experience more efficient and comfortable.
-                        </li>
-                        <li>
-                            <strong>Transit and Short Layover Support:</strong> For travelers with short layovers or tight schedules, the service provides quick and efficient transfers between gates and areas, ensuring a smooth connection for onward flights.
-                        </li>
-                        <li>
-                            <strong>VIP Concierge Services:</strong> Exclusive services for high-end travelers, including priority access to check-in counters, airport lounges, and fast-track immigration or security clearances.
-                        </li>
-                        <li>
-                            <strong>Customizable Packages:</strong> They offer customizable packages based on the individual needs of the traveler, whether it's for business or leisure trips, allowing for a tailored experience based on passenger preferences and requirements.
-                        </li>
-                        <li>
-                            <strong>Multicity Coverage:</strong> Available in major Indian cities like Mumbai, Chennai, Pune, Delhi, Hyderabad, Kolkata, Coimbatore, Visakhapatnam, and many others, providing nationwide coverage.
-                        </li>
+                    <FeatureItem icon={Plane} title="Meet & Greet Assistance">
+                        Dedicated airport representative meets you at the terminal or gate, assisting with check-in, baggage, and navigation through airport processes.
+                    </FeatureItem>
+                    <FeatureItem icon={Briefcase} title="Porter & Luggage Handling">
+                        Professional porters manage your luggage from curbside to check-in or baggage claim, ideal for families, elderly travelers, and executives.
+                    </FeatureItem>
+                    <FeatureItem icon={Clock} title="Transit & Short Layover Support">
+                        For tight schedules or connecting flights, seamless coordination ensures you reach your gate without stress.
+                    </FeatureItem>
+                    <FeatureItem icon={Star} title="VIP Concierge & Fast-Track">
+                        Exclusive services including priority check-in, lounge access, and fast-track immigration for high-end travelers.
+                    </FeatureItem>
+                    <FeatureItem icon={User} title="Customizable Packages">
+                        Fully tailored packages for business or leisure travelers, ensuring a personalized and hassle-free airport experience.
+                    </FeatureItem>
+                </Section>
+
+                <Section title="Nationwide Airport Coverage">
+                    <p>
+                        Meet & Assist services are available at major airports across India, including:
+                    </p>
+                    <ul className="list-disc list-inside pl-4 space-y-2">
+                        <li>Delhi (DEL)</li>
+                        <li>Mumbai (BOM)</li>
+                        <li>Bengaluru (BLR)</li>
+                        <li>Chennai (MAA)</li>
+                        <li>Hyderabad (HYD)</li>
+                        <li>Kolkata (CCU)</li>
+                        <li>Pune (PNQ)</li>
+                        <li>Coimbatore (CJB)</li>
+                        <li>Visakhapatnam (VTZ)</li>
+                        <li>…and more across India</li>
                     </ul>
+                </Section>
+
+                <Section title="Why Choose Motu Cabs Meet & Assist?">
+                    <ul className="list-disc list-inside pl-4 space-y-3">
+                        <li>✅ Hassle-free travel experience with door-to-gate assistance</li>
+                        <li>✅ Ideal for corporate executives, senior citizens, VIPs, and international travelers</li>
+                        <li>✅ Trained professionals ensuring discretion, security, and comfort</li>
+                        <li>✅ 24/7 support for flight tracking, coordination, and last-minute requests</li>
+                        <li>✅ Combine with Motu Cabs’ chauffeur services for complete end-to-end travel convenience</li>
+                    </ul>
+                </Section>
+
+                <Section title="Elevate Your Airport Experience">
+                    <p>
+                        With Motu Cabs Meet & Assist, you don’t just travel — you glide through the airport with ease. Let us handle the details, so you can focus on what truly matters — your journey ahead.
+                    </p>
                 </Section>
             </div>
 

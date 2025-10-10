@@ -35,6 +35,9 @@ export const navigationLinks = [
       { name: "Small SUV", link: "/fleet/small-suv" },
       { name: "Large SUV", link: "/fleet/large-suv" },
       { name: "Premium", link: "/fleet/premium" },
+      { name: "Luxury", link: "/fleet/luxury" },
+      { name: "Business Sedan", link: "/fleet/business-sedan" },
+      { name: "Tempo Traveler", link: "/fleet/tempo-traveler" }
     ],
   },
   {

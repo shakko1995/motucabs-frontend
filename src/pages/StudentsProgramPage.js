@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Percent, Gift, Zap } from "lucide-react";
+import { Percent, Gift, Zap, UserPlus, UploadCloud, CheckCircle, ShieldCheck } from "lucide-react";
 
 // Header
 const Header = () => {
@@ -47,12 +47,7 @@ const Footer = () => (
 // Students Program Page
 const StudentsProgramPage = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    purpose: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", purpose: "" });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,9 +60,7 @@ const StudentsProgramPage = () => {
     setFormData({ name: "", email: "", phone: "", purpose: "" });
   };
 
-  const handleJoinClick = () => {
-    navigate("/");
-  };
+  const handleJoinClick = () => navigate("/");
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
@@ -75,20 +68,12 @@ const StudentsProgramPage = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-blue-600 to-blue-400 text-white">
-        <div className="absolute inset-0">
-          <img
-            src="https://storyset.com/illustration/taxi-service/amico"
-            alt="Hero Taxi"
-            className="w-full h-full object-cover opacity-10"
-          />
-        </div>
         <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
             MotuCab <span className="text-yellow-300">for Students</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-blue-50 max-w-2xl mx-auto">
-            Travel made smarter, cheaper, and safer. Unlock exclusive benefits
-            designed especially for students.
+            Travel made smarter, cheaper, and safer. Unlock exclusive benefits designed especially for students.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <button
@@ -110,21 +95,22 @@ const StudentsProgramPage = () => {
       {/* Content */}
       <main className="flex-1">
         <div className="max-w-6xl mx-auto px-6 py-20 space-y-20">
+
           {/* Ambassador Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Become a MotuCab Student Ambassador
+                Become a Motu Campus Ambassador
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Represent your college, earn rewards, and make travel
-                affordable for your peers. Grow your leadership skills and be
-                part of a student-first movement.
+                Represent your college, earn rewards, and make travel affordable for your peers. Grow your leadership skills and be part of a student-first movement.
               </p>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-2">✅ Earn exclusive rewards</li>
-                <li className="flex gap-2">✅ Leadership recognition & perks</li>
-                <li className="flex gap-2">✅ Build your real-world profile</li>
+                <li className="flex gap-2">✅ Be Motu’s trusted point of contact in your college</li>
+                <li className="flex gap-2">✅ Help identify key pickup/drop-off spots</li>
+                <li className="flex gap-2">✅ Recommend offers and deals to peers</li>
+                <li className="flex gap-2">✅ Coordinate group rides during holidays</li>
+                <li className="flex gap-2">✅ Earn commissions on referrals</li>
               </ul>
             </div>
             <div className="flex justify-center">
@@ -136,13 +122,12 @@ const StudentsProgramPage = () => {
             </div>
           </div>
 
-          {/* Form + Benefits */}
+          {/* Form + Student Benefits */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
             {/* Form */}
             <div className="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl border">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Apply Now 🚀
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Apply Now 🚀</h3>
               <p className="text-sm text-gray-600 mb-6">
                 Fill out the form, and our team will connect with you shortly.
               </p>
@@ -201,28 +186,29 @@ const StudentsProgramPage = () => {
                 <div className="flex gap-4 items-start group">
                   <Percent className="text-blue-500 group-hover:scale-110 transition" size={28} />
                   <div>
-                    <h4 className="font-semibold text-lg">10% Off Every Ride</h4>
-                    <p className="text-sm text-gray-600">
-                      Automatically applied on all bookings.
-                    </p>
+                    <h4 className="font-semibold text-lg">10% Off on All Rides</h4>
+                    <p className="text-sm text-gray-600">Automatically applied to every booking.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start group">
                   <Gift className="text-blue-500 group-hover:scale-110 transition" size={28} />
                   <div>
-                    <h4 className="font-semibold text-lg">50% Off Concierge</h4>
-                    <p className="text-sm text-gray-600">
-                      Premium support at half the price.
-                    </p>
+                    <h4 className="font-semibold text-lg">50% Off Concierge Program</h4>
+                    <p className="text-sm text-gray-600">Premium support at half the price.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start group">
                   <Zap className="text-blue-500 group-hover:scale-110 transition" size={28} />
                   <div>
-                    <h4 className="font-semibold text-lg">Double Reward Points</h4>
-                    <p className="text-sm text-gray-600">
-                      Earn faster, redeem sooner.
-                    </p>
+                    <h4 className="font-semibold text-lg">Double Motu Points</h4>
+                    <p className="text-sm text-gray-600">Earn 2x rewards on every trip.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start group">
+                  <ShieldCheck className="text-blue-500 group-hover:scale-110 transition" size={28} />
+                  <div>
+                    <h4 className="font-semibold text-lg">Complimentary Cancellation Upgrade</h4>
+                    <p className="text-sm text-gray-600">Extra flexibility for your unpredictable schedule.</p>
                   </div>
                 </div>
               </div>
@@ -230,9 +216,10 @@ const StudentsProgramPage = () => {
               <div className="mt-8 text-sm">
                 <h4 className="font-bold text-gray-900 mb-2">How to Join?</h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  <li>Create your MotuCab Profile</li>
-                  <li>Upload your Student ID</li>
-                  <li>Unlock Instant Discounts</li>
+                  <li>Create Your Motu Account</li>
+                  <li>Verify with Student ID</li>
+                  <li>Activate Your Benefits</li>
+                  <li>Refer & Earn</li>
                 </ul>
               </div>
 

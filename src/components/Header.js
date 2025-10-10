@@ -25,39 +25,55 @@ const Header = () => {
         setOpenAccordion(openAccordion === title ? null : title);
     };
 
-    const NavLinks = () => (
-        <nav className="flex flex-col space-y-2 text-lg p-4">
-            {navigationLinks.map(nav => (
-                <div key={nav.title} className="border-b pb-2">
-                    <div 
-                        className="flex items-center justify-between text-gray-800 font-semibold cursor-pointer"
-                        onClick={() => toggleAccordion(nav.title)}
-                    >
-                        <div className="flex items-center gap-2">
-                            {nav.icon && <nav.icon className="w-5 h-5 text-blue-600" />}
-                            <span>{nav.title}</span>
-                        </div>
-                        <ChevronDown size={20} className={`transition-transform ${openAccordion === nav.title ? 'rotate-180' : ''}`} />
-                    </div>
-                    <div className={`overflow-hidden transition-all duration-300 ${openAccordion === nav.title ? 'max-h-96 pt-2' : 'max-h-0'}`}>
-                        <ul className="pl-4 space-y-1">
-                            {nav.dropdown.map(item => (
-                                <li key={item.name}>
-                                    <Link 
-                                        to={item.link}
-                                        className="block py-2 text-sm text-gray-600 hover:text-blue-600"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            ))}
-        </nav>
-    );
+   const NavLinks = () => {
+  const toggleAccordion = (title) => {
+    setOpenAccordion(openAccordion === title ? null : title);
+  };
+
+  return (
+    <nav className="flex flex-col space-y-2 text-lg p-4">
+      {navigationLinks.map((nav) => (
+        <div key={nav.title} className="border-b pb-2">
+          <div
+            className="flex items-center justify-between text-gray-800 font-semibold cursor-pointer"
+            onClick={() => toggleAccordion(nav.title)}
+          >
+            <div className="flex items-center gap-2">
+              {nav.icon && <nav.icon className="w-5 h-5 text-blue-600" />}
+              <span>{nav.title}</span>
+            </div>
+            <ChevronDown
+              size={20}
+              className={`transition-transform duration-300 ${
+                openAccordion === nav.title ? 'rotate-180' : ''
+              }`}
+            />
+          </div>
+
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              openAccordion === nav.title ? 'max-h-96 pt-2' : 'max-h-0'
+            }`}
+          >
+            <ul className="pl-4 space-y-1">
+              {nav.dropdown.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.link}
+                    className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                    onClick={() => setIsMobileMenuOpen && setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </nav>
+  );
+};
 
     return (
         <header className="bg-white shadow-sm sticky top-0 z-40">
