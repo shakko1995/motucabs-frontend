@@ -45,7 +45,7 @@ export const navigationLinks = [
     icon: Briefcase,
     mainLink: "#",
     dropdown: [
-      { name: "Airport Transfers", link: "/airport-transfers" },
+      { name: "Airport Transfers", link: "/airport-transfers-page" },
       { name: "Rental Cabs", link: "/rental-page" },
       { name: "OneWay Cabs", link: "/one-way-cabs" },
       { name: "RoundTrip Cabs", link: "/round-trip-cabs" },

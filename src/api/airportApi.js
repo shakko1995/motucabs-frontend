@@ -50,7 +50,7 @@ const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/api"
  */
 export async function getAirports() {
   try {
-    const res = await fetch(`${API_URL}/airports`);
+    const res = await fetch(`${API_URL}/airport-transfer`);
     if (!res.ok) {
       throw new Error(`Failed to fetch airports. Status: ${res.status}`);
     }
@@ -72,7 +72,7 @@ export async function getAirportBySlug(slug) {
     return null;
   }
   try {
-    const res = await fetch(`${API_URL}/airports/${slug}`);
+    const res = await fetch(`${API_URL}/airport-transfer/${slug}`);
     
     if (!res.ok) {
       // Return null for 404 (Not Found) without logging an error
@@ -86,7 +86,7 @@ export async function getAirportBySlug(slug) {
 
     // If data is fetched successfully, format its name before returning it
     if (data) {
-      // --- NEW LOGIC INTEGRATED HERE ---
+      
       // 1. Create a clean, formatted name from the URL slug.
       const formattedName = slug
         .split('-')
@@ -95,7 +95,7 @@ export async function getAirportBySlug(slug) {
 
       // 2. Overwrite the name property from the API with our clean version.
       data.name = formattedName;
-      // --- END OF NEW LOGIC ---
+      
     }
     
     return data || null;

@@ -29,6 +29,7 @@ import ManageNews from "./ManageNews";
 import ManageBlog from './ManageBlog';
 import ManageFAQ from "./ManageFAQ";
 import ManagePackages from './ManagePackages';
+import ManageOneWayRoutes from './ManageOneWayRoutes';
 
 
 
@@ -108,6 +109,7 @@ export default function Dashboard() {
       case 'manageBlog': return <ManageBlog />;
       case 'manageFAQ': return <ManageFAQ />;
       case 'manageTourPackages': return <ManagePackages />;
+      case 'oneWayRoutes': return <ManageOneWayRoutes />;
 
 
 
@@ -142,6 +144,7 @@ export default function Dashboard() {
       manageBlog: "Manage Blog",
       manageFAQ: "Manage FAQ",
       manageTourPackages: "Manage Tour Packages",
+      oneWayRoutes: "Manage One-Way Routes",
 
     };
     return titles[activeView] || "Dashboard";
@@ -216,6 +219,9 @@ export default function Dashboard() {
           </ul>
           <ul className="space-y-1">
             <NavButton viewName="manageTourPackages" icon={PackagePlus} activeView={activeView} setActiveView={setActiveView}>Tour Packages</NavButton>
+          </ul>
+          <ul className="space-y-1">
+             <NavButton viewName="oneWayRoutes" icon={Route} activeView={activeView} setActiveView={setActiveView}>One-Way Routes</NavButton>
           </ul>
 
         </nav>

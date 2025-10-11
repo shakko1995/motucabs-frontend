@@ -130,37 +130,49 @@ export default function Sitemap() {
 
        {/* --- One-Way Taxi Routes Section --- */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">One-Way Taxi Routes</h2>
-        <div className="border rounded-lg bg-white shadow-sm">
-          {oneWayRoutes.map((group) => (
-            <div key={group._id} className="border-b last:border-b-0">
-              {/* Accordion Header */}
-              <button
-                onClick={() => toggleCity(group._id)}
-                className={`w-full flex justify-between items-center p-5 text-left transition-colors ${openCity === group._id ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
-              >
-                <span className="text-lg font-medium text-gray-800">{group._id}</span>
-                <ChevronDown className={`transition-transform duration-300 ${openCity === group._id ? 'rotate-180 text-red-600' : ''}`} />
-              </button>
-              
-              {/* Accordion Content */}
-              {openCity === group._id && (
-                <div className="px-5 pb-5">
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 pt-4 border-t">
-                    {group.routes.map((route, index) => (
-                      <li key={index}>
-                         <Link to={`/one-way-taxi${group._id}-to-${route.toCity}`} className="block p-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md">
-                            {group._id} to {route.toCity}
-                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+  <h2 className="text-2xl font-semibold text-gray-800 mb-6">One-Way Taxi Routes</h2>
+  <div className="border rounded-lg bg-white shadow-sm">
+    {oneWayRoutes.map((group) => (
+      <div key={group._id} className="border-b last:border-b-0">
+        <button
+          onClick={() => toggleCity(group._id)}
+          className={`w-full flex justify-between items-center p-5 text-left transition-colors ${openCity === group._id ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
+        >
+          <span className="text-lg font-medium text-gray-800">{group._id}</span>
+          <ChevronDown className={`transition-transform duration-300 ${openCity === group._id ? 'rotate-180 text-red-600' : ''}`} />
+        </button>
+        
+        {openCity === group._id && (
+          <div className="px-5 pb-5">
+            {/* --- UPDATE: Add header for the list --- */}
+            <div className="flex justify-between pt-4 border-t text-sm font-semibold text-gray-500">
+              <span>Route</span>
+              <span>Starting Price (₹)</span>
             </div>
-          ))}
-        </div>
-      </section>
+            <ul className="grid grid-cols-1 gap-y-2 pt-2">
+              {group.routes.map((route) => (
+                <li key={route.slug}>
+                   <Link 
+                     to={`/one-way-taxi/${route.slug}`}
+                     className="flex justify-between items-center p-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md"
+                   >
+                     <span>{group._id} to {route.toCity}</span>
+                     {/* --- UPDATE: Display the price --- */}
+                     {route.price && (
+                       <span className="font-semibold text-gray-800">
+                         ₹{route.price}
+                       </span>
+                     )}
+                   </Link>
+                 </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
       {/* Outstations */}
       <section className="mb-6">
         <h2 className="text-xl font-bold text-gray-900 mb-3">Top Cities (Outstation)</h2>
@@ -173,7 +185,7 @@ export default function Sitemap() {
             {outstations.map((city) => (
               <li key={city._id} className="relative">
                 <Link
-                  to={`/outstation-cabs/${city.slug}`}
+                  to={`/outstation-cab/${city.slug}`}
                   state={{
                     prefillData: {
                       pickup: city.name,
@@ -255,7 +267,7 @@ export default function Sitemap() {
             {airports.map((airport) => (
               <li key={airport._id} className="relative">
                 <Link
-                  to={`/airport/${airport.slug}`}
+                  to={`/airport-transfer/${airport.slug}`}
                   state={{
                     prefillData: {
                       pickup: airport.name,

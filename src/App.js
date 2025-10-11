@@ -62,6 +62,7 @@ import FAQPage from "./pages/FAQPage";
 import BlogPage from "./pages/BlogPage";
 import PackagesPage from "./pages/PackagesPage";
 import PackageDetailsPage from "./pages/PackageDetailsPage";
+import OneWayRoutePage from './pages/OneWayRoutePage';
 
 
 
@@ -102,7 +103,7 @@ function App() {
               <Route path="/fleet" element={<FleetPage />} />
               <Route path="/fleet/:carType" element={<FleetDetailPage />} />
               <Route path="/services" element={<ServicesPage />} />
-              <Route path="/airport-transfers" element={<AirportTransfersPage />} />
+              <Route path="/airport-transfers-page" element={<AirportTransfersPage />} />
               <Route path="/point-to-point" element={<PointToPointPage />} />
               <Route path="/itineraries" element={<PlannedItinerariesPage />} />
               <Route path="/hourly-service" element={<HourlyServicePage />} />
@@ -119,10 +120,10 @@ function App() {
               <Route path="/manage-pages" element={<ManagePages />} />
               <Route path="/page/:slug" element={<DynamicPage />} />
               <Route path="/sitemap" element={<Sitemap />} />
-              <Route path="/airport/:slug" element={<AirportDetail />} />
+              <Route path="/airport-transfer/:slug" element={<AirportDetail />} />
               <Route path="/manage-airports" element={<ManageAirportsSiteMap />} />
               <Route path="/car-rentals/:slug" element={<CarRentalDetail />} />
-              <Route path="/outstation-cabs/:slug" element={<OutstationDetailPage />} />
+              <Route path="/outstation-cab/:slug" element={<OutstationDetailPage />} />
               <Route path="/book-taxi/:slug" element={<PopularRouteDetailPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/my-bookings" element={<MyBookingsPage />} />
@@ -141,6 +142,7 @@ function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path ="/packages" element={<PackagesPage/>}/>
               <Route path ="/packages/:slug" element={<PackageDetailsPage/>}/>
+              {/* <Route path="/one-way-taxi/:slug" element={<OneWayRoutePage />} /> */}
 
 
             

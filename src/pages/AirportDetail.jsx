@@ -1052,12 +1052,12 @@ const generateAirportData = (airportName) => {
     description:
       `Motu Cabs Offers a hassle-free airport transfer cabs booking option at a cheaper price from ${airportName} to anywhere you want, be it in intercity, one-way or outstation or anything Motu Cabs covers it all by just clicking Motu Cabs app from your smartphone or from Motu Cabs official website. Book online the cheapest and best Airport cab booking service from the airport to anywhere in India with Motu.`,
     transfers: [
-      { destination: `${cityName} (within City)`, price: 1076 },
-      { destination: "Kanpur", price: 1356 },
-      { destination: "Prayagraj", price: 2725 },
-      { destination: "Agra", price: 3996 },
-      { destination: "Bareilly", price: 3065 },
-      { destination: "Delhi", price: 6101 },
+      { destination: `${cityName} (within City)` },
+      { destination: "Kanpur" },
+      { destination: "Prayagraj" },
+      { destination: "Agra" },
+      { destination: "Bareilly" },
+      { destination: "Delhi" },
     ],
     sections: [
       {

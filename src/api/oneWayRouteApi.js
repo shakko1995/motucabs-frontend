@@ -141,3 +141,49 @@ export async function deleteOneWayRoute(id) {
     throw err;
   }
 }
+// Add this helper function to the top of your API file
+async function apiClient(endpoint, method = 'GET', body = null, isFormData = false) {
+  const token = localStorage.getItem('adminToken');
+  const headers = {};
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const config = {
+    method,
+    headers,
+  };
+
+  if (body) {
+    if (isFormData) {
+      // The browser sets the Content-Type header automatically for FormData
+      config.body = body;
+    } else {
+      headers['Content-Type'] = 'application/json';
+      config.body = JSON.stringify(body);
+    }
+  }
+
+  try {
+    const res = await fetch(endpoint, config);
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || `An error occurred: ${res.statusText}`);
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error(`API call failed: ${err.message}`);
+    throw err;
+  }
+}
+
+/**
+ * ✅ Upload an Excel sheet to bulk-create routes (for admin)
+ */
+export function uploadRoutesSheet(formData) {
+  // The apiClient helper handles FormData and auth token automatically
+  return apiClient(`${API_URL}/upload-sheet`, 'POST', formData, true);
+}
