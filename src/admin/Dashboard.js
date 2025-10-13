@@ -30,6 +30,12 @@ import ManageBlog from './ManageBlog';
 import ManageFAQ from "./ManageFAQ";
 import ManagePackages from './ManagePackages';
 import ManageOneWayRoutes from './ManageOneWayRoutes';
+import ManageDriverPartners from "./ManageDriverPartners";
+import ManageVendorPartners from "./ManageVendorPartners";
+import ManageCarAttachments from "./ManageCarAttachments";
+import ManageTempoTraveller from "./ManageTempoTraveller";
+import ManageTempoTravellerRoutes from "./ManageTempoTravellerRoutes";
+import HeroSubmissions from './HeroSubmissions';
 
 
 
@@ -110,6 +116,12 @@ export default function Dashboard() {
       case 'manageFAQ': return <ManageFAQ />;
       case 'manageTourPackages': return <ManagePackages />;
       case 'oneWayRoutes': return <ManageOneWayRoutes />;
+      case 'driverPartners': return <ManageDriverPartners />;
+      case 'vendorPartners': return <ManageVendorPartners />;
+      case 'carAttachments': return <ManageCarAttachments />;
+      case 'tempoTraveller': return <ManageTempoTraveller />;
+      case 'tempoTravellerRoutes': return <ManageTempoTravellerRoutes />;
+      case 'heroSubmissions': return <HeroSubmissions />;
 
 
 
@@ -145,6 +157,12 @@ export default function Dashboard() {
       manageFAQ: "Manage FAQ",
       manageTourPackages: "Manage Tour Packages",
       oneWayRoutes: "Manage One-Way Routes",
+      driverPartners: "Manage Driver Partners",
+      vendorPartners: "Manage Vendor Partners",
+      carAttachments: "Manage Car Attachments",
+      tempoTraveller: "Manage Tempo Traveller",
+      tempoTravellerRoutes: "Manage Tempo Traveller Routes",
+      heroSubmissions: "Hero Form Submissions",
 
     };
     return titles[activeView] || "Dashboard";
@@ -221,8 +239,36 @@ export default function Dashboard() {
             <NavButton viewName="manageTourPackages" icon={PackagePlus} activeView={activeView} setActiveView={setActiveView}>Tour Packages</NavButton>
           </ul>
           <ul className="space-y-1">
-             <NavButton viewName="oneWayRoutes" icon={Route} activeView={activeView} setActiveView={setActiveView}>One-Way Routes</NavButton>
+            <NavButton viewName="oneWayRoutes" icon={Route} activeView={activeView} setActiveView={setActiveView}>One-Way Routes</NavButton>
           </ul>
+          <ul className="space-y-1">
+            
+              <NavButton
+                viewName="driverPartners"
+                icon={UserCheck}
+                activeView={activeView}
+                setActiveView={setActiveView}
+              >
+                Driver Partners
+              </NavButton>
+           
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="vendorPartners" icon={Users} activeView={activeView} setActiveView={setActiveView}>Vendor Partners</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="carAttachments" icon={Car} activeView={activeView} setActiveView={setActiveView}>Car Attachments</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="tempoTraveller" icon={Car} activeView={activeView} setActiveView={setActiveView}>Tempo Traveller</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="tempoTravellerRoutes" icon={Route} activeView={activeView} setActiveView={setActiveView}>Tempo Traveller Routes</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="heroSubmissions" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Hero Form Submissions</NavButton>
+          </ul>
+
 
         </nav>
         <div className="px-4 py-4 border-t border-gray-700">

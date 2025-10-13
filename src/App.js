@@ -63,7 +63,12 @@ import BlogPage from "./pages/BlogPage";
 import PackagesPage from "./pages/PackagesPage";
 import PackageDetailsPage from "./pages/PackageDetailsPage";
 import OneWayRoutePage from './pages/OneWayRoutePage';
-
+import DriverPartnerPage from "./pages/DriverPartnerPage";
+import VendorPartnerPage from "./pages/VendorPartnerPage";
+import CarAttachmentPage from "./pages/CarAttachmentPage";
+import HeroForm from "./pages/HeroForm";
+import TempoTravellerPage from "./pages/TempoTravellerPage";
+import TempoTravellerRoutePage from "./pages/TempoTravellerRoutePage";
 
 
 
@@ -142,7 +147,13 @@ function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path ="/packages" element={<PackagesPage/>}/>
               <Route path ="/packages/:slug" element={<PackageDetailsPage/>}/>
-              {/* <Route path="/one-way-taxi/:slug" element={<OneWayRoutePage />} /> */}
+              <Route path="/one-way-taxi/:slug" element={<OneWayRoutePage />} />
+              <Route path="/driver-partner/:slug" element={<DriverPartnerPage />} />
+              <Route path="/vendor-partner/:slug" element={<VendorPartnerPage />} />
+              <Route path="/car-attachment/:slug" element={<CarAttachmentPage />} />
+              <Route path="/tempo-traveller/:slug" element={<TempoTravellerPage />} />
+              <Route path="/tempo-travellers/:slug" element={<TempoTravellerRoutePage />} />
+              <Route path="/hero-form" element={<HeroForm />} />
 
 
             
