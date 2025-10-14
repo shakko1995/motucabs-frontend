@@ -62,10 +62,10 @@ export const navigationLinks = [
     icon: Handshake,
     mainLink: "#",
     dropdown: [
-      { name: "Cab Vendors", link: "/drive-with-us" },
-      { name: "Travel Agents", link: "/partners" },
-      { name: "International Partners", link: "/travel-agents" },
-      { name: "Cross-Promotion Network", link: "/cross-promotion" },
+      { name: "Cab Vendors", link: "/cab-vendors" },
+      { name: "Travel Agents", link: "/travel-agents" },
+      { name: "International Partners", link: "/international-partners" },
+      { name: "Cross-Promotion Network", link: "/cross-promotion-network" },
     ],
   },
   {
@@ -93,8 +93,8 @@ export const navigationLinks = [
     icon: Building2,
     mainLink: "#",
     dropdown: [
-      { name: "About Us", link: "/about", icon: Info },
-      { name: "Contact Us", link: "/contact", icon: Phone },
+      { name: "About Us", link: "/about-us", icon: Info },
+      { name: "Contact Us", link: "/contact-us", icon: Phone },
     ],
   },
 ];

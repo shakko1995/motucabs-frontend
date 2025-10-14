@@ -98,8 +98,8 @@ function App() {
               <Route path="/airport-cabs" element={<AirportCabs />} />
               <Route path="/outstation-roundtrip-cabs" element={<OutstationRoundTripCabs />} />
               <Route path="/review-booking" element={<ReviewBooking />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about-us" element={<AboutPage />} />
+              <Route path="/contact-us" element={<ContactPage />} />
               <Route path="/friends-and-family" element={<FriendsAndFamilyPage />} />
               <Route path="/armed-forces" element={<ArmedForcesPage />} />
               <Route path="/students-program" element={<StudentsProgramPage />} />
@@ -119,10 +119,10 @@ function App() {
               <Route path="/reviews" element={<ReviewsPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/confirm-ride" element={<ConfirmRide />} />
-              <Route path="/drive-with-us" element={<DriverPage />} />
-              <Route path="/partners" element={<PartnersPage />} />
-              <Route path="/travel-agents" element={<TravellerPartner />} />
-              <Route path="/cross-promotion" element={<CrossPerformNetwork />} />
+              <Route path="/cab-vendors" element={<DriverPage />} />
+              <Route path="/travel-agents" element={<PartnersPage />} />
+              <Route path="/international-partners" element={<TravellerPartner />} />
+              <Route path="/cross-promotion-network" element={<CrossPerformNetwork />} />
               <Route path="/manage-pages" element={<ManagePages />} />
               <Route path="/page/:slug" element={<DynamicPage />} />
               <Route path="/sitemap" element={<Sitemap />} />
