@@ -69,6 +69,7 @@ import CarAttachmentPage from "./pages/CarAttachmentPage";
 import HeroForm from "./pages/HeroForm";
 import TempoTravellerPage from "./pages/TempoTravellerPage";
 import TempoTravellerRoutePage from "./pages/TempoTravellerRoutePage";
+import DestinationsPage from "./pages/DestinationsPage";
 
 
 
@@ -153,6 +154,7 @@ function App() {
               <Route path="/car-attachment/:slug" element={<CarAttachmentPage />} />
               <Route path="/tempo-traveller/:slug" element={<TempoTravellerPage />} />
               <Route path="/tempo-travellers/:slug" element={<TempoTravellerRoutePage />} />
+              <Route path="/destinations" element={<DestinationsPage />} />
               <Route path="/hero-form" element={<HeroForm />} />
 
 

@@ -36,6 +36,7 @@ import ManageCarAttachments from "./ManageCarAttachments";
 import ManageTempoTraveller from "./ManageTempoTraveller";
 import ManageTempoTravellerRoutes from "./ManageTempoTravellerRoutes";
 import HeroSubmissions from './HeroSubmissions';
+import ManageDestinations from "./ManageDestinations";
 
 
 
@@ -122,6 +123,7 @@ export default function Dashboard() {
       case 'tempoTraveller': return <ManageTempoTraveller />;
       case 'tempoTravellerRoutes': return <ManageTempoTravellerRoutes />;
       case 'heroSubmissions': return <HeroSubmissions />;
+      case 'manageDestinations': return <ManageDestinations />;
 
 
 
@@ -163,6 +165,7 @@ export default function Dashboard() {
       tempoTraveller: "Manage Tempo Traveller",
       tempoTravellerRoutes: "Manage Tempo Traveller Routes",
       heroSubmissions: "Hero Form Submissions",
+      manageDestinations: "Manage Destinations",
 
     };
     return titles[activeView] || "Dashboard";
@@ -267,6 +270,9 @@ export default function Dashboard() {
           </ul>
           <ul className="space-y-1">
             <NavButton viewName="heroSubmissions" icon={FileText} activeView={activeView} setActiveView={setActiveView}>Hero Form Submissions</NavButton>
+          </ul>
+          <ul className="space-y-1">
+            <NavButton viewName="manageDestinations" icon={Map} activeView={activeView} setActiveView={setActiveView}>Manage Destinations</NavButton>
           </ul>
 
 

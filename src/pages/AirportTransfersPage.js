@@ -36,7 +36,7 @@ const AirportTransfersPage = () => {
                 />
                 <div className="relative max-w-5xl mx-auto px-6 text-center">
                     <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                        Gozo Airport Transfers – Dependable, Comfortable, and Affordable
+                        Motu Airport Transfers – Dependable, Comfortable, and Affordable
                     </h2>
                     <p className="text-lg text-gray-600">
                         The Smart Way to Get To & From the Airport all over India
@@ -46,9 +46,9 @@ const AirportTransfersPage = () => {
 
             {/* Content Sections */}
             <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
-                <Section title="Why Choose Gozo for Airport Transfers?">
+                <Section title="Why Choose Motu for Airport Transfers?">
                     <p>
-                        We extend our heartfelt thanks to each of you for your service and the sacrifices you've made. To show our appreciation, Gozo is proud to offer special privileges to members of the Armed Forces, Veterans, and their families, making it easier for you to enjoy reliable, safe, and comfortable travel.
+                        We extend our heartfelt thanks to each of you for your service and the sacrifices you've made. To show our appreciation, Motu is proud to offer special privileges to members of the Armed Forces, Veterans, and their families, making it easier for you to enjoy reliable, safe, and comfortable travel.
                     </p>
                     <ul className="list-disc list-inside space-y-2 pl-4 mt-4">
                         <li><strong>Pre-Scheduled Rides:</strong> Book in advance and travel with peace of mind.</li>
@@ -56,7 +56,7 @@ const AirportTransfersPage = () => {
                     </ul>
                 </Section>
 
-                <Section title="Introducing the Gozo Airport Transfer Subscription">
+                <Section title="Introducing the Motu Airport Transfer Subscription">
                     <p>
                         Perfect for frequent travelers, business executives, and professionals, our subscription service makes airport transfers affordable, predictable, and hassle-free.
                     </p>
@@ -74,7 +74,7 @@ const AirportTransfersPage = () => {
                 <Section title="Zero Stress & 100% Refundable Credits">
                     <ul className="list-disc list-inside space-y-2 pl-4">
                         <li>Free cancellations anytime.</li>
-                        <li>Get a 100% of your money as a refund in Gozo credits for future rides.</li>
+                        <li>Get a 100% of your money as a refund in Motu credits for future rides.</li>
                         <li>Never ever pay surge pricing again!</li>
                     </ul>
                 </Section>
@@ -89,9 +89,9 @@ const AirportTransfersPage = () => {
                     </ul>
                 </Section>
 
-                <Section title="Upgrade Anytime to Gozo Concierge">
+                <Section title="Upgrade Anytime to Motu Concierge">
                     <p>
-                        Already love our service? <strong>Upgrade to Gozo Concierge for ₹1000/month</strong> and get:
+                        Already love our service? <strong>Upgrade to Motu Concierge for ₹1000/month</strong> and get:
                     </p>
                     <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
                         <li>Unlimited Airport Transfers at flat rates</li>
