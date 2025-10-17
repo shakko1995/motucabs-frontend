@@ -457,6 +457,7 @@ const ManageOutstationRoundTrip = () => {
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
                         <option value="SUV+">SUV+</option>
+                        <option value="Traveller / Minivan">Traveller/Minivan</option>
                     </select>
                     <select name="fuelType" value={formData.fuelType} onChange={handleInputChange} className="p-2 border rounded bg-white">
                         <option value="Petrol">Petrol</option>

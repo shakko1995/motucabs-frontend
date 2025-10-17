@@ -1,92 +1,179 @@
+// import React, { useEffect, useState } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import { CheckCircle } from 'lucide-react';
+// import Confetti from 'react-confetti';
+
+// const ThankYou = () => {
+//   const location = useLocation();
+//   const navigate = useNavigate();
+//   const { booking } = location.state || {};
+//   const [showContent, setShowContent] = useState(false);
+//   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
+
+//   useEffect(() => {
+//     setShowContent(true);
+//     const handleResize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
+//     window.addEventListener('resize', handleResize);
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
+
+//   if (!booking) {
+//     return (
+//       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
+//         <h2 className="text-2xl font-bold text-red-600 mb-4 animate-pulse">Booking not found!</h2>
+//         <button
+//           onClick={() => navigate('/')}
+//           className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-md transform hover:scale-105"
+//         >
+//           Go Home
+//         </button>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 p-4 sm:p-8 text-center relative overflow-hidden">
+      
+//       {/* Confetti */}
+//       {showContent && <Confetti width={dimensions.width} height={dimensions.height} recycle={false} numberOfPieces={200} gravity={0.2} />}
+
+//       {/* Confirmation Icon */}
+//       <div
+//         className={`bg-green-100 p-8 rounded-full shadow-lg mb-6 transform transition-transform duration-700 ${
+//           showContent ? 'scale-100 rotate-0' : 'scale-0 rotate-45'
+//         }`}
+//       >
+//         <CheckCircle size={80} className="text-green-600 animate-pulse" />
+//       </div>
+
+//       {/* Header */}
+//       <h1
+//         className={`text-3xl sm:text-4xl font-bold text-gray-900 mb-2 transition-opacity duration-1000 ${
+//           showContent ? 'opacity-100' : 'opacity-0'
+//         }`}
+//       >
+//         Booking Confirmed!
+//       </h1>
+//       <p
+//         className={`text-gray-700 text-base sm:text-lg mb-8 transition-opacity delay-200 duration-1000 ${
+//           showContent ? 'opacity-100' : 'opacity-0'
+//         }`}
+//       >
+//         Your ride has been successfully booked.
+//       </p>
+
+//       {/* Action Buttons */}
+//       <div
+//         className={`flex flex-col sm:flex-row gap-4 w-full max-w-xs transition-transform delay-400 duration-700 ${
+//           showContent ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'
+//         }`}
+//       >
+//         <button
+//           onClick={() => navigate('/my-bookings')}
+//           className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 shadow-lg transition-all transform hover:scale-105"
+//         >
+//           My Bookings
+//         </button>
+//         <button
+//           onClick={() => navigate('/')}
+//           className="flex-1 bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 shadow-md transition-all transform hover:scale-105"
+//         >
+//           Home
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ThankYou;
+
+
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Car, Users, CalendarDays, CreditCard } from 'lucide-react';
 import Confetti from 'react-confetti';
 
 const ThankYou = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { booking } = location.state || {};
-  const [showContent, setShowContent] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { booking } = location.state || {};
+    const [showContent, setShowContent] = useState(false);
+    const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
 
-  useEffect(() => {
-    setShowContent(true);
-    const handleResize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    useEffect(() => {
+        setShowContent(true);
+        const handleResize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-  if (!booking) {
+    if (!booking) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center p-4">
+                <h2 className="text-2xl font-bold text-red-600 mb-4">Booking confirmation not found!</h2>
+                <button onClick={() => navigate('/')} className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold">Go Home</button>
+            </div>
+        );
+    }
+
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-        <h2 className="text-2xl font-bold text-red-600 mb-4 animate-pulse">Booking not found!</h2>
-        <button
-          onClick={() => navigate('/')}
-          className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-md transform hover:scale-105"
-        >
-          Go Home
-        </button>
-      </div>
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4 sm:p-8 text-center relative overflow-hidden">
+            
+            {showContent && <Confetti width={dimensions.width} height={dimensions.height} recycle={false} numberOfPieces={250} />}
+
+            <div className={`bg-green-100 p-6 rounded-full mb-6 transform transition-transform duration-700 ${showContent ? 'scale-100' : 'scale-0'}`}>
+                <CheckCircle size={60} className="text-green-600" />
+            </div>
+
+            <h1 className={`text-4xl font-bold text-gray-900 mb-2 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                Booking Confirmed!
+            </h1>
+            <p className={`text-gray-600 text-lg mb-8 transition-opacity delay-200 duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                Your ride from {booking.pickupLocation} to {booking.dropLocation} is booked.
+            </p>
+
+            {/* ✅ UPDATED: Booking Summary Card */}
+            <div className={`bg-white rounded-2xl shadow-lg w-full max-w-md p-6 space-y-4 text-left mb-8 transition-all delay-400 duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="text-gray-500">Booking ID</span>
+                    <span className="font-semibold text-gray-800">{booking._id}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Passenger</span>
+                    <span className="font-semibold text-gray-800">{booking.userName}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Vehicle</span>
+                    <span className="font-semibold text-gray-800">{booking.vehicleType}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Pickup</span>
+                    <span className="font-semibold text-gray-800">{new Date(booking.pickupDate).toLocaleDateString()} at {booking.pickupTime}</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t">
+                    <span className="text-gray-500 font-bold">Total Fare</span>
+                    <span className="font-bold text-xl text-green-600">₹{booking.totalFare}</span>
+                </div>
+            </div>
+
+            <div className={`flex flex-col sm:flex-row gap-4 w-full max-w-xs transition-transform delay-500 duration-700 ${showContent ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                <button onClick={() => navigate('/my-bookings')} className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 shadow-lg">My Bookings</button>
+                <button onClick={() => navigate('/')} className="flex-1 bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 shadow-md">Home</button>
+            </div>
+        </div>
     );
-  }
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 p-4 sm:p-8 text-center relative overflow-hidden">
-      
-      {/* Confetti */}
-      {showContent && <Confetti width={dimensions.width} height={dimensions.height} recycle={false} numberOfPieces={200} gravity={0.2} />}
-
-      {/* Confirmation Icon */}
-      <div
-        className={`bg-green-100 p-8 rounded-full shadow-lg mb-6 transform transition-transform duration-700 ${
-          showContent ? 'scale-100 rotate-0' : 'scale-0 rotate-45'
-        }`}
-      >
-        <CheckCircle size={80} className="text-green-600 animate-pulse" />
-      </div>
-
-      {/* Header */}
-      <h1
-        className={`text-3xl sm:text-4xl font-bold text-gray-900 mb-2 transition-opacity duration-1000 ${
-          showContent ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        Booking Confirmed!
-      </h1>
-      <p
-        className={`text-gray-700 text-base sm:text-lg mb-8 transition-opacity delay-200 duration-1000 ${
-          showContent ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        Your ride has been successfully booked.
-      </p>
-
-      {/* Action Buttons */}
-      <div
-        className={`flex flex-col sm:flex-row gap-4 w-full max-w-xs transition-transform delay-400 duration-700 ${
-          showContent ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'
-        }`}
-      >
-        <button
-          onClick={() => navigate('/my-bookings')}
-          className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 shadow-lg transition-all transform hover:scale-105"
-        >
-          My Bookings
-        </button>
-        <button
-          onClick={() => navigate('/')}
-          className="flex-1 bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 shadow-md transition-all transform hover:scale-105"
-        >
-          Home
-        </button>
-      </div>
-    </div>
-  );
 };
 
 export default ThankYou;
-
 
 
 

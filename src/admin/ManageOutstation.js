@@ -189,7 +189,7 @@ const ManageOutstation = () => {
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(null);
 
-    // Form State को नए Schema के अनुसार अपडेट किया गया
+   
     const initialFormData = {
         state: '',
         vehicleType: 'Mini',
@@ -199,7 +199,7 @@ const ManageOutstation = () => {
         ratePerKm: '',
         advanceAmount: '',
         NightDrivingAllowance: '',
-        paymentOptions: 'Both' // नया फील्ड
+        paymentOptions: 'Both' 
     };
     const [formData, setFormData] = useState(initialFormData);
 
@@ -289,6 +289,7 @@ const ManageOutstation = () => {
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
                         <option value="SUV+">SUV+</option>
+                        <option value="Traveller / Minivan">Traveller/Minivan</option>
                     </select>
                     <input type="number" name="seater" value={formData.seater} onChange={handleInputChange} placeholder="Seater" className="p-2 border rounded" required />
                     <input type="number" name="ratePerKm" value={formData.ratePerKm} onChange={handleInputChange} placeholder="Rate per Km (₹)" className="p-2 border rounded" required />

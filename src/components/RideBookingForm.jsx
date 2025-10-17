@@ -1627,6 +1627,7 @@ import LoginForm from "../pages/Login";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Header from './Header';
+import { saveSearchToDb } from "../api/search.api";
 
 const GoZoBooking = ({ prefillData }) => {
   // Form States
@@ -1645,6 +1646,7 @@ const GoZoBooking = ({ prefillData }) => {
   const [currentLegDropResults, setCurrentLegDropResults] = useState([]);
   const [showCurrentLegPickup, setShowCurrentLegPickup] = useState(false);
   const [showCurrentLegDrop, setShowCurrentLegDrop] = useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -1659,7 +1661,7 @@ const GoZoBooking = ({ prefillData }) => {
   const [showRecentPickup, setShowRecentPickup] = useState(false);
   const [showRecentDrop, setShowRecentDrop] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user,token } = useContext(AuthContext);
 
   // Search API for multi-city current leg pickup
   useEffect(() => {
@@ -1695,7 +1697,7 @@ const GoZoBooking = ({ prefillData }) => {
     setCurrentLegPickupResults([]);
     setCurrentLegDropResults([]);
   };
-
+  
 
   // Load saved searches from localStorage
   useEffect(() => {
@@ -1733,6 +1735,36 @@ const GoZoBooking = ({ prefillData }) => {
   };
 
   const handleSearch = () => {
+
+    const searchData = {
+      tab: activeTab,
+      type: 'N/A', 
+      query: 'N/A',
+    };
+    
+    if (activeTab === "Rentals") {
+      if (pickup) { // Only save if there's something to save
+        searchData.type = "rental";
+        searchData.query = pickup;
+      }
+    } else if (activeTab === "Outstation") {
+       if (pickup && drop) { // Check that both fields have values
+        searchData.type = tripType;
+        searchData.query = `${pickup} to ${drop}`;
+       }
+    } else if (activeTab === "Airport Rides") {
+       if (pickup && drop) {
+        searchData.type = airportOption;
+        searchData.query = `${pickup} to ${drop}`;
+       }
+    }
+
+    // Call the API function asynchronously (fire and forget)
+    // The token can be null for guests, and the optionalAuth middleware handles it
+    if (searchData.query !== 'N/A') {
+        saveSearchToDb(searchData, token);
+    }
+
     if (!user) {
       setShowLoginModal(true);
       return;

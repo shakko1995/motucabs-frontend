@@ -151,6 +151,8 @@ const ManageRentals = () => {
                         <option value="Mini">Mini</option>
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
+                        <option value="Traveller / Minivan">Traveller/Minivan</option>
+                        <option value="SUV+">SUV+</option>
                     </select>
                     <div className="flex items-center">
                         <input type="checkbox" name="ac" checked={formData.ac} onChange={handleInputChange} id="ac-checkbox" className="h-4 w-4 rounded" />

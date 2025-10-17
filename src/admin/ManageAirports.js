@@ -119,6 +119,8 @@ const ManageAirports = () => {
                         <option value="Mini">Mini</option>
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
+                        <option value="Traveller / Minivan">Traveller / Minivan</option>
+                        <option value="SUV+">SUV+</option>
                     </select>
                     <input type="number" name="seater" value={formData.seater} onChange={handleInputChange} placeholder="Seater" className="p-2 border rounded" required />
                     <input type="number" name="packageCost" value={formData.packageCost} onChange={handleInputChange} placeholder="Package Cost (₹)" className="p-2 border rounded" required />
@@ -145,7 +147,7 @@ const ManageAirports = () => {
                 <h2 className="text-2xl font-semibold mb-4">Existing Airport Packages</h2>
                 {loading ? <p>Loading packages...</p> : (
                     <div className="overflow-x-auto">
-                        {/* 👇 Table को Airport Schema के अनुसार बदला गया है */}
+                      
                         <table className="w-full text-sm text-left">
                             <thead className="bg-gray-100 uppercase text-xs text-gray-600">
                                 <tr>
