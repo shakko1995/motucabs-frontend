@@ -4,7 +4,7 @@ import React from "react";
 
 const BusinessSection = () => {
   return (
-    <section className="w-full py-12 bg-white">
+    <section className="w-full py-12 bg-gray-100">
       {/* Heading */}
       <div className="text-center mb-12">
         <h2 className="text-3xl font-normal">

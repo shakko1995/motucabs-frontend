@@ -220,8 +220,10 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
-import { CheckCircle, Star, MapPin, Clock, ChevronRight } from 'lucide-react';
+import { CheckCircle, Star,  ChevronRight } from 'lucide-react';
 import GoZoBooking from "../components/RideBookingForm";
+import { Helmet } from "react-helmet";
+
 
 // --- DUMMY IMPORTS FOR CAR IMAGES (replace with your actual paths) ---
 import img1 from "../assets/car-mini-motucabs.webp";
@@ -340,6 +342,16 @@ const PopularRouteDetailPage = () => {
 
     return (
         <div className="bg-white">
+             {/* 🔹 Dynamic Meta Tags */}
+            <Helmet>
+                <title>Book Outstation Cabs from {route.from} to {route.to}</title>
+                <meta name="title" content={`Book Outstation Cabs from ${route.from} to ${route.to}`} />
+                <meta name="description" content={`Book Outstation Cabs from ${route.from} to ${route.to} at the best deals.`} />
+                <meta name="keywords" content={`${route.from.toLowerCase()} to ${route.to.toLowerCase()} oneway, ${route.from.toLowerCase()} to ${route.to.toLowerCase()} taxi fare, online cab booking ${route.from.toLowerCase()} to ${route.to.toLowerCase()}, cabs for ${route.from.toLowerCase()} to ${route.to.toLowerCase()}, ${route.from.toLowerCase()} to ${route.to.toLowerCase()} car rental, outstation taxi ${route.from.toLowerCase()} to ${route.to.toLowerCase()}, outstation cabs in ${route.from.toLowerCase()}, ${route.from.toLowerCase()} to ${route.to.toLowerCase()} taxi, ${route.from.toLowerCase()} to ${route.to.toLowerCase()} distance, ${route.from.toLowerCase()} to ${route.to.toLowerCase()} round trip taxi fare, outstation cab booking ${route.from.toLowerCase()} to ${route.to.toLowerCase()}`} />
+                <link rel="canonical" href={`https://www.motucabs.com/book-taxi/${route.from.toLowerCase().replace(/\s+/g,'-')}-to-${route.to.toLowerCase().replace(/\s+/g,'-')}`} />
+                <meta name="copyright" content="copyright @motucabs. All Rights Reserved" />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
             
             <div ref={bookingFormRef} >
                 {/* Ensure GoZoBooking receives dynamic 'from' and 'to' from the route */}

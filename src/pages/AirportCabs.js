@@ -171,7 +171,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Star, ArrowLeft, Car, Users, ShieldCheck, Filter, X, TrendingUp, TrendingDown, Gauge, Clock, Moon, Snowflake } from 'lucide-react';
+import {  ArrowLeft, Car, Users, ShieldCheck, Filter, X, TrendingUp, TrendingDown, Gauge, Clock, Moon, Snowflake } from 'lucide-react';
 
 const vehicleData = {
   Mini: { name: "Indica, Swift", image: "https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Hatchback_2x.png" },

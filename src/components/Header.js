@@ -5,7 +5,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { navigationLinks } from '../data/navigationData'; 
-import { User, LogOut, ChevronDown, Menu, X, UserCircle, BookMarked } from 'lucide-react';
+import {  LogOut, ChevronDown, Menu, X, UserCircle, BookMarked } from 'lucide-react';
 
 
 const Header = () => {
@@ -16,14 +16,14 @@ const Header = () => {
     const [openAccordion, setOpenAccordion] = useState(null);
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState("IN");
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    //const [showLoginModal, setShowLoginModal] = useState(false);
 
 
   
 
-    const toggleAccordion = (title) => {
-        setOpenAccordion(openAccordion === title ? null : title);
-    };
+    // const toggleAccordion = (title) => {
+    //     setOpenAccordion(openAccordion === title ? null : title);
+    // };
 
    const NavLinks = () => {
   const toggleAccordion = (title) => {

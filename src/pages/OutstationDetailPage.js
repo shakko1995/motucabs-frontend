@@ -521,6 +521,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { CheckCircle, ChevronRight } from 'lucide-react';
 import GoZoBooking from "../components/RideBookingForm";
+import { Helmet } from "react-helmet";
 
 // --- DUMMY IMPORTS FOR CAR IMAGES (replace with your actual paths) ---
 import img1 from "../assets/car-mini-motucabs.webp";
@@ -647,8 +648,24 @@ export default function OutstationDetailPage() {
   if (error) return <p className="text-center py-20 text-red-500">{error}</p>;
   if (!city) return <p className="text-center py-20 text-gray-500">City data not available.</p>;
 
+  const metaTitle = `Best Outstation Cab Service in ${city.name}`;
+  const metaDescription = `Book best Outstation Cab in ${city.name} with driver at the best deals.`;
+  const metaKeywords = `cab service in ${city.name.toLowerCase()}, ${city.name.toLowerCase()} cab service, cab in ${city.name.toLowerCase()}, ${city.name.toLowerCase()} cab, taxi in ${city.name.toLowerCase()}, ${city.name.toLowerCase()} taxi, airport cab service in ${city.name.toLowerCase()}, railway station cab service in ${city.name.toLowerCase()}, local cab service in ${city.name.toLowerCase()}, outstation cab service in ${city.name.toLowerCase()}, affordable cab service in ${city.name.toLowerCase()}, reliable cab service in ${city.name.toLowerCase()}, 24/7 cab service in ${city.name.toLowerCase()}, convenient cab service in ${city.name.toLowerCase()}, online cab booking in ${city.name.toLowerCase()}, app cab booking in ${city.name.toLowerCase()}, cab booking in ${city.name.toLowerCase()}, taxi service in ${city.name.toLowerCase()}, hotel transfer in ${city.name.toLowerCase()}, app cab service ${city.name.toLowerCase()}, sedan cab service ${city.name.toLowerCase()}, online cab service ${city.name.toLowerCase()}, one-way cab service ${city.name.toLowerCase()}, car rental ${city.name.toLowerCase()}, rent a car ${city.name.toLowerCase()}, car rental near me, cheap car rental ${city.name.toLowerCase()}, best car rental ${city.name.toLowerCase()}, airport car rental ${city.name.toLowerCase()}, long-term car rental ${city.name.toLowerCase()}, chauffeur driven car rental ${city.name.toLowerCase()}, innova car rental ${city.name.toLowerCase()}, affordable car rental in ${city.name.toLowerCase()}, car hire in ${city.name.toLowerCase()}, round-trip car rental in ${city.name.toLowerCase()}, suv rental in ${city.name.toLowerCase()}, app-based car rental in ${city.name.toLowerCase()}`;
+  const canonicalUrl = `https://www.motucabs.com/outstation-cab/${slug}`;
+
   return (
     <div className="bg-white">
+
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="title" content={metaTitle} />
+        <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={metaKeywords} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="copyright" content="copyright @motucabs. All Rights Reserved" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      
       <Header />
       <div ref={bookingFormRef}>
         <GoZoBooking prefillData={dynamicPrefill || prefillDataFromLocation} />

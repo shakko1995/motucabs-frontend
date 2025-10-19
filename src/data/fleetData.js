@@ -2,7 +2,7 @@ export const fleetCategories = [
   { 
     name: 'Compact', 
     slug: 'compact', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Hatchback_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 4 passengers', 
       '2 small bags', 
@@ -26,7 +26,7 @@ export const fleetCategories = [
   { 
     name: 'Small SUV', 
     slug: 'small-suv', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/SUV_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 6 passengers', 
       '3 mid-sized bags', 
@@ -38,7 +38,7 @@ export const fleetCategories = [
   { 
     name: 'Large SUV', 
     slug: 'large-suv', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Large_SUV_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 7 passengers', 
       '4 mid-sized bags', 
@@ -50,7 +50,7 @@ export const fleetCategories = [
   { 
     name: 'Premium', 
     slug: 'premium', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Premium_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 4 passengers', 
       '3 mid-sized bags', 
@@ -62,7 +62,7 @@ export const fleetCategories = [
   { 
     name: 'Business Sedan', 
     slug: 'business-sedan', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Business_Sedan_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 4 passengers', 
       '3 mid-sized bags', 
@@ -74,7 +74,7 @@ export const fleetCategories = [
   { 
     name: 'Traveller / Minivan', 
     slug: 'tempo-traveler', 
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Tempo_2x.png', 
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png', 
     features: [
       'Upto 12 passengers', 
       '8 bags', 
@@ -89,7 +89,7 @@ export const fleetCategories = [
 export const fleetDetailsData = {
   compact: {
     name: 'Compact',
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Hatchback_2x.png',
+    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png',
     description: 'Economical cab class, perfect for solo travelers and small families for short city trips.',
     features: [
       'Upto 4 passengers can travel comfortably.',
@@ -114,7 +114,7 @@ export const fleetDetailsData = {
   },
   sedan: {
     name: 'Sedan',
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/Sedan_2x.png',
+    image: 'https://drive.google.com/file/d/1asRxmzRZ7U5xdox-kREt8baVGwLN4ao-/view?usp=sharing',
     description: 'Comfortable cab for city rides or small group travel with extra space and amenities.',
     features: [
       'Upto 4 passengers can travel comfortably.',
@@ -139,7 +139,7 @@ export const fleetDetailsData = {
   },
   'small-suv': {
     name: 'Small SUV',
-    image: 'https://jsak.mmtcdn.com/cabs_cdn_dt/image/LighterFunnel_Cabs/SUV_2x.png',
+    image: 'https://drive.google.com/file/d/1asRxmzRZ7U5xdox-kREt8baVGwLN4ao-/view?usp=sharing',
     description: 'Spacious cab suitable for family trips or small group travel with extra luggage capacity.',
     features: [
       'Upto 6 passengers can travel comfortably.',

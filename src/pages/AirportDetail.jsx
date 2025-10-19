@@ -1036,6 +1036,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import GoZoBooking from "../components/RideBookingForm";
+import { Helmet } from "react-helmet";
 
 // Import your car images (make sure the path is correct)
 import img1 from "../assets/car-mini-motucabs.webp";
@@ -1164,6 +1165,26 @@ const AirportDetailPage = () => {
 
   return (
     <div className="bg-white">
+
+       <Helmet>
+        <title>Book {airport.name} Transfer Cabs Online</title>
+        <meta name="title" content={`Book ${airport.name} Transfer Cabs Online`} />
+        <meta
+          name="description"
+          content={`Hire ${airport.name} transfer cabs with MotuCabs. Book the cheapest and best airport taxi service from ${airport.name} to anywhere in India.`}
+        />
+        <meta
+          name="keywords"
+          content="airport transfer service, delhi airport transfer, cab booking, online cab booking, luxury car rental, airport pickup, airport drop, one-way cab, round-trip cab, SUV rental, AC cab service"
+        />
+        <link
+          rel="canonical"
+          href={`https://www.motucabs.com/airport-transfer/${slug}`}
+        />
+        <meta name="copyright" content="copyright @motucabs. All Rights Reserved" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      
       <Header />
       <div ref={bookingFormRef}>
         <GoZoBooking prefillData={dynamicPrefill || prefilledDataFromLocation} />

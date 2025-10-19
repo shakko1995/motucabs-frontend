@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, HeartHandshake, Zap, Map, ThumbsUp, DollarSign, Globe, Star, Package, Route, Plane, Repeat, Users, Clock, MapPin, Award, TrendingUp, ChevronDown } from 'lucide-react';
+import { ShieldCheck, HeartHandshake,  Map, ThumbsUp, DollarSign, Globe, Star,  Route,  Users, Clock, MapPin, Award, TrendingUp, ChevronDown } from 'lucide-react';
 
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {

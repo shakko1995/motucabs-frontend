@@ -780,8 +780,9 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { CheckCircle, Star, ChevronRight } from 'lucide-react';
-import GoZoBooking from "../components/RideBookingForm"; // Assuming this is your booking form component
+import { CheckCircle,  ChevronRight } from 'lucide-react';
+import GoZoBooking from "../components/RideBookingForm"; 
+import { Helmet } from "react-helmet";
 
 // Assuming you have these images in your assets folder
 import img1 from "../assets/car-mini-motucabs.webp";
@@ -871,6 +872,14 @@ const CarRentalPage = () => {
         bookingFormRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
+    if (loading) return <div className="text-center py-20 text-lg">Loading page content...</div>;
+    if (!rentalData) return <div className="text-center py-20 text-lg text-red-600">Could not find details for this location.</div>;
+
+    const metaTitle = `Best Car Rental Service in ${rentalData.name}`;
+    const metaDescription = `Need a car in ${rentalData.name}? Rent AC cabs with driver at affordable customised rental packages.`;
+    const metaKeywords = `cab service in ${rentalData.name.toLowerCase()}, ${rentalData.name.toLowerCase()} cab service, cab in ${rentalData.name.toLowerCase()}, ${rentalData.name.toLowerCase()} cab, taxi in ${rentalData.name.toLowerCase()}, ${rentalData.name.toLowerCase()} taxi, airport cab service in ${rentalData.name.toLowerCase()}, railway station cab service in ${rentalData.name.toLowerCase()}, local cab service in ${rentalData.name.toLowerCase()}, outstation cab service in ${rentalData.name.toLowerCase()}, affordable cab service in ${rentalData.name.toLowerCase()}, reliable cab service in ${rentalData.name.toLowerCase()}, 24/7 cab service in ${rentalData.name.toLowerCase()}, convenient cab service in ${rentalData.name.toLowerCase()}, online cab booking in ${rentalData.name.toLowerCase()}, app cab booking in ${rentalData.name.toLowerCase()}, cab booking in ${rentalData.name.toLowerCase()}, taxi service in ${rentalData.name.toLowerCase()}, hotel transfer in ${rentalData.name.toLowerCase()}, app cab service ${rentalData.name.toLowerCase()}, sedan cab service ${rentalData.name.toLowerCase()}, online cab service ${rentalData.name.toLowerCase()}, one-way cab service ${rentalData.name.toLowerCase()}, car rental ${rentalData.name.toLowerCase()}, rent a car ${rentalData.name.toLowerCase()}, car rental near me, cheap car rental ${rentalData.name.toLowerCase()}, best car rental ${rentalData.name.toLowerCase()}, airport car rental ${rentalData.name.toLowerCase()}, long-term car rental ${rentalData.name.toLowerCase()}, chauffeur driven car rental ${rentalData.name.toLowerCase()}, innova car rental ${rentalData.name.toLowerCase()}, affordable car rental in ${rentalData.name.toLowerCase()}, car hire in ${rentalData.name.toLowerCase()}, round-trip car rental in ${rentalData.name.toLowerCase()}, suv rental in ${rentalData.name.toLowerCase()}, app-based car rental in ${rentalData.name.toLowerCase()}`;
+    const canonicalUrl = `https://www.motucabs.com/car-rentals/${slug}`;
+
     const fleetImages = [
         { src: img1, alt: "Hatchback Rental", description: "Swift, Celerio or equivalent" },
         { src: img3, alt: "Sedan Rental", description: "Dzire, Etios or equivalent" },
@@ -883,6 +892,17 @@ const CarRentalPage = () => {
 
     return (
         <div className="bg-gray-50">
+
+             <Helmet>
+                <title>{metaTitle}</title>
+                <meta name="title" content={metaTitle} />
+                <meta name="description" content={metaDescription} />
+                <meta name="keywords" content={metaKeywords} />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta name="copyright" content="copyright @motucabs. All Rights Reserved" />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
+
             <header ref={bookingFormRef} className="bg-white py-6 shadow-md">
                 <GoZoBooking prefillData={prefillData || { from: rentalData.name }} />
             </header>

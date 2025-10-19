@@ -54,10 +54,11 @@ export default function HomePage() {
       <RideBookingForm />
       <FeaturesSection />
       <ReviewsSection />
-      <VideoSection />
+     <OutstationServiceSection />
       <BusinessSection />
       <AttachTaxiSection />
-      <OutstationServiceSection />
+      
+       <VideoSection />
       <CabRoutesPage/>
       <Footer />
     </div>
